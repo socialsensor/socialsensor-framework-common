@@ -23,16 +23,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.twitter4j</groupId>
-            <artifactId>twitter4j-core</artifactId>
-            <version>3.0.3</version>
-        </dependency>
-        <dependency>
-            <groupId>org.twitter4j</groupId>
-            <artifactId>twitter4j-stream</artifactId>
-            <version>3.0.3</version>
-        </dependency>
-        <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.2.2</version>
@@ -55,6 +45,7 @@
         	<scope>compile</scope>
         </dependency>
     </dependencies>
+    
     <build>
         <plugins>
              <plugin>
@@ -82,8 +73,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
-            
+            </plugin>       
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -96,4 +86,10 @@
             </plugin>
         </plugins>
     </build>
+    <scm>
+        <connection>scm:git:git@github.com:socialsensor/socialsensor-framework-common.git</connection>
+        <developerConnection>scm:git:git@github.com:socialsensor-framework-common.git</developerConnection>
+        <url>git@github.com:socialsensor-framework-common.git</url>
+  </scm>
+    
 </project>
