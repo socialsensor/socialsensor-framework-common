@@ -9,6 +9,7 @@ import eu.socialsensor.framework.common.domain.PlatformUser;
 import eu.socialsensor.framework.common.domain.Source;
 import eu.socialsensor.framework.common.domain.StreamUser;
 import eu.socialsensor.framework.common.domain.Timeslot;
+import eu.socialsensor.framework.common.domain.Topic;
 import eu.socialsensor.framework.common.domain.WebPage;
 import eu.socialsensor.framework.common.domain.dysco.SlotInformation;
 import eu.socialsensor.framework.common.influencers.Influencer;
@@ -104,6 +105,13 @@ public class ObjectFactory {
         synchronized (gson) {
             WebPage webPage = gson.fromJson(json, WebPage.class);
             return webPage;
+        }
+    }
+    
+    public static synchronized Topic createTopic(String json) {
+        synchronized (gson) {
+            Topic topic = gson.fromJson(json, Topic.class);
+            return topic;
         }
     }
 }
