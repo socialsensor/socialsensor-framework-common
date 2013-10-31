@@ -9,6 +9,9 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import eu.socialsensor.framework.common.domain.dysco.Entity;
+
+
 
 /**
  * \class Topic
@@ -54,10 +57,13 @@ public class Topic implements JSONable{
 	protected List<String> keywords = new ArrayList<String>();
 	@Expose
 	@SerializedName(value = "entities")
-	protected List<String> entities = new ArrayList<String>();
+	protected List<Entity> entities = new ArrayList<Entity>();
 	@Expose
 	@SerializedName(value = "urls")
 	private List<String> urls = new ArrayList<String>();
+	@Expose
+	@SerializedName(value = "isRead")
+	private boolean isRead = false;
 	
 	/**
  	 * @brief Constructor
@@ -129,7 +135,7 @@ public class Topic implements JSONable{
  	 * @param void
  	 * @return List of Strings
  	 */
-	public List<String> getEntities(){
+	public List<Entity> getEntities(){
 		
 		return entities;
 	}
@@ -139,7 +145,7 @@ public class Topic implements JSONable{
  	 * @param List of Strings
  	 * @return void
  	 */
-	public void setEntities(List<String> entities){
+	public void setEntities(List<Entity> entities){
 		
 		this.entities = entities;
 	}
@@ -180,6 +186,13 @@ public class Topic implements JSONable{
 		this.urls = urls;
 	}
 	
+	public void setIsRead(boolean status){
+		this.isRead = status;
+	}
+	
+	public boolean getIsRead(){
+		return this.isRead;
+	}
 	 /**
    	 * @brief returns topic's operation
    	 * @param void
