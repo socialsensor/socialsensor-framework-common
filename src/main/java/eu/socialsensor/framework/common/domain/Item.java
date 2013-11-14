@@ -1,14 +1,3 @@
-///////////////////////////////////////////////////////////////////////////
-// 
-// IBM Confidential
-// OCO Source Materials
-// (c) Copyright IBM Corp. 2012
-// 
-// The _source code for this program is not published or otherwise divested of 
-// its trade secrets, irrespective of what has been deposited with
-// the U.S. Copyright Office.
-// 
-///////////////////////////////////////////////////////////////////////////
 package eu.socialsensor.framework.common.domain;
 
 import com.google.gson.Gson;
@@ -29,7 +18,6 @@ import java.util.Map.Entry;
  * Represents a single stream update and acts as an envelop for the native
  * stream update object.
  *
- * @_author haggai
  * @_author etzoannos
  */
 public class Item implements JSONable {
