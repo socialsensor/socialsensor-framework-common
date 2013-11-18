@@ -77,8 +77,8 @@ public class Item implements JSONable {
     @SerializedName(value = "mentions")
     protected String[] mentions;
     @Expose
-    @SerializedName(value = "replies")
-    protected String[] replies;
+    @SerializedName(value = "inReply")
+    protected String inReply;
     @Expose
     @SerializedName(value = "popularity")
     protected Map<String, Integer> popularity;
@@ -699,16 +699,16 @@ public class Item implements JSONable {
         this.mentions = mentions;
     }
 
-    public void setReplies(String[] replies) {
-        this.replies = replies;
+    public void setInReply(String inReply) {
+        this.inReply = inReply;
     }
     
     public String[] getMentions() {
         return mentions;
     }
 
-    public String[] getReplies() {
-        return replies;
+    public String getInReply() {
+        return inReply;
     }
     
     public void setStreamUser(StreamUser streamUser) {
