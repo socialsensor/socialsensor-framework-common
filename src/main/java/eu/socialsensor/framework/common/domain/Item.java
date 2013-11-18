@@ -83,6 +83,9 @@ public class Item implements JSONable {
     @SerializedName(value = "referencedUser")
     protected String referencedUser;
     @Expose
+    @SerializedName(value = "referencedUserId")
+    protected String referencedUserId;
+    @Expose
     @SerializedName(value = "popularity")
     protected Map<String, Integer> popularity;
     @Expose
