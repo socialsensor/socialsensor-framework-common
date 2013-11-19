@@ -24,7 +24,8 @@ public class Item implements JSONable {
 
     public enum Operation {
 
-        NEW_UPDATE("New"),
+        NEW("New"),
+        UPDATE("Update"),
         DELETED("Deleted");
         private final String label;
 
