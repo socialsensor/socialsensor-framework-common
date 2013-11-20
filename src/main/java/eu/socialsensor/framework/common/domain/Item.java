@@ -48,6 +48,9 @@ public class Item implements JSONable {
     @SerializedName(value = "streamId")
     protected String streamId;
     @Expose
+    @SerializedName(value = "source")
+    protected String source;
+    @Expose
     @SerializedName(value = "title")
     protected String title;
     @Expose
@@ -62,12 +65,14 @@ public class Item implements JSONable {
     @Expose
     @SerializedName(value = "author")
     protected String author;
+    //@Expose
+    //@SerializedName(value = "screenname")
+    //protected String screenname;
     @Expose
     @SerializedName(value = "uid")
     protected String uid;
-    // 20/11/2013 StreamUser should not be kept in items collection
-    //@Expose
-    //@SerializedName(value = "streamUser")
+    @Expose
+    @SerializedName(value = "streamUser")
     protected StreamUser streamUser;
     @Expose
     @SerializedName(value = "mentions")
@@ -429,6 +434,10 @@ public class Item implements JSONable {
         this.lang = lang;
     }
 
+    public String getSource() {
+        return source;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -589,7 +598,11 @@ public class Item implements JSONable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-
+        String _source = getSource();
+        if (_source != null) {
+            sb.append("source=").append(_source.replaceAll("\\r", " ").replaceAll("\\t", " ")
+                    .replaceAll("\\n", " ").trim()).append("\t");
+        }
         String _streamId = getStreamId();
         if (_streamId != null) {
             sb.append("streamId=").append(_streamId).append("\t");
@@ -663,6 +676,10 @@ public class Item implements JSONable {
 
     public void setPeople(List<String> people) {
         this.people = people;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
     }
 
     public void setTitle(String title) {
