@@ -90,19 +90,23 @@ public class MediaItem implements JSONable, Serializable {
     // Popularity
     @Expose
     @SerializedName(value = "likes")
-    private Integer likes;
+    protected Integer likes;
     
     @Expose
     @SerializedName(value = "shares")
-    private Integer shares;
+    protected Integer shares;
     
     @Expose
     @SerializedName(value = "comments")
-    private Integer comments;
+    protected Integer comments;
     
     @Expose
     @SerializedName(value = "views")
-    private Integer views;
+    protected Integer views;
+    
+    @Expose
+    @SerializedName(value = "ratings")
+    protected Integer ratings;
     
     @Expose
     @SerializedName(value = "sentiment")
@@ -326,6 +330,9 @@ public class MediaItem implements JSONable, Serializable {
         return comments;
     }
 
+    public Integer getRatings() {
+        return ratings;
+    }
     public Integer getViews() {
         return views;
     }
@@ -340,6 +347,10 @@ public class MediaItem implements JSONable, Serializable {
 
     public void setComments(Integer comments) {
         this.comments = comments;
+    }
+    
+    public void setRatings(Integer ratings) {
+        this.ratings = ratings;
     }
 
     public void setViews(Integer views) {

@@ -209,11 +209,11 @@ public class Item implements JSONable {
     // Popularity
     @Expose
     @SerializedName(value = "likes")
-    private Integer likes = 0;
+    protected Integer likes = 0;
     
     @Expose
     @SerializedName(value = "shares")
-    private Integer shares = 0;
+    protected Integer shares = 0;
    
     
     protected int validityScore;
@@ -497,6 +497,10 @@ public class Item implements JSONable {
 
     public List<String> getMediaIds() {
         return mediaIds;
+    }
+    
+    public void setMediaIds(List<String> mediaIds) {
+        this.mediaIds = mediaIds;
     }
 
     public List<WebPage> getWebPages() {
