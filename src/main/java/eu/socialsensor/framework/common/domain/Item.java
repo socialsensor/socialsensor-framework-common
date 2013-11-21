@@ -6,13 +6,11 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import eu.socialsensor.framework.common.domain.dysco.Entity;
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 
 /**
  * Represents a single stream update and acts as an envelop for the native
@@ -38,163 +36,194 @@ public class Item implements JSONable {
             return label;
         }
     }
+    
     @Expose
     @SerializedName(value = "id")
     protected String id;
+    
     @Expose
     @SerializedName(value = "reference")
     protected String reference;
+    
     @Expose
     @SerializedName(value = "streamId")
     protected String streamId;
-    @Expose
-    @SerializedName(value = "source")
-    protected String source;
+    
     @Expose
     @SerializedName(value = "title")
     protected String title;
+    
     @Expose
     @SerializedName(value = "description")
     protected String description;
+    
     @Expose
     @SerializedName(value = "tags")
     protected String[] tags;
-    @Expose
-    @SerializedName(value = "categories")
-    protected String[] categories;
-    @Expose
-    @SerializedName(value = "author")
-    protected String author;
-    //@Expose
-    //@SerializedName(value = "screenname")
-    //protected String screenname;
+
     @Expose
     @SerializedName(value = "uid")
     protected String uid;
-    @Expose
-    @SerializedName(value = "streamUser")
+    
     protected StreamUser streamUser;
+    
     @Expose
     @SerializedName(value = "mentions")
     protected String[] mentions;
+    
     @Expose
     @SerializedName(value = "inReply")
     protected String inReply;
+    
     @Expose
     @SerializedName(value = "referencedUser")
     protected String referencedUser;
+    
     @Expose
     @SerializedName(value = "referencedUserId")
     protected String referencedUserId;
-    @Expose
-    @SerializedName(value = "popularity")
-    protected Map<String, Integer> popularity;
+    
     @Expose
     @SerializedName(value = "links")
     protected URL[] links;
+    
     @SerializedName(value = "webPages")
     protected List<WebPage> webPages;
-    @Expose
-    @SerializedName(value = "mediaLinks")
-    protected List<MediaItemLight> mediaLinks;
+    
     @Expose
     @SerializedName(value = "publicationTime")
     protected long publicationTime;
-    @Expose
+    
     @SerializedName(value = "operation")
     protected Operation operation;
+    
     @Expose
     @SerializedName(value = "votes")
     protected List<Vote> votes = new ArrayList<Vote>();
+    
     @Expose
     @SerializedName(value = "location")
     protected Location location;
+    
     @Expose
     @SerializedName(value = "text")
     protected String text;
+    
     @SerializedName(value = "mediaItems")
-    protected Map<URL, MediaItem> mediaItems = new HashMap<URL, MediaItem>();
+    protected List<MediaItem> mediaItems = new ArrayList<MediaItem>();
+    
     @Expose
     @SerializedName(value = "mediaIds")
     protected List<String> mediaIds = new ArrayList<String>();
-    @Expose
-    @SerializedName(value = "dyscoId")
-    protected String dyscoId;
+
     @Expose
     @SerializedName(value = "timeslotId")
     protected String timeslotId;
+    
     @Expose
     @SerializedName(value = "sentiment")
     protected String sentiment;
+    
     @Expose
     @SerializedName(value = "entities")
-    private List<Entity> entities = new ArrayList<Entity>();
-    // added: 27.3.2013
-    @Expose
-    @SerializedName(value = "retweets")
-    private Integer retweetsCount;
+    protected List<Entity> entities = new ArrayList<Entity>();
+    
     @Expose
     @SerializedName(value = "lang")
-    private String lang;
+    protected String lang;
+    
     @Expose
     @SerializedName(value = "category")
-    private String category;
+    protected String category;
+    
     protected Feed feed;
+    
     protected String feedType;
+    
     @Expose
     @SerializedName(value = "original")
-    private boolean original;
+    protected boolean original;
     
-    @Expose
-    @SerializedName(value = "isSearched")
-    protected boolean isSearched = false;
-    
-    private Date publicationDate;
     // the following fields are added for the UI purposes (after retrieval from Solr)
     // no need to be populated at crawling time
-    private int alethiometerScore;
+    protected int alethiometerScore;
     @Expose
     @SerializedName(value = "alethiometerUserScore")
-    private int alethiometerUserScore;
+    protected int alethiometerUserScore;
+    
     @Expose
     @SerializedName(value = "authorFullName")
-    private String authorFullName;
+    protected String authorFullName;
+    
     @Expose
     @SerializedName(value = "authorScreenName")
-    private String authorScreenName;
+    protected String authorScreenName;
+    
     @Expose
     @SerializedName(value = "userRole")
-    private String userRole;
-    private int followersCount;
-    private int friendsCount;
+    protected String userRole;
+    
+    protected int followersCount;
+    protected int friendsCount;
+    
     @Expose
     @SerializedName(value = "avatarImage")
-    private String avatarImage;
+    protected String avatarImage;
+    
     @Expose
     @SerializedName(value = "avatarImageSmall")
-    private String avatarImageSmall;
+    protected String avatarImageSmall;
+    
     @Expose
     @SerializedName(value = "alethiometerUserStatus")
-    private String alethiometerUserStatus;
+    protected String alethiometerUserStatus;
+    
     @Expose
     @SerializedName(value = "webLink")
     protected String webLink;
+    
     @Expose
     @SerializedName(value = "content")
     protected String content;
+    
     @Expose
     @SerializedName(value = "keywords")
     protected List<String> keywords = new ArrayList<String>();
+    
     @Expose
     @SerializedName(value = "comments")
     protected String[] comments;
+    
+    @Expose
+    @SerializedName(value = "isSearched")
+    protected boolean isSearched;
+    
     @Expose
     @SerializedName(value = "positiveVotes")
     protected int positiveVotes = 0;
+    
     @Expose
     @SerializedName(value = "negativeVotes")
     protected int negativeVotes = 0;
 
+    // Popularity
+    @Expose
+    @SerializedName(value = "likes")
+    private Integer likes = 0;
+    
+    @Expose
+    @SerializedName(value = "shares")
+    private Integer shares = 0;
+   
+    
+    protected int validityScore;
+    protected String validityVotes;
+    protected List<String> people;
+    
+    protected static final long HOUR = 1000L * 60L * 60;
+    protected static final long DAY = 1000L * 60L * 60L * 24L;
+    protected static final long MINUTE = 1000L * 60L;
+    
     public String[] getComments() {
         return comments;
     }
@@ -202,12 +231,6 @@ public class Item implements JSONable {
     public void setComments(String[] comments) {
         this.comments = comments;
     }
-    private int validityScore;
-    private String validityVotes;
-    private List<String> people;
-    private static final long HOUR = 1000L * 60L * 60;
-    private static final long DAY = 1000L * 60L * 60L * 24L;
-    private static final long MINUTE = 1000L * 60L;
 
     public int getValidityScore() {
         return validityScore;
@@ -273,14 +296,6 @@ public class Item implements JSONable {
         this.category = category;
     }
 
-    public Date getPublicationDate() {
-        publicationDate = new Date(getPublicationTime());
-        return publicationDate;
-    }
-
-    public void setPublicationDate(Date publicationDate) {
-        this.publicationDate = publicationDate;
-    }
 
     public boolean isOriginal() {
         return original;
@@ -288,13 +303,6 @@ public class Item implements JSONable {
 
     public void setOriginal(boolean original) {
         this.original = original;
-    }
-    
-    public boolean getIsSearched(){
-    	return isSearched;
-    }
-    public void setIsSearched(boolean isSearched){
-    	this.isSearched = isSearched;
     }
     
 
@@ -312,14 +320,6 @@ public class Item implements JSONable {
 
     public void setReference(String reference) {
         this.reference = reference;
-    }
-
-    public Integer getRetweetsCount() {
-        return retweetsCount;
-    }
-
-    public void setRetweetsCount(Integer retweetsCount) {
-        this.retweetsCount = retweetsCount;
     }
 
     public int getAlethiometerScore() {
@@ -394,14 +394,6 @@ public class Item implements JSONable {
         this.entities = entities;
     }
 
-    public String getDyscoId() {
-        return dyscoId;
-    }
-
-    public void setDyscoId(String dyscoId) {
-        this.dyscoId = dyscoId;
-    }
-
     public List<Vote> getVotes() {
         return votes;
     }
@@ -434,10 +426,6 @@ public class Item implements JSONable {
         this.lang = lang;
     }
 
-    public String getSource() {
-        return source;
-    }
-
     public String getTitle() {
         return title;
     }
@@ -453,25 +441,17 @@ public class Item implements JSONable {
     public StreamUser getStreamUser() {
         return streamUser;
     }
-
-    public String getAuthor() {
-        return author;
+    
+    public String getUserId() {
+        return uid;
     }
-
-    public Map<String, Integer> getPopularity() {
-        return popularity;
-    }
-
+    
     public URL[] getLinks() {
         return links;
     }
 
     public String getStreamId() {
         return streamId;
-    }
-
-    public String[] getCategories() {
-        return categories;
     }
 
     public long getPublicationTime() {
@@ -511,7 +491,7 @@ public class Item implements JSONable {
         return text;
     }
 
-    public Map<URL, MediaItem> getMediaItems() {
+    public List<MediaItem> getMediaItems() {
         return mediaItems;
     }
 
@@ -519,16 +499,8 @@ public class Item implements JSONable {
         return mediaIds;
     }
 
-    public List<MediaItemLight> getMediaLinks() {
-        return mediaLinks;
-    }
-
     public List<WebPage> getWebPages() {
         return webPages;
-    }
-
-    public void setMediaLinks(List<MediaItemLight> mediaLinks) {
-        this.mediaLinks = mediaLinks;
     }
 
     public String getRef() {
@@ -539,6 +511,14 @@ public class Item implements JSONable {
         return timeslotId;
     }
 
+    public int getLikes() {
+        return likes;
+    }
+    
+    public int getShares() {
+        return shares;
+    }
+    
     public void setTimeslotId(String timeslotId) {
         this.timeslotId = timeslotId;
     }
@@ -598,20 +578,12 @@ public class Item implements JSONable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        String _source = getSource();
-        if (_source != null) {
-            sb.append("source=").append(_source.replaceAll("\\r", " ").replaceAll("\\t", " ")
-                    .replaceAll("\\n", " ").trim()).append("\t");
-        }
+
         String _streamId = getStreamId();
         if (_streamId != null) {
             sb.append("streamId=").append(_streamId).append("\t");
         }
-        String _author = getAuthor();
-        if (_author != null) {
-            sb.append("author=").append(_author.replaceAll("\\r", " ").replaceAll("\\t", " ")
-                    .replaceAll("\\n", " ").trim()).append("\t");
-        }
+
         String _description = getDescription();
         if (_description != null) {
             sb.append("description=").append("\"").append(_description.replaceAll("\\r", " ")
@@ -631,25 +603,10 @@ public class Item implements JSONable {
             }
             sb.append("\"\t");
         }
-        String[] _categories = getCategories();
-        if (_categories != null && _categories.length > 0) {
-            sb.append("categories=").append("\"");
-            for (int i = 0; i < _categories.length; i++) {
-                sb.append(_categories[i].replaceAll("\\r", " ").replaceAll("\\t", " ")
-                        .replaceAll("\\n", " ").trim()).append(i < _categories.length - 1 ? "," : "");
-            }
-            sb.append("\"\t");
-        }
+
         long pubTime = getPublicationTime();
         if (pubTime != -1) {
             sb.append("pubTime=").append(pubTime).append("\t");
-        }
-
-        Map<String, Integer> _popularity = getPopularity();
-        if (_popularity != null) {
-            for (Entry<String, Integer> pop : _popularity.entrySet()) {
-                sb.append(pop.getKey()).append("=").append(pop.getValue()).append("\t");
-            }
         }
 
         Double _latitude = getLatitude();
@@ -678,10 +635,6 @@ public class Item implements JSONable {
         this.people = people;
     }
 
-    public void setSource(String source) {
-        this.source = source;
-    }
-
     public void setTitle(String title) {
         this.title = title;
     }
@@ -692,14 +645,6 @@ public class Item implements JSONable {
 
     public void setTags(String[] tags) {
         this.tags = tags;
-    }
-
-    public void setCategories(String[] categories) {
-        this.categories = categories;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
     }
 
     public void setMentions(String[] mentions) {
@@ -722,10 +667,10 @@ public class Item implements JSONable {
         this.streamUser = streamUser;
     }
 
-    public void setPopularity(Map<String, Integer> popularity) {
-        this.popularity = popularity;
+    public void setUserId(String uid) {
+        this.uid = uid;
     }
-
+    
     public void setLinks(URL[] links) {
         this.links = links;
     }
@@ -754,7 +699,7 @@ public class Item implements JSONable {
         this.text = text;
     }
 
-    public void setMediaItems(Map<URL, MediaItem> mediaItems) {
+    public void setMediaItems(List<MediaItem> mediaItems) {
         this.mediaItems = mediaItems;
     }
 
@@ -762,10 +707,27 @@ public class Item implements JSONable {
         return sentiment;
     }
 
+    public boolean getIsSearched() {
+        return isSearched;
+    }
+    
+    public void setIsSearched(boolean isSearched) {
+        this.isSearched = isSearched;
+    }
+    
+    
     public void setSentiment(String sentiment) {
         this.sentiment = sentiment;
     }
 
+    public void setLikes(int likes) {
+        this.likes = likes;
+    }
+    
+    public void setShares(int shares) {
+        this.shares = shares;
+    }
+    
     public void setRef(String reference) {
         this.reference = reference;
     }

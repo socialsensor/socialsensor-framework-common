@@ -12,10 +12,7 @@ import java.io.Serializable;
 
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 
 /**
  * Represents a single stream media item and acts as an envelop for the native
@@ -29,96 +26,117 @@ public class MediaItem implements JSONable, Serializable {
     @Expose
     @SerializedName(value = "id")
     private String id;
+    
     @Expose
     @SerializedName(value = "url")
     private String url;
+    
     @Expose
     @SerializedName(value = "thumbnail")
     private String thumbnail;
+    
     @Expose
     @SerializedName(value = "localThumbnail")
     private String localThumbnail;
+    
     @Expose
     @SerializedName(value = "pageUrl")
     private String pageUrl;
+    
     @Expose
     @SerializedName(value = "streamId")
     private String streamId;
+    
     @Expose
     @SerializedName(value = "reference")
     private String reference;
+    
     @Expose
     @SerializedName(value = "refUrl")
     private String refUrl;
+    
     // textual information
     @Expose
     @SerializedName(value = "title")
     private String title;
-    @Expose
-    @SerializedName(value = "type")  //Can only be image/video
-    private String type;
     @Expose
     @SerializedName(value = "description")
     private String description;
     @Expose
     @SerializedName(value = "tags")
     private String[] tags;
+    
+    
+    @Expose
+    @SerializedName(value = "type")  //Can only be image/video
+    private String type;
+
     @Expose
     @SerializedName(value = "feedKeywords")
     private List<String> feedKeywords = new ArrayList<String>();
+    
     @Expose
     @SerializedName(value = "feedKeywordsString")
     private List<String> feedKeywordsString = new ArrayList<String>();
+    
     @Expose
     @SerializedName(value = "publicationTime")
     private long publicationTime;
-    @Expose
-    @SerializedName(value = "author")
-    private String author;
+    
     @Expose
     @SerializedName(value = "mentions")
     private String[] mentions;
-    @Expose
-    @SerializedName(value = "popularity")
-    private HashMap<String, Integer> popularity = new HashMap<String, Integer>();
+    
+    // Popularity
     @Expose
     @SerializedName(value = "likes")
     private Integer likes;
+    
     @Expose
     @SerializedName(value = "shares")
     private Integer shares;
+    
     @Expose
     @SerializedName(value = "comments")
     private Integer comments;
+    
     @Expose
     @SerializedName(value = "views")
     private Integer views;
+    
     @Expose
     @SerializedName(value = "sentiment")
     protected int sentiment;
-    @Expose
-    @SerializedName(value = "dyscoId")
-    private String dyscoId;
+    
     @Expose
     @SerializedName(value = "concepts")
     private List<Concept> concepts = null;
+    
     // Geo information
     @Expose
     @SerializedName(value = "location")
     private Location location;
+    
+    // Media item size
     @Expose
     @SerializedName(value = "width")
     private Integer width;
+    
     @Expose
     @SerializedName(value = "height")
     private Integer height;
+    
     @Expose
     @SerializedName(value = "indexed")
     private Boolean indexed = Boolean.FALSE;
+    
     @Expose
     @SerializedName(value = "status")
     private String status = "new";
+    
     private int source;
+
+	private Feed feed;
 
     public MediaItem(URL url) {
         this.url = url.toString();
@@ -137,10 +155,7 @@ public class MediaItem implements JSONable, Serializable {
         this.publicationTime = page.getDate().getTime();
     }
 
-    public MediaItem(URL url, Item item) {
-
-        Map<URL, MediaItem> mediaItems = item.getMediaItems();
-        MediaItem tempMediaItem = mediaItems.get(url);
+    public MediaItem(URL url, MediaItem tempMediaItem) {
 
         this.id = tempMediaItem.getId();
         this.width = tempMediaItem.getWidth();
@@ -151,48 +166,33 @@ public class MediaItem implements JSONable, Serializable {
 
         this.url = url.toString();
 
-        streamId = item.getStreamId();
-        reference = item.getId();
+        streamId = tempMediaItem.getStreamId();
+        reference = tempMediaItem.getRef();
 
-        description = item.getDescription();
-        tags = item.getTags();
-        title = item.getTitle();
-        dyscoId = item.getDyscoId();
+        description = tempMediaItem.getDescription();
+        tags = tempMediaItem.getTags();
+        title = tempMediaItem.getTitle();
 
-        publicationTime = item.getPublicationTime();
+        publicationTime = tempMediaItem.getPublicationTime();
 
-        author = item.getAuthor();
+        location = tempMediaItem.getLocation();
 
-        Map<String, Integer> itemPopularity = item.getPopularity();
-        if (itemPopularity != null) {
-            popularity = new HashMap<String, Integer>(itemPopularity);
-        }
+        mentions = tempMediaItem.getMentions();
 
-        location = item.getLocation();
-
-        mentions = item.getMentions();
-
-        Feed feed = item.getFeed();
+        feed = tempMediaItem.getFeed();
         
         if (feed != null && feed.getFeedtype().equals(FeedType.KEYWORDS)) {
         	if(((KeywordsFeed) feed).getKeywords() != null && !((KeywordsFeed) feed).getKeywords().isEmpty())
 	            for (Keyword feedKeyword : ((KeywordsFeed) feed).getKeywords()) {
 	                feedKeywords.add(feedKeyword.getName());
-	            }
-        	else{
-        		feedKeywords.add(((KeywordsFeed) feed).getKeyword().getName());
-        	}
-        }
-        
-        if (feed != null && feed.getFeedtype().equals(FeedType.KEYWORDS)) {
-        	if(((KeywordsFeed) feed).getKeywords() != null && !((KeywordsFeed) feed).getKeywords().isEmpty())
-	            for (Keyword feedKeyword : ((KeywordsFeed) feed).getKeywords()) {
 	                feedKeywordsString.add(feedKeyword.getName());
 	            }
         	else{
+        		feedKeywords.add(((KeywordsFeed) feed).getKeyword().getName());
         		feedKeywordsString.add(((KeywordsFeed) feed).getKeyword().getName());
         	}
         }
+
     }
 
     public String getId() {
@@ -306,24 +306,12 @@ public class MediaItem implements JSONable, Serializable {
         this.feedKeywordsString = feedKeywordsString;
     }
 
-    public String getAuthor() {
-        return author;
-    }
-
     public boolean isIndexed() {
         return indexed;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
     public void setMentions(String[] mentions) {
         this.mentions = mentions;
-    }
-
-    public HashMap<String, Integer> getPopularity() {
-        return popularity;
     }
 
     public Integer getLikes() {
@@ -340,10 +328,6 @@ public class MediaItem implements JSONable, Serializable {
 
     public Integer getViews() {
         return views;
-    }
-
-    public void setPopularity(Map<String, Integer> popularity) {
-        this.popularity.putAll(popularity);
     }
 
     public void setLikes(Integer likes) {
@@ -449,14 +433,6 @@ public class MediaItem implements JSONable, Serializable {
         this.height = height;
     }
 
-    public String getDyscoId() {
-        return dyscoId;
-    }
-
-    public void setDyscoId(String dyscoId) {
-        this.dyscoId = dyscoId;
-    }
-
     public List<Concept> getConcepts() {
         return concepts;
     }
@@ -465,6 +441,14 @@ public class MediaItem implements JSONable, Serializable {
         this.concepts = concepts;
     }
 
+    public Feed getFeed() {
+        return feed;
+    }
+
+    public void setFeed(Feed feed) {
+        this.feed = feed;
+    }
+    
     public int getSource() {
         return source;
     }
@@ -498,11 +482,7 @@ public class MediaItem implements JSONable, Serializable {
         if (_streamId != null) {
             sb.append("streamId=").append(_streamId).append("\t");
         }
-        String _author = getAuthor();
-        if (_author != null) {
-            sb.append("author=").append(_author.replaceAll("\\r", " ")
-                    .replaceAll("\\n", " ").replaceAll("\\t", " ").trim()).append("\t");
-        }
+
         String _description = getDescription();
         if (_description != null) {
             sb.append("description=").append("\"").append(_description.replaceAll("\\r", " ")
@@ -526,13 +506,6 @@ public class MediaItem implements JSONable, Serializable {
         Long _pubTime = getPublicationTime();
         if (_pubTime != null) {
             sb.append("pubTime=").append(_pubTime).append("\t");
-        }
-
-        HashMap<String, Integer> _popularity = getPopularity();
-        if (_popularity != null) {
-            for (Entry<String, Integer> pop : _popularity.entrySet()) {
-                sb.append(pop.getKey()).append("=").append(pop.getValue()).append("\t");
-            }
         }
 
         Double _latitude = getLatitude();
