@@ -90,23 +90,23 @@ public class MediaItem implements JSONable, Serializable {
     // Popularity
     @Expose
     @SerializedName(value = "likes")
-    protected Integer likes;
+    protected Integer likes = 0;
     
     @Expose
     @SerializedName(value = "shares")
-    protected Integer shares;
+    protected Integer shares = 0;
     
     @Expose
     @SerializedName(value = "comments")
-    protected Integer comments;
+    protected Integer comments = 0;
     
     @Expose
     @SerializedName(value = "views")
-    protected Integer views;
+    protected Integer views = 0;
     
     @Expose
     @SerializedName(value = "ratings")
-    protected Integer ratings;
+    protected Integer ratings = 0;
     
     @Expose
     @SerializedName(value = "sentiment")
