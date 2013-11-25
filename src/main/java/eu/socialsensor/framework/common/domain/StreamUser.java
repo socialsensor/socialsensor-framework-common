@@ -95,6 +95,10 @@ public class StreamUser implements JSONable, Serializable {
     protected String createdAt;
     
     @Expose
+    @SerializedName(value = "lastUpdated")
+    protected Long lastUpdated;
+    
+    @Expose
     @SerializedName(value = "fullScore")
     protected Score fullScore;
     
@@ -118,6 +122,10 @@ public class StreamUser implements JSONable, Serializable {
     @Expose
     @SerializedName(value = "shares")
     protected Long shares;
+    
+    @Expose
+    @SerializedName(value = "linkToProfile")
+    protected String linkToProfile;
     
     public String getDescription() {
         return description;
@@ -206,6 +214,14 @@ public class StreamUser implements JSONable, Serializable {
     public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
+    
+    public Long getLastUpdated() {
+        return lastUpdated;
+    }
+    
+    public void setLastUpdated(Long lastUpdated){
+    	this.lastUpdated = lastUpdated;
+    }
 
     public String getId() {
         return id;
@@ -244,6 +260,14 @@ public class StreamUser implements JSONable, Serializable {
     
     public Category getCategory() {
     	return category;
+    }
+    
+    public void setLinkToProfile(String linkToProfile){
+    	this.linkToProfile = linkToProfile;
+    }
+    
+    public String getLinkToProfile(){
+    	return linkToProfile;
     }
     
     @Override
