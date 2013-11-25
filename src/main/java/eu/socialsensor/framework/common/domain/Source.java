@@ -7,10 +7,11 @@ import com.google.gson.annotations.SerializedName;
 
 public class Source implements JSONable {
 	
-	public  enum Type {
-		All, Facebook, Twitter, Flickr, Web, Youtube, WebFeeds, GooglePlus, Tumblr, Instagram, Google   
-	}
-	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 673802988788312082L;
+
 	@Expose
 	@SerializedName(value = "id")
 	private String id;
@@ -19,6 +20,10 @@ public class Source implements JSONable {
 	@SerializedName(value = "name")
 	private String name;
 	 
+	@Expose
+	@SerializedName(value = "list")
+	private String list;
+	
 	@Expose
 	@SerializedName(value = "score")
 	private float score;
@@ -42,6 +47,14 @@ public class Source implements JSONable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public String getList() {
+		return list;
+	}
+
+	public void setList(String list) {
+		this.list = list;
 	}
 	
 	public float getScore() {
