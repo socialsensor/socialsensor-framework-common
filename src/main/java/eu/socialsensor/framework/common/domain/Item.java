@@ -209,11 +209,11 @@ public class Item implements JSONable {
     // Popularity
     @Expose
     @SerializedName(value = "likes")
-    protected Integer likes = 0;
+    protected Long likes = 0L;
     
     @Expose
     @SerializedName(value = "shares")
-    protected Integer shares = 0;
+    protected Long shares = 0L;
    
     
     protected int validityScore;
@@ -515,11 +515,11 @@ public class Item implements JSONable {
         return timeslotId;
     }
 
-    public int getLikes() {
+    public Long getLikes() {
         return likes;
     }
     
-    public int getShares() {
+    public Long getShares() {
         return shares;
     }
     
@@ -724,11 +724,11 @@ public class Item implements JSONable {
         this.sentiment = sentiment;
     }
 
-    public void setLikes(int likes) {
+    public void setLikes(Long likes) {
         this.likes = likes;
     }
     
-    public void setShares(int shares) {
+    public void setShares(Long shares) {
         this.shares = shares;
     }
     

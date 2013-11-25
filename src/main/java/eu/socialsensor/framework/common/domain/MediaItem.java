@@ -90,23 +90,23 @@ public class MediaItem implements JSONable, Serializable {
     // Popularity
     @Expose
     @SerializedName(value = "likes")
-    protected Integer likes = 0;
+    protected Long likes = 0L;
     
     @Expose
     @SerializedName(value = "shares")
-    protected Integer shares = 0;
+    protected Long shares = 0L;
     
     @Expose
     @SerializedName(value = "comments")
-    protected Integer comments = 0;
+    protected Long comments = 0L;
     
     @Expose
     @SerializedName(value = "views")
-    protected Integer views = 0;
+    protected Long views = 0L;
     
     @Expose
     @SerializedName(value = "ratings")
-    protected Integer ratings = 0;
+    protected Float ratings = 0F;
     
     @Expose
     @SerializedName(value = "sentiment")
@@ -318,42 +318,42 @@ public class MediaItem implements JSONable, Serializable {
         this.mentions = mentions;
     }
 
-    public Integer getLikes() {
+    public Long getLikes() {
         return likes;
     }
 
-    public Integer getShares() {
+    public Long getShares() {
         return shares;
     }
 
-    public Integer getComments() {
+    public Long getComments() {
         return comments;
     }
 
-    public Integer getRatings() {
+    public Float getRatings() {
         return ratings;
     }
-    public Integer getViews() {
+    public Long getViews() {
         return views;
     }
 
-    public void setLikes(Integer likes) {
+    public void setLikes(Long likes) {
         this.likes = likes;
     }
 
-    public void setShares(Integer shares) {
+    public void setShares(Long shares) {
         this.shares = shares;
     }
 
-    public void setComments(Integer comments) {
+    public void setComments(Long comments) {
         this.comments = comments;
     }
     
-    public void setRatings(Integer ratings) {
+    public void setRatings(Float ratings) {
         this.ratings = ratings;
     }
 
-    public void setViews(Integer views) {
+    public void setViews(Long views) {
         this.views = views;
     }
 
