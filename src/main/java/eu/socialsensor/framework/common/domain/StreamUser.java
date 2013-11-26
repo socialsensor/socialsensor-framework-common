@@ -87,6 +87,10 @@ public class StreamUser implements JSONable, Serializable {
     protected String profileImage;
     
     @Expose
+    @SerializedName(value = "pageUrl")
+    protected String pageUrl;
+    
+    @Expose
     @SerializedName(value = "description")
     protected String description;
     
