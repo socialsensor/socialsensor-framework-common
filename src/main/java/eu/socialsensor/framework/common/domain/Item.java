@@ -120,9 +120,9 @@ public class Item implements JSONable {
     @SerializedName(value = "mediaIds")
     protected List<String> mediaIds = new ArrayList<String>();
 
-    @Expose
-    @SerializedName(value = "timeslotId")
-    protected String timeslotId;
+    //@Expose
+    //@SerializedName(value = "timeslotId")
+    //protected String timeslotId;
     
     @Expose
     @SerializedName(value = "sentiment")
@@ -130,7 +130,7 @@ public class Item implements JSONable {
     
     @Expose
     @SerializedName(value = "entities")
-    protected List<Entity> entities = new ArrayList<Entity>();
+    protected List<Entity> entities;
     
     @Expose
     @SerializedName(value = "lang")
@@ -519,9 +519,9 @@ public class Item implements JSONable {
         return reference;
     }
 
-    public String getTimeslotId() {
-        return timeslotId;
-    }
+//    public String getTimeslotId() {
+//        return timeslotId;
+//    }
 
     public Long getLikes() {
         return likes;
@@ -531,9 +531,9 @@ public class Item implements JSONable {
         return shares;
     }
     
-    public void setTimeslotId(String timeslotId) {
-        this.timeslotId = timeslotId;
-    }
+//    public void setTimeslotId(String timeslotId) {
+//        this.timeslotId = timeslotId;
+//    }
 
     /**
      * @brief returns item's content
