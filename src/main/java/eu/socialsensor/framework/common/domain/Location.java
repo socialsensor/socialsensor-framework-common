@@ -13,13 +13,27 @@ public class Location implements JSONable {
 
 	@Expose
 	@SerializedName(value = "coordinates")
-	Coordinates coordinates = null;
+	protected Coordinates coordinates = null;
+	
 	@Expose
 	@SerializedName(value = "name")
 	protected String name = null;
+	
+	@Expose
+	@SerializedName(value = "city")
+	protected String city = null;
+	
+	@Expose
+	@SerializedName(value = "country")
+	protected String country = null;
+	
 	@Expose
 	@SerializedName(value = "bbox")
-	Double bbox[][] = null;
+	protected Double bbox[][] = null;
+	
+	@Expose
+	@SerializedName(value = "inferred")
+	protected Boolean inferred = false;
 	
 	public Location(String name) {
 		this.name = name;
@@ -32,9 +46,7 @@ public class Location implements JSONable {
 	}
 	
 	public Location(Double latitude, Double longitude, String name) {
-		coordinates = new Coordinates();
-		coordinates.latitude = latitude;
-		coordinates.longitude = longitude;
+		coordinates = new Coordinates(latitude, longitude);
 		this.name = name;
 	}
 	
@@ -62,6 +74,14 @@ public class Location implements JSONable {
 	public  void setName(String name) {
 		this.name = name;
 	}
+
+	public  void setCityName(String city) {
+		this.city = city;
+	}
+	
+	public  void setCountryName(String country) {
+		this.country = country;
+	}
 	
 	public Double getLatitude() {
 		if(coordinates==null)
@@ -83,6 +103,15 @@ public class Location implements JSONable {
 		return name;
 	}
 
+	public  String getCityName(){
+		return city;
+	}
+	
+	public  String getCountryName(){
+		return country;
+	}
+	
+	
 	private static class Coordinates {
 		
 		public Coordinates() {

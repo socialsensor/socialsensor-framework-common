@@ -119,10 +119,6 @@ public class Item implements JSONable {
     @Expose
     @SerializedName(value = "mediaIds")
     protected List<String> mediaIds = new ArrayList<String>();
-
-    //@Expose
-    //@SerializedName(value = "timeslotId")
-    //protected String timeslotId;
     
     @Expose
     @SerializedName(value = "sentiment")
