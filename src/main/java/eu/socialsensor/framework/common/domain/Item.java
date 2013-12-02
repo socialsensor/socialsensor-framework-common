@@ -67,7 +67,7 @@ public class Item implements JSONable {
     
     @Expose
     @SerializedName(value = "list")
-    protected String list;
+    protected String[] lists;
     
     protected StreamUser streamUser;
     
@@ -446,8 +446,8 @@ public class Item implements JSONable {
         return uid;
     }
     
-    public String getList() {
-        return list;
+    public String[] getList() {
+        return lists;
     }
     
     public URL[] getLinks() {
@@ -679,8 +679,8 @@ public class Item implements JSONable {
         this.uid = uid;
     }
     
-    public void setList(String list) {
-        this.list = list;
+    public void setList(String[] lists) {
+        this.lists = lists;
     }
     
     public void setLinks(URL[] links) {
