@@ -89,4 +89,42 @@ public class Entity implements Serializable, JSONable {
         .create();
         return gson.toJson(this);
 	}
+
+	public boolean equals(Object entity) {
+	    //check for self-comparison
+	    if ( this == entity ) return true;
+
+	    //use instanceof instead of getClass here for two reasons
+	    //1. if need be, it can match any supertype, and not just one class;
+	    //2. it renders an explict check for "that == null" redundant, since
+	    //it does the check for null already - "null instanceof [type]" always
+	    //returns false. (See Effective Java by Joshua Bloch.)
+	    if ( !(entity instanceof Entity) ) return false;
+	    //Alternative to the above line :
+	    //if ( aThat == null || aThat.getClass() != this.getClass() ) return false;
+
+	    //cast to native object is now safe
+	    Entity entity1 = (Entity)entity;
+
+	    //now a proper field-by-field evaluation can be made
+	    if (!name.equalsIgnoreCase(entity1.getName()))
+	    	return false;
+	    
+	    if (cont!=entity1.getCont())
+	    	return false;
+	    
+	    if (type!=entity1.getType())
+	    	return false;
+
+	    return true;
+	}
+	
+	public int hashCode() {
+		  int result = 17;
+		  
+		  result = 31 * result + (name != null ? name.hashCode() : 0);
+		  result += result + (cont != null ? cont.hashCode() : 0);
+		  result += result + (type != null ? type.hashCode() : 0);
+		  return result;
+	}
 }
