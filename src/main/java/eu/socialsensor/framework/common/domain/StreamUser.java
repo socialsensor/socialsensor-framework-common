@@ -115,13 +115,16 @@ public class StreamUser implements JSONable, Serializable {
     protected Category category;
     
     @Expose
+    @SerializedName(value = "mentions")
+    protected long mentions = 0;
+    
+    @Expose
     @SerializedName(value = "friends")
     protected Long friends;
     
     @Expose
     @SerializedName(value = "followers")
     protected Long followers;
-
     
     @Expose
     @SerializedName(value = "shares")
