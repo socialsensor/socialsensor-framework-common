@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -22,31 +24,64 @@ import eu.socialsensor.framework.common.domain.Item;
  *
  */
 public class Dysco implements Serializable {
-
+	
+	//The id of the dysco
     @Expose
     @SerializedName(value = "id")
     private String id;
-    private List<Item> items = new ArrayList<Item>();
-    private List<Item> uniqueItems = new ArrayList<Item>();
-   
+    //The creation date of the dysco
     @Expose
     @SerializedName(value = "creationDate")
     private Date creationDate;
-   
-    @Expose
-    @SerializedName(value = "thumb")
-    private URL thumb;
+    //The title of the dysco
     @Expose
     @SerializedName(value = "title")
     private String title;
+    //The score that shows how trending the dysco is
     @Expose
-    @SerializedName(value = "updateDate")
-    private Date updateDate;
-    private List<Ngram> ngrams = new ArrayList<Ngram>();
-    private List<Entity> entities = new ArrayList<Entity>();
+    @SerializedName(value = "score")
     private Float score;
+    
+    //Fields holding the information about the main context 
+    //of the items that constitute the dysco
+    
+    //The extracted entities from items' content
+    @Expose
+    @SerializedName(value = "entities")
+    private List<Entity> entities = new ArrayList<Entity>();
+    //The users that contribute in social networks to dysco's topic
+    @Expose
+    @SerializedName(value = "contributors")
+    private List<String> contributors = new ArrayList<String>();
+    //The extracted keywords from items' content with their assigned weights
+    @Expose
+    @SerializedName(value = "keywords")
+    private Map<String,Double> keywords = new HashMap<String,Double>();
+    //The extracted hashtags from items' content with their assigned weights
+    @Expose
+    @SerializedName(value = "hashtags")
+    private Map<String,Double> hashtags = new HashMap<String,Double>();
+    //The additional keywords resulting from keywords expansion methods with their assigned weights
+    @Expose
+    @SerializedName(value = "latent_keywords")
+    private Map<String,Double> latent_keywords = new HashMap<String,Double>();
+    
+    
+    //The query that will be used for retrieving relevant content to the Dysco from Solr
+    @Expose
+    @SerializedName(value = "solrQuery")
+    private String solrQuery = null;
+    
+    //List of the items that compose the Dysco - serve for dysco's formulation, 
+    //therefore they are stored temporarily in memory
+    private List<Item> items = new ArrayList<Item>();
+
    
+    //The following need to be considered whether they are going to be omitted or not
     //added 29.3.2013 for visualization purposes
+    @Expose
+    @SerializedName(value = "thumb")
+    private URL thumb;
     @Expose
     @SerializedName(value = "thumbs")
     private List<String> thumbs = new ArrayList<String>();
@@ -56,9 +91,7 @@ public class Dysco implements Serializable {
     @Expose
     @SerializedName(value = "hasThumbs")
     private boolean hasThumbs;
-    private List<String> keywords = new ArrayList<String>();
     private String evolution = "latest";
-   
     @Expose
     @SerializedName(value = "trending")
     private int trending = 0;
@@ -69,32 +102,216 @@ public class Dysco implements Serializable {
     @SerializedName(value = "dynamic")
     private boolean dynamic = false;
     private int alethiometerStatus = 0;
-    private List<String> people = new ArrayList<String>();
-    //to be used for merging Dyscos with similar hashtags and urls
-    private List<String> hashtags = new ArrayList<String>();
+    @Expose
+    @SerializedName(value = "updateDate")
+    private Date updateDate;
+  
+    //----------------------------------
 
-    public String getTrendingArrow() {
-
-        switch (getTrending()) {
-            case 0:
-                return "icon-minus";
-            case 1:
-                return "icon-arrow-up";
-            case 2:
-                return "icon-arrow-down";
-            default:
-                return "icon-minus";
-        }
+    
+    
+    /**
+     * Returns the id of the dysco
+     * @return String
+     */
+    public String getId() {
+        return id;
     }
-
-    public List<String> getPeople() {
-        return people;
+    /**
+     * Sets the id of the dysco
+     * @param id
+     */
+    public void setId(String id) {
+        this.id = id;
     }
-
-    public void setPeople(List<String> people) {
-        this.people = people;
+    
+    /**
+     * Returns the creation date of the dysco
+     * @return Date
+     */
+    public Date getCreationDate() {
+        return creationDate;
     }
-
+    
+    /**
+     * Sets the creation date of the dysco
+     * @param creationDate
+     */
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+    
+    /**
+     * Returns the title of the dysco
+     * @return String
+     */
+    public String getTitle() {
+        return title;
+    }
+    
+    /**
+     * Sets the title of the dysco
+     * @param Title
+     */
+    public void setTitle(String Title) {
+        this.title = Title;
+    }
+    
+    /**
+     * Returns the score of the dysco 
+     * @return Float
+     */
+    public Float getScore() {
+        return score;
+    }
+    
+    /**
+     * Sets the score of the dysco
+     * @param score
+     */
+    public void setScore(Float score) {
+        this.score = score;
+    }
+    /**
+     * Returns the list of the dysco's entities
+     * @return List of Entity
+     */
+    public List<Entity> getEntities() {
+        return entities;
+    }
+    /**
+     * Sets the entities of the dysco
+     * @param entities
+     */
+    public void setEntities(List<Entity> entities) {
+        this.entities = entities;
+    }
+    /**
+     * Adds an entity to the dysco's list of entities
+     * @param entity
+     */
+    public void addEntity(Entity entity) {
+        entities.add(entity);
+    }
+    /**
+     * Returns the list of contributors for the dysco
+     * @return List of String
+     */
+    public List<String> getContributors() {
+        return contributors;
+    }
+    /**
+     * Sets the contributors for the dysco
+     * @param contributors
+     */
+    public void setContributors(List<String> contributors) {
+        this.contributors = contributors;
+    }
+    /**
+     * Returns the dysco's keywords with their assigned weights
+     * @return Map of String to Double
+     */
+    public Map<String,Double> getKeywords(){
+    	return keywords;
+    }
+    /**
+     * Sets the keywords of the dysco with their assigned weights
+     * @param keywords
+     */
+    public void setKeywords(Map<String,Double> keywords){
+    	this.keywords = keywords;
+    }
+    /**
+     * Adds a keyword and its corresponding weight to the list of keywords of the dysco
+     * @param keyword
+     * @param weight
+     */
+    public void addKeyword(String keyword, Double weight){
+    	this.keywords.put(keyword, weight);
+    }
+    /**
+     * Return the dysco's hashtags with their assigned weights
+     * @return Map of String to Double
+     */
+    public Map<String,Double> getHashtags(){
+    	return hashtags;
+    }
+    /**
+     * Sets the hashtags of the dysco with their assigned weights
+     * @param hashtags
+     */
+    public void setHashtags(Map<String,Double> hashtags){
+    	this.hashtags = hashtags;
+    }
+    /**
+     * Adds a hashtag and its corresponding weight to the list of hashtags of the dysco
+     * @param hashtag
+     * @param weight
+     */
+    public void addHashtag(String hashtag, Double weight){
+    	this.hashtags.put(hashtag, weight);
+    }
+    /**
+     * Returns the latent_keywords of the dysco with their assigned weights
+     * @return Map of String to Double
+     */
+    public Map<String,Double> getLatentKeywords(){
+    	return latent_keywords;
+    }
+    /**
+     * Sets the latent_keywords of the dysco with their assigned weights
+     * @param latent_keywords
+     */
+    public void setLatentKeywords(Map<String,Double> latent_keywords){
+    	this.latent_keywords = latent_keywords;
+    }
+    /**
+     * Adds a latent_keyword and its corresponding weight to the list of latent_keywords of the dysco
+     * @param latent_keyword
+     * @param weight
+     */
+    public void addLatentKeyword(String latent_keyword, Double weight){
+    	this.latent_keywords.put(latent_keyword, weight);
+    }
+    
+    /**
+     * Returns the query for the retrieval of relevant content to the dysco from solr
+     * @return String
+     */
+    public String getSolrQuery(){
+    	return solrQuery;
+    }
+    /**
+     * Sets the solr query for the retrieval of relevant content
+     * @param solrQuery
+     */
+    public void setSolrQuery(String solrQuery){
+    	this.solrQuery = solrQuery;
+    	
+    }
+    /**
+     * Return the list of items that compose the dysco
+     * @return
+     */
+    public List<Item> getItems() {
+        return items;
+    }
+    /**
+     * Sets the items that compose the dysco
+     * @param items
+     */
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
+    /**
+     * Adds an item to the list of items that compose the dysco
+     * @param item
+     */
+    public void addItem(Item item){
+    	this.items.add(item);
+    }
+    
+    //--------The following are to be considered if they are going to be omitted or not
     public int getAlethiometerStatus() {
         return alethiometerStatus;
     }
@@ -131,13 +348,7 @@ public class Dysco implements Serializable {
         this.hasThumbs = hasThumbs;
     }
 
-    public List<String> getKeywords() {
-        return keywords;
-    }
-
-    public void setKeywords(List<String> keywords) {
-        this.keywords = keywords;
-    }
+   
 
     public List<String> getThumbsLess() {
 
@@ -166,52 +377,12 @@ public class Dysco implements Serializable {
         this.thumbs = thumbs;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public void setItems(List<Item> items) {
-        this.items = items;
-    }
-
-    public List<Item> getItems() {
-        return items;
-    }
-
-    public void setUniqueItems(List<Item> uniqueItems) {
-        this.uniqueItems = uniqueItems;
-    }
-
-    public List<Item> getUniqueItems() {
-        return uniqueItems;
-    }
-
-    public Date getCreationDate() {
-        return creationDate;
-    }
-
-    public void setCreationDate(Date creationDate) {
-        this.creationDate = creationDate;
-    }
-
     public URL getThumb() {
         return thumb;
     }
 
     public void setThumb(URL thumb) {
         this.thumb = thumb;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String Title) {
-        this.title = Title;
     }
 
     public Date getUpdateDate() {
@@ -222,51 +393,25 @@ public class Dysco implements Serializable {
         this.updateDate = updateDate;
     }
 
-    public List<Ngram> getNgrams() {
-        return ngrams;
-    }
-
-    public void setNgrams(List<Ngram> ngrams) {
-        this.ngrams = ngrams;
-    }
-
-    public List<Entity> getEntities() {
-        return entities;
-    }
-
-    public void setEntities(List<Entity> entities) {
-        this.entities = entities;
-    }
-    
-    public List<String> getHashtags() {
-        return hashtags;
-    }
-
-    public void setHashtags(List<String> hashtags) {
-        this.hashtags = hashtags;
-    }
-
-    public Float getScore() {
-        return score;
-    }
-
-    public void setScore(float score) {
-        this.score = score;
-    }
-
-    public void addNgram(Ngram ngram) {
-        ngrams.add(ngram);
-    }
-
-    public void addEntity(Entity entity) {
-        entities.add(entity);
-    }
-
     public int getTrending() {
         return trending;
     }
 
     public void setTrending(int trending) {
         this.trending = trending;
+    }
+    
+    public String getTrendingArrow() {
+
+        switch (getTrending()) {
+            case 0:
+                return "icon-minus";
+            case 1:
+                return "icon-arrow-up";
+            case 2:
+                return "icon-arrow-down";
+            default:
+                return "icon-minus";
+        }
     }
 }
