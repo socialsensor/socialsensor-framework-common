@@ -218,7 +218,7 @@ public class Item implements JSONable {
     
     protected int validityScore;
     protected String validityVotes;
-    protected List<String> people;
+    //protected List<String> people;
     
     protected static final long HOUR = 1000L * 60L * 60;
     protected static final long DAY = 1000L * 60L * 60L * 24L;
@@ -635,13 +635,13 @@ public class Item implements JSONable {
         this.streamId = streamId;
     }
 
-    public List<String> getPeople() {
-        return people;
-    }
+    //public List<String> getPeople() {
+    //    return people;
+    //}
 
-    public void setPeople(List<String> people) {
-        this.people = people;
-    }
+    //public void setPeople(List<String> people) {
+    //    this.people = people;
+    //}
 
     public void setTitle(String title) {
         this.title = title;
