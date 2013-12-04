@@ -61,11 +61,6 @@ public class Dysco implements Serializable {
     @Expose
     @SerializedName(value = "hashtags")
     private Map<String,Double> hashtags = new HashMap<String,Double>();
-    //The additional keywords resulting from keywords expansion methods with their assigned weights
-    @Expose
-    @SerializedName(value = "latent_keywords")
-    private Map<String,Double> latent_keywords = new HashMap<String,Double>();
-    
     
     //The query that will be used for retrieving relevant content to the Dysco from Solr
     @Expose
@@ -79,31 +74,18 @@ public class Dysco implements Serializable {
    
     //The following need to be considered whether they are going to be omitted or not
     //added 29.3.2013 for visualization purposes
-    @Expose
-    @SerializedName(value = "thumb")
+   
     private URL thumb;
-    @Expose
-    @SerializedName(value = "thumbs")
+   
     private List<String> thumbs = new ArrayList<String>();
-    @Expose
-    @SerializedName(value = "thumbsLess")
     private List<String> thumbsLess = new ArrayList<String>();
-    @Expose
-    @SerializedName(value = "hasThumbs")
+    
     private boolean hasThumbs;
     private String evolution = "latest";
-    @Expose
-    @SerializedName(value = "trending")
     private int trending = 0;
-    @Expose
-    @SerializedName(value = "trendingArrow")
     private String trendingArrow;
-    @Expose
-    @SerializedName(value = "dynamic")
     private boolean dynamic = false;
     private int alethiometerStatus = 0;
-    @Expose
-    @SerializedName(value = "updateDate")
     private Date updateDate;
   
     //----------------------------------
@@ -250,28 +232,6 @@ public class Dysco implements Serializable {
      */
     public void addHashtag(String hashtag, Double weight){
     	this.hashtags.put(hashtag, weight);
-    }
-    /**
-     * Returns the latent_keywords of the dysco with their assigned weights
-     * @return Map of String to Double
-     */
-    public Map<String,Double> getLatentKeywords(){
-    	return latent_keywords;
-    }
-    /**
-     * Sets the latent_keywords of the dysco with their assigned weights
-     * @param latent_keywords
-     */
-    public void setLatentKeywords(Map<String,Double> latent_keywords){
-    	this.latent_keywords = latent_keywords;
-    }
-    /**
-     * Adds a latent_keyword and its corresponding weight to the list of latent_keywords of the dysco
-     * @param latent_keyword
-     * @param weight
-     */
-    public void addLatentKeyword(String latent_keyword, Double weight){
-    	this.latent_keywords.put(latent_keyword, weight);
     }
     
     /**
