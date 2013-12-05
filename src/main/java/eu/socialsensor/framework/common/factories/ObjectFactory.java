@@ -11,7 +11,6 @@ import eu.socialsensor.framework.common.domain.StreamUser;
 import eu.socialsensor.framework.common.domain.Timeslot;
 import eu.socialsensor.framework.common.domain.Topic;
 import eu.socialsensor.framework.common.domain.WebPage;
-import eu.socialsensor.framework.common.domain.dysco.SlotInformation;
 import eu.socialsensor.framework.common.influencers.Influencer;
 import eu.socialsensor.framework.common.influencers.KeywordInfluencersPair;
 
@@ -87,18 +86,6 @@ public class ObjectFactory {
             KeywordInfluencersPair pair = gson.fromJson(json, KeywordInfluencersPair.class);
             return pair;
         }
-    }
-    
-    public static SlotInformation createSlotInformation(String json) {
-        try {
-            Gson gson = new GsonBuilder().enableComplexMapKeySerialization().create();
-            SlotInformation slotInformation = gson.fromJson(json, SlotInformation.class);
-            return slotInformation;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return null;
-        }
-
     }
     
     public static synchronized WebPage createWebPage(String json) {
