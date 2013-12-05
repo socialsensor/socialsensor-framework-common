@@ -5,8 +5,10 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -373,5 +375,32 @@ public class Dysco implements Serializable {
             default:
                 return "icon-minus";
         }
+    }
+    
+    public String toString() {
+    	String dyscoString = "Id: "+id+"/n";
+    	dyscoString += "Creation date: "+creationDate+"/n";
+    	dyscoString += "Score: "+score+"/n";
+    	dyscoString += "Items: /n";
+    	for (Item item:items) {
+    		dyscoString+=item.getId()+":"+item.getTitle()+"\n";
+    	}
+    	dyscoString += "Entities: /n";
+    	for (Entity entity:entities) {
+    		dyscoString+=entity.getName()+"@@@"+entity.getType().toString()+":"+entity.getCont()+"\n";
+    	}
+    	dyscoString += "Tags: /n";
+    	Iterator<Entry<String,Double>> iteratorHashtags=hashtags.entrySet().iterator();
+    	while (iteratorHashtags.hasNext()) {
+    		Entry<String,Double> hashtag=iteratorHashtags.next();
+    		dyscoString+=hashtag.getKey()+":"+hashtag.getValue()+"\n";
+    	}
+    	dyscoString += "Keywords: /n";
+    	Iterator<Entry<String,Double>> iteratorKeywords=keywords.entrySet().iterator();
+    	while (iteratorKeywords.hasNext()) {
+    		Entry<String,Double> keyword=iteratorKeywords.next();
+    		dyscoString+=keyword.getKey()+":"+keyword.getValue()+"\n";
+    	}
+    	return dyscoString;
     }
 }

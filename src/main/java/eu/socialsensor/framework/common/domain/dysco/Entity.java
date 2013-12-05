@@ -20,12 +20,12 @@ public class Entity implements Serializable, JSONable {
     private String name;
     @Expose
     @SerializedName(value = "cont")
-    private Integer cont;
+    private Double cont;
     @Expose
     @SerializedName(value = "type")
     private Type type;
 
-    public Entity(String name, int cont, Type type) {
+    public Entity(String name, double cont, Type type) {
         this.name = name;
         this.cont = cont;
         this.type = type;
@@ -48,14 +48,14 @@ public class Entity implements Serializable, JSONable {
     /**
      * @return the cont
      */
-    public Integer getCont() {
+    public double getCont() {
         return cont;
     }
 
     /**
      * @param cont the cont to set
      */
-    public void setCont(int cont) {
+    public void setCont(double cont) {
         this.cont = cont;
     }
 
