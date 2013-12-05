@@ -42,7 +42,7 @@ public class Dysco implements Serializable {
     //The score that shows how trending the dysco is
     @Expose
     @SerializedName(value = "score")
-    private Float score;
+    private Double score;
     
     //Fields holding the information about the main context 
     //of the items that constitute the dysco
@@ -143,9 +143,9 @@ public class Dysco implements Serializable {
     
     /**
      * Returns the score of the dysco 
-     * @return Float
+     * @return Double
      */
-    public Float getScore() {
+    public Double getScore() {
         return score;
     }
     
@@ -153,7 +153,7 @@ public class Dysco implements Serializable {
      * Sets the score of the dysco
      * @param score
      */
-    public void setScore(Float score) {
+    public void setScore(Double score) {
         this.score = score;
     }
     /**
