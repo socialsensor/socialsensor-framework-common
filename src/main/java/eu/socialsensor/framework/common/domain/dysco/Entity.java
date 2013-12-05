@@ -110,9 +110,6 @@ public class Entity implements Serializable, JSONable {
 	    if (!name.equalsIgnoreCase(entity1.getName()))
 	    	return false;
 	    
-	    if (cont!=entity1.getCont())
-	    	return false;
-	    
 	    if (type!=entity1.getType())
 	    	return false;
 
@@ -123,7 +120,6 @@ public class Entity implements Serializable, JSONable {
 		  int result = 17;
 		  
 		  result = 31 * result + (name != null ? name.hashCode() : 0);
-		  result += result + (cont != null ? cont.hashCode() : 0);
 		  result += result + (type != null ? type.hashCode() : 0);
 		  return result;
 	}

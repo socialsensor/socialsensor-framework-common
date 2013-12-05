@@ -378,24 +378,24 @@ public class Dysco implements Serializable {
     }
     
     public String toString() {
-    	String dyscoString = "Id: "+id+"/n";
-    	dyscoString += "Creation date: "+creationDate+"/n";
-    	dyscoString += "Score: "+score+"/n";
-    	dyscoString += "Items: /n";
+    	String dyscoString = "Id: "+id+"\n";
+    	dyscoString += "Creation date: "+creationDate+"\n";
+    	dyscoString += "Score: "+score+"\n";
+    	dyscoString += "Items: \n";
     	for (Item item:items) {
     		dyscoString+=item.getId()+":"+item.getTitle()+"\n";
     	}
-    	dyscoString += "Entities: /n";
+    	dyscoString += "Entities: \n";
     	for (Entity entity:entities) {
     		dyscoString+=entity.getName()+"@@@"+entity.getType().toString()+":"+entity.getCont()+"\n";
     	}
-    	dyscoString += "Tags: /n";
+    	dyscoString += "Tags: \n";
     	Iterator<Entry<String,Double>> iteratorHashtags=hashtags.entrySet().iterator();
     	while (iteratorHashtags.hasNext()) {
     		Entry<String,Double> hashtag=iteratorHashtags.next();
     		dyscoString+=hashtag.getKey()+":"+hashtag.getValue()+"\n";
     	}
-    	dyscoString += "Keywords: /n";
+    	dyscoString += "Keywords: \n";
     	Iterator<Entry<String,Double>> iteratorKeywords=keywords.entrySet().iterator();
     	while (iteratorKeywords.hasNext()) {
     		Entry<String,Double> keyword=iteratorKeywords.next();
