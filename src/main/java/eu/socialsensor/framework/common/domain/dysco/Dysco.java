@@ -1,7 +1,6 @@
 package eu.socialsensor.framework.common.domain.dysco;
 
 import java.io.Serializable;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -43,6 +42,10 @@ public class Dysco implements Serializable {
     @Expose
     @SerializedName(value = "score")
     private Double score;
+    //The type of the dysco (CUSTOM/TRENDING)
+    @Expose
+    @SerializedName(value = "dyscoType")
+    private DyscoType dyscoType;
     
     //Fields holding the information about the main context 
     //of the items that constitute the dysco
@@ -66,33 +69,25 @@ public class Dysco implements Serializable {
     
     //The query that will be used for retrieving relevant content to the Dysco from Solr
     @Expose
-    @SerializedName(value = "solrQuery")
-    private String solrQuery = null;
+    @SerializedName(value = "solrQueryString")
+    private String solrQueryString = null;
+    
+    //The variable can get values 0,1,2 and shows dysco's trending evolution. 
+    @Expose
+    @SerializedName(value = "trending")
+    private int trending = 0;
+    //The date that the dysco was last created (updated because similar dyscos existed in the past)
+    @Expose
+    @SerializedName(value = "updateDate")
+    private Date updateDate;
     
     //List of the items that compose the Dysco - serve for dysco's formulation, 
     //therefore they are stored temporarily in memory
     private List<Item> items = new ArrayList<Item>();
 
-   
-    //The following need to be considered whether they are going to be omitted or not
-    //added 29.3.2013 for visualization purposes
-   
-    private URL thumb;
-   
-    private List<String> thumbs = new ArrayList<String>();
-    private List<String> thumbsLess = new ArrayList<String>();
-    
-    private boolean hasThumbs;
-    private String evolution = "latest";
-    private int trending = 0;
-    private String trendingArrow;
-    private boolean dynamic = false;
-    private int alethiometerStatus = 0;
-    private Date updateDate;
-  
-    //----------------------------------
-
-    
+    public enum DyscoType{
+    	CUSTOM, TRENDING
+    }
     
     /**
      * Returns the id of the dysco
@@ -237,18 +232,18 @@ public class Dysco implements Serializable {
     }
     
     /**
-     * Returns the query for the retrieval of relevant content to the dysco from solr
+     * Returns the query as a string for the retrieval of relevant content to the dysco from solr
      * @return String
      */
-    public String getSolrQuery(){
-    	return solrQuery;
+    public String getSolrQueryString(){
+    	return solrQueryString;
     }
     /**
-     * Sets the solr query for the retrieval of relevant content
+     * Sets the solr query as a string for the retrieval of relevant content
      * @param solrQuery
      */
-    public void setSolrQuery(String solrQuery){
-    	this.solrQuery = solrQuery;
+    public void setSolrQuery(String solrQueryString){
+    	this.solrQueryString = solrQueryString;
     	
     }
     /**
@@ -273,110 +268,54 @@ public class Dysco implements Serializable {
     	this.items.add(item);
     }
     
-    //--------The following are to be considered if they are going to be omitted or not
-    public int getAlethiometerStatus() {
-        return alethiometerStatus;
-    }
-
-    public void setAlethiometerStatus(int alethiometerStatus) {
-        this.alethiometerStatus = alethiometerStatus;
-    }
-
-    public boolean isDynamic() {
-        return dynamic;
-    }
-
-    public void setDynamic(boolean dynamic) {
-        this.dynamic = dynamic;
-    }
-
-    public boolean isHasThumbs() {
-        hasThumbs = false;
-        if (getThumbsLess().size() > 0) {
-            hasThumbs = true;
-        }
-        return hasThumbs;
-    }
-
-    public String getEvolution() {
-        return evolution;
-    }
-
-    public void setEvolution(String evolution) {
-        this.evolution = evolution;
-    }
-
-    public void setHasThumbs(boolean hasThumbs) {
-        this.hasThumbs = hasThumbs;
-    }
-
-   
-
-    public List<String> getThumbsLess() {
-
-//        if ((thumbsLess.isEmpty()) && (!getThumbs().isEmpty())) {
-//
-//            List<String> tempThumbs = getThumbs();
-//            for (int i = 0; i < tempThumbs.size(); i++) {
-//                if (i <= 3) {
-//                    thumbsLess.add(tempThumbs.get(i));
-//                }
-//            }
-//
-//        }
-        return thumbsLess;
-    }
-
-    public void setThumbsLess(List<String> thumbsLess) {
-        this.thumbsLess = thumbsLess;
-    }
-
-    public List<String> getThumbs() {
-        return thumbs;
-    }
-
-    public void setThumbs(List<String> thumbs) {
-        this.thumbs = thumbs;
-    }
-
-    public URL getThumb() {
-        return thumb;
-    }
-
-    public void setThumb(URL thumb) {
-        this.thumb = thumb;
-    }
-
-    public Date getUpdateDate() {
-        return updateDate;
-    }
-
-    public void setUpdateDate(Date updateDate) {
-        this.updateDate = updateDate;
-    }
-
+    /**
+     * Returns the trending value that shows dysco's trending evolution (can be 0,1,2)
+     * @return
+     */
     public int getTrending() {
         return trending;
     }
-
+    
+    /**
+     * Sets the trending value that shows dysco's trending evolution (can be 0,1,2)
+     * @param trending
+     */
     public void setTrending(int trending) {
         this.trending = trending;
     }
     
-    public String getTrendingArrow() {
-
-        switch (getTrending()) {
-            case 0:
-                return "icon-minus";
-            case 1:
-                return "icon-arrow-up";
-            case 2:
-                return "icon-arrow-down";
-            default:
-                return "icon-minus";
-        }
+    /**
+     * Returns the date that dysco was last updated.
+     * @return
+     */
+    public Date getUpdateDate() {
+        return updateDate;
     }
     
+    /**
+     * Sets the date that dysco was last updated.
+     * @return
+     */
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
+    }
+    
+    /**
+     * Returns the type of the dysco 
+     * @return dyscoType
+     */
+    public DyscoType getDyscoType(){
+    	return dyscoType;
+    }
+    
+    /**
+     * Sets the type of the dysco (CUSTOM/TRENDING)
+     * @param dyscoType
+     */
+    public void setDyscoType(DyscoType dyscoType){
+    	this.dyscoType = dyscoType;
+    }
+   
     public String toString() {
     	String dyscoString = "Id: "+id+"\n";
     	dyscoString += "Creation date: "+creationDate+"\n";
@@ -401,6 +340,9 @@ public class Dysco implements Serializable {
     		Entry<String,Double> keyword=iteratorKeywords.next();
     		dyscoString+=keyword.getKey()+":"+keyword.getValue()+"\n";
     	}
+    	dyscoString += "SolrQuery : "+solrQueryString+"\n";
+    	dyscoString += "Trending : "+trending+"\n";
+    	dyscoString += "DyscoType : "+dyscoType.toString()+"\n";
     	return dyscoString;
     }
 }
