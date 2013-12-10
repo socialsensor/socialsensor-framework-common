@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import eu.socialsensor.framework.common.domain.StreamUser.Category;
 import eu.socialsensor.framework.common.domain.dysco.Entity;
 
 import java.net.URL;
@@ -134,7 +135,7 @@ public class Item implements JSONable {
     
     @Expose
     @SerializedName(value = "category")
-    protected String category;
+    protected Category category;
     
     protected Feed feed;
     
@@ -288,11 +289,11 @@ public class Item implements JSONable {
         this.feedType = feedType;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 
