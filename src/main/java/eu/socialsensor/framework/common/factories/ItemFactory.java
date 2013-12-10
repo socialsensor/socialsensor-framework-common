@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import eu.socialsensor.framework.common.domain.DyscoRequest;
+import eu.socialsensor.framework.common.domain.Expert;
 import eu.socialsensor.framework.common.domain.Feed;
 import eu.socialsensor.framework.common.domain.Item;
 import eu.socialsensor.framework.common.domain.Keyword;
@@ -15,6 +16,7 @@ import eu.socialsensor.framework.common.domain.StreamUser;
 import eu.socialsensor.framework.common.domain.Timeslot;
 import eu.socialsensor.framework.common.domain.Vote;
 import eu.socialsensor.framework.common.influencers.Influencer;
+
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Date;
@@ -86,6 +88,13 @@ public class ItemFactory {
         }
     }
 
+    public static synchronized Expert createExpert(String json) {
+        synchronized (gson) {
+        	Expert expert = gson.fromJson(json, Expert.class);
+            return expert;
+        }
+    }
+    
     public static synchronized PlatformUser createPlatformUser(String json) {
         synchronized (gson) {
             PlatformUser user = gson.fromJson(json, PlatformUser.class);

@@ -5,6 +5,8 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import eu.socialsensor.framework.common.domain.StreamUser.Category;
+
 public class Expert implements JSONable {
 	
 	/**
@@ -23,7 +25,7 @@ public class Expert implements JSONable {
 	
 	@Expose
 	@SerializedName(value = "category")
-	private String category;
+	private Category category;
 	
 	public String getId() {
 		return id;
@@ -42,11 +44,11 @@ public class Expert implements JSONable {
 	}
 	
 	
-	public String getCategory() {
+	public Category getCategory() {
 		return category;
 	}
 
-	public void setCategory(String category) {
+	public void setCategory(Category category) {
 		this.category = category;
 	}
 	
