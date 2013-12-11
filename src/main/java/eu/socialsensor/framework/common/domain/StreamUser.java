@@ -91,6 +91,10 @@ public class StreamUser implements JSONable, Serializable {
     protected String pageUrl;
     
     @Expose
+    @SerializedName(value = "url")
+    protected String url;
+    
+    @Expose
     @SerializedName(value = "description")
     protected String description;
     
@@ -127,8 +131,17 @@ public class StreamUser implements JSONable, Serializable {
     protected Long followers;
     
     @Expose
+    @SerializedName(value = "listedCount")
+    protected Long listedCount;
+    
+    
+    @Expose
     @SerializedName(value = "shares")
     protected Long shares;
+    
+    @Expose
+    @SerializedName(value = "verified")
+    protected Boolean verified = false;
     
     @Expose
     @SerializedName(value = "linkToProfile")
@@ -214,6 +227,14 @@ public class StreamUser implements JSONable, Serializable {
         this.profileImage = profileImage;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+    
     public String getCreatedAt() {
         return createdAt;
     }
@@ -267,6 +288,14 @@ public class StreamUser implements JSONable, Serializable {
     
     public Category getCategory() {
     	return category;
+    }
+    
+    public void setVerified(Boolean verified) {
+    	this.verified = verified;
+    }
+    
+    public Boolean isVerified() {
+    	return verified;
     }
     
     public void setLinkToProfile(String linkToProfile){
