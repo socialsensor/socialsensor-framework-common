@@ -99,6 +99,10 @@ public class Item implements JSONable {
     @SerializedName(value = "publicationTime")
     protected long publicationTime;
     
+    @Expose
+    @SerializedName(value = "lastUpdated")
+    protected Date lastUpdated;
+    
     @SerializedName(value = "operation")
     protected Operation operation;
     
@@ -463,6 +467,10 @@ public class Item implements JSONable {
         return publicationTime;
     }
 
+    public Date getLastUpdated() {
+        return lastUpdated;
+    }
+    
     public Operation getOperation() {
         return operation;
     }
@@ -692,6 +700,10 @@ public class Item implements JSONable {
         this.publicationTime = publicationTime;
     }
 
+    public void setLastUpdated(Date lastUpdated) {
+        this.lastUpdated = lastUpdated;
+    }
+    
     public void setOperation(Operation operation) {
         this.operation = operation;
     }
