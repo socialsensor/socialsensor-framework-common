@@ -9,7 +9,6 @@ import eu.socialsensor.framework.common.domain.Feed.FeedType;
 import eu.socialsensor.framework.common.domain.feeds.KeywordsFeed;
 
 import java.io.Serializable;
-
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -54,6 +53,12 @@ public class MediaItem implements JSONable, Serializable {
     @Expose
     @SerializedName(value = "refUrl")
     private String refUrl;
+    
+    @Expose
+    @SerializedName(value = "uid")
+    private String uid;
+
+    private StreamUser streamUser;
     
     // textual information
     @Expose
@@ -430,7 +435,23 @@ public class MediaItem implements JSONable, Serializable {
     public String[] getMentions() {
         return this.mentions;
     }
+    
+    public String getUserId() {
+        return uid;
+    }
 
+    public void setUserId(String uid) {
+        this.uid = uid;
+    }
+    
+    public StreamUser getUser() {
+        return streamUser;
+    }
+
+    public void setUser(StreamUser streamUser) {
+        this.streamUser = streamUser;
+    }
+    
     public Integer getWidth() {
         return width;
     }
