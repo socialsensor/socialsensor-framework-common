@@ -147,7 +147,7 @@ public class Item implements JSONable {
     
     @Expose
     @SerializedName(value = "original")
-    protected boolean original;
+    protected boolean original = true;
     
     // the following fields are added for the UI purposes (after retrieval from Solr)
     // no need to be populated at crawling time
@@ -505,6 +505,7 @@ public class Item implements JSONable {
     }
 
     public List<MediaItem> getMediaItems() {
+    
         return mediaItems;
     }
 
