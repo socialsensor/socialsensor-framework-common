@@ -11,7 +11,12 @@ import java.io.Serializable;
 
 public class StreamUser implements JSONable, Serializable {
 
-    public enum Operation {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3558927430206936262L;
+
+	public enum Operation {
         NEW("New"),
         UPDATE("Update"),
         DELETED("Deleted");
@@ -296,6 +301,14 @@ public class StreamUser implements JSONable, Serializable {
     
     public Boolean isVerified() {
     	return verified;
+    }
+    
+    public void setListedCount(long listedCount) {
+    	this.listedCount = listedCount;
+    }
+    
+    public long getListedCount() {
+    	return listedCount;
     }
     
     public void setLinkToProfile(String linkToProfile){
