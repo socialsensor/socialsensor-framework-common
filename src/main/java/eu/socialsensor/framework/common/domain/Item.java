@@ -21,7 +21,12 @@ import java.util.List;
  */
 public class Item implements JSONable {
 
-    public enum Operation {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -7934442049449016087L;
+
+	public enum Operation {
 
         NEW("New"),
         UPDATE("Update"),
@@ -36,6 +41,15 @@ public class Item implements JSONable {
         public String toString() {
             return label;
         }
+    }
+    
+    public Item() {
+    
+    }
+
+    public Item(String streamId, Operation operation) {
+        this.streamId = streamId;
+        this.operation = operation;
     }
     
     @Expose
@@ -80,9 +94,9 @@ public class Item implements JSONable {
     @SerializedName(value = "inReply")
     protected String inReply;
     
-    @Expose
-    @SerializedName(value = "referencedUser")
-    protected String referencedUser;
+//    @Expose
+//    @SerializedName(value = "referencedUser")
+//    protected String referencedUser;
     
     @Expose
     @SerializedName(value = "referencedUserId")
@@ -107,10 +121,6 @@ public class Item implements JSONable {
     protected Operation operation;
     
     @Expose
-    @SerializedName(value = "votes")
-    protected List<Vote> votes = new ArrayList<Vote>();
-    
-    @Expose
     @SerializedName(value = "location")
     protected Location location;
     
@@ -130,6 +140,10 @@ public class Item implements JSONable {
     protected String sentiment;
     
     @Expose
+    @SerializedName(value = "keywords")
+    protected List<String> keywords = new ArrayList<String>();
+    
+    @Expose
     @SerializedName(value = "entities")
     protected List<Entity> entities;
     
@@ -141,13 +155,30 @@ public class Item implements JSONable {
     @SerializedName(value = "category")
     protected Category category;
     
+    @Expose
+    @SerializedName(value = "original")
+    protected boolean original = true;
+    
+    // Popularity
+    @Expose
+    @SerializedName(value = "likes")
+    protected Long likes = 0L;
+    
+    @Expose
+    @SerializedName(value = "shares")
+    protected Long shares = 0L;
+    
+    @Expose
+    @SerializedName(value = "comments")
+    protected String[] comments;
+    
     protected Feed feed;
     
     protected String feedType;
     
     @Expose
-    @SerializedName(value = "original")
-    protected boolean original = true;
+    @SerializedName(value = "isSearched")
+    protected boolean isSearched;
     
     // the following fields are added for the UI purposes (after retrieval from Solr)
     // no need to be populated at crawling time
@@ -192,42 +223,260 @@ public class Item implements JSONable {
     protected String content;
     
     @Expose
-    @SerializedName(value = "keywords")
-    protected List<String> keywords = new ArrayList<String>();
-    
-    @Expose
-    @SerializedName(value = "comments")
-    protected String[] comments;
-    
-    @Expose
-    @SerializedName(value = "isSearched")
-    protected boolean isSearched;
-    
-    @Expose
     @SerializedName(value = "positiveVotes")
     protected int positiveVotes = 0;
     
     @Expose
     @SerializedName(value = "negativeVotes")
     protected int negativeVotes = 0;
-
-    // Popularity
-    @Expose
-    @SerializedName(value = "likes")
-    protected Long likes = 0L;
-    
-    @Expose
-    @SerializedName(value = "shares")
-    protected Long shares = 0L;
    
+    @Expose
+    @SerializedName(value = "votes")
+    protected List<Vote> votes = new ArrayList<Vote>();
     
     protected int validityScore;
+    
     protected String validityVotes;
-    //protected List<String> people;
+
     
     protected static final long HOUR = 1000L * 60L * 60;
     protected static final long DAY = 1000L * 60L * 60L * 24L;
     protected static final long MINUTE = 1000L * 60L;
+    
+   
+    // Getters / Setters
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+    
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
+    
+    public String getStreamId() {
+        return streamId;
+    }
+
+    public void setStreamId(String streamId) {
+        this.streamId = streamId;
+    }
+    
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    
+    public String[] getTags() {
+        return tags;
+    }
+
+    public void setTags(String[] tags) {
+        this.tags = tags;
+    }
+    
+    public String getUserId() {
+        return uid;
+    }
+    
+    public void setUserId(String uid) {
+        this.uid = uid;
+    }
+    
+    public String[] getList() {
+        return lists;
+    }
+    
+    public void setList(String[] lists) {
+        this.lists = lists;
+    }
+    
+    public StreamUser getStreamUser() {
+        return streamUser;
+    }
+    
+    public void setStreamUser(StreamUser streamUser) {
+        this.streamUser = streamUser;
+    }
+    
+    public String[] getMentions() {
+        return mentions;
+    }
+    
+    public void setMentions(String[] mentions) {
+        this.mentions = mentions;
+    }
+    
+    public String getInReply() {
+        return inReply;
+    }
+    
+    public void setInReply(String inReply) {
+        this.inReply = inReply;
+    }
+    
+    public String getReferencedUserId() {
+        return referencedUserId;
+    }
+    
+    public void setReferencedUserId(String referencedUserId) {
+        this.referencedUserId = referencedUserId;
+    }
+    
+    public URL[] getLinks() {
+        return links;
+    }
+    
+    public void setLinks(URL[] links) {
+        this.links = links;
+    }
+    
+    public List<WebPage> getWebPages() {
+        return webPages;
+    }
+    
+    public void setWebPages(List<WebPage> webPages) {
+    	this.webPages = webPages;
+    }
+    
+    public long getPublicationTime() {
+        return publicationTime;
+    }
+
+    public void setPublicationTime(long publicationTime) {
+        this.publicationTime = publicationTime;
+    }
+    
+    public Date getLastUpdated() {
+        return lastUpdated;
+    }
+    
+    public void setLastUpdated(Date lastUpdated) {
+        this.lastUpdated = lastUpdated;
+    }
+    
+    public Operation getOperation() {
+        return operation;
+    }
+
+    public void setOperation(Operation operation) {
+        this.operation = operation;
+    }
+    
+    public Location getLocation() {
+        return location;
+    }
+    
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+    
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+    
+    public List<MediaItem> getMediaItems() {
+        return mediaItems;
+    }
+    
+    public void setMediaItems(List<MediaItem> mediaItems) {
+    	this.mediaItems = mediaItems;
+    }
+    
+    public List<String> getMediaIds() {
+        return mediaIds;
+    }
+    
+    public void setMediaIds(List<String> mediaIds) {
+        this.mediaIds = mediaIds;
+    }
+    
+    public String getSentiment() {
+        return sentiment;
+    }
+
+    public void setSentiment(String sentiment) {
+        this.sentiment = sentiment;
+    }
+    
+    public List<String> getKeywords() {
+        return keywords;
+    }
+
+    public void setKeywords(List<String> keywords) {
+        this.keywords = keywords;
+    }
+    
+    public List<Entity> getEntities() {
+        return entities;
+    }
+
+    public void setEntities(List<Entity> entities) {
+        this.entities = entities;
+    }
+    
+    public String getLang() {
+        return lang;
+    }
+    
+    public void setLang(String lang) {
+        this.lang = lang;
+    }
+    
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+
+    public boolean isOriginal() {
+        return original;
+    }
+
+    public void setOriginal(boolean original) {
+        this.original = original;
+    }
+    
+    public Long getLikes() {
+        return likes;
+    }
+    
+    public void setLikes(Long likes) {
+        this.likes = likes;
+    }
+    
+    public Long getShares() {
+        return shares;
+    }
+
+    public void setShares(Long shares) {
+        this.shares = shares;
+    }
     
     public String[] getComments() {
         return comments;
@@ -235,6 +484,30 @@ public class Item implements JSONable {
 
     public void setComments(String[] comments) {
         this.comments = comments;
+    }
+    
+    public Feed getFeed() {
+        return feed;
+    }
+
+    public void setFeed(Feed feed) {
+        this.feed = feed;
+    }
+
+    public String getFeedType() {
+        return feedType;
+    }
+
+    public void setFeed(String feedType) {
+        this.feedType = feedType;
+    }
+    
+    public boolean getIsSearched() {
+        return isSearched;
+    }
+    
+    public void setIsSearched(boolean isSearched) {
+        this.isSearched = isSearched;
     }
 
     public int getValidityScore() {
@@ -277,54 +550,12 @@ public class Item implements JSONable {
         this.alethiometerUserStatus = alethiometerUserStatus;
     }
 
-    public Feed getFeed() {
-        return feed;
-    }
-
-    public void setFeed(Feed feed) {
-        this.feed = feed;
-    }
-
-    public String getFeedType() {
-        return feedType;
-    }
-
-    public void setFeed(String feedType) {
-        this.feedType = feedType;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-
-    public boolean isOriginal() {
-        return original;
-    }
-
-    public void setOriginal(boolean original) {
-        this.original = original;
-    }
-    
-
     public String getAuthorScreenName() {
         return authorScreenName;
     }
 
     public void setAuthorScreenName(String authorScreenName) {
         this.authorScreenName = authorScreenName;
-    }
-
-    public String getReference() {
-        return reference;
-    }
-
-    public void setReference(String reference) {
-        this.reference = reference;
     }
 
     public int getAlethiometerScore() {
@@ -391,14 +622,6 @@ public class Item implements JSONable {
         this.avatarImageSmall = avatarImageSmall;
     }
 
-    public List<Entity> getEntities() {
-        return entities;
-    }
-
-    public void setEntities(List<Entity> entities) {
-        this.entities = entities;
-    }
-
     public List<Vote> getVotes() {
         return votes;
     }
@@ -406,75 +629,7 @@ public class Item implements JSONable {
     public void setVotes(List<Vote> votes) {
         this.votes = votes;
     }
-
-    public Item() {
-    }
-
-    public Item(String streamId, Operation operation) {
-        this.streamId = streamId;
-        this.operation = operation;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public String getLang() {
-        return lang;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public void setLang(String lang) {
-        this.lang = lang;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String[] getTags() {
-        return tags;
-    }
-
-    public StreamUser getStreamUser() {
-        return streamUser;
-    }
     
-    public String getUserId() {
-        return uid;
-    }
-    
-    public String[] getList() {
-        return lists;
-    }
-    
-    public URL[] getLinks() {
-        return links;
-    }
-
-    public String getStreamId() {
-        return streamId;
-    }
-
-    public long getPublicationTime() {
-        return publicationTime;
-    }
-
-    public Date getLastUpdated() {
-        return lastUpdated;
-    }
-    
-    public Operation getOperation() {
-        return operation;
-    }
-
     public Double getLatitude() {
         if (location == null) {
             return null;
@@ -496,50 +651,6 @@ public class Item implements JSONable {
         return location.getName();
     }
 
-    public Location getLocation() {
-        return location;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public List<MediaItem> getMediaItems() {
-    
-        return mediaItems;
-    }
-
-    public List<String> getMediaIds() {
-        return mediaIds;
-    }
-    
-    public void setMediaIds(List<String> mediaIds) {
-        this.mediaIds = mediaIds;
-    }
-
-    public List<WebPage> getWebPages() {
-        return webPages;
-    }
-
-    public String getRef() {
-        return reference;
-    }
-
-//    public String getTimeslotId() {
-//        return timeslotId;
-//    }
-
-    public Long getLikes() {
-        return likes;
-    }
-    
-    public Long getShares() {
-        return shares;
-    }
-    
-//    public void setTimeslotId(String timeslotId) {
-//        this.timeslotId = timeslotId;
-//    }
 
     /**
      * @brief returns item's content
@@ -575,14 +686,6 @@ public class Item implements JSONable {
      */
     public void setWebLink(String webLink) {
         this.webLink = webLink;
-    }
-
-    public List<String> getKeywords() {
-        return keywords;
-    }
-
-    public void setKeywords(List<String> keywords) {
-        this.keywords = keywords;
     }
     
     @Override
@@ -640,130 +743,12 @@ public class Item implements JSONable {
         }
         return sb.toString();
     }
-
-    public void setStreamId(String streamId) {
-        this.streamId = streamId;
-    }
-
-    //public List<String> getPeople() {
-    //    return people;
-    //}
-
-    //public void setPeople(List<String> people) {
-    //    this.people = people;
-    //}
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setTags(String[] tags) {
-        this.tags = tags;
-    }
-
-    public void setMentions(String[] mentions) {
-        this.mentions = mentions;
-    }
-
-    public void setInReply(String inReply) {
-        this.inReply = inReply;
-    }
     
-    public String[] getMentions() {
-        return mentions;
-    }
-
-    public String getInReply() {
-        return inReply;
-    }
-    
-    public void setStreamUser(StreamUser streamUser) {
-        this.streamUser = streamUser;
-    }
-
-    public void setUserId(String uid) {
-        this.uid = uid;
-    }
-    
-    public void setList(String[] lists) {
-        this.lists = lists;
-    }
-    
-    public void setLinks(URL[] links) {
-        this.links = links;
-    }
-
-    public void setPublicationTime(long publicationTime) {
-        this.publicationTime = publicationTime;
-    }
-
-    public void setLastUpdated(Date lastUpdated) {
-        this.lastUpdated = lastUpdated;
-    }
-    
-    public void setOperation(Operation operation) {
-        this.operation = operation;
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
-    }
-
-    public void setLocation(Double latitude, Double longitude) {
-        this.location = new Location(latitude, longitude);
-    }
-
-    public void setLocation(Double latitude, Double longitude, String name) {
-        this.location = new Location(latitude, longitude, name);
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public void setMediaItems(List<MediaItem> mediaItems) {
-        this.mediaItems = mediaItems;
-    }
-
-    public String getSentiment() {
-        return sentiment;
-    }
-
-    public boolean getIsSearched() {
-        return isSearched;
-    }
-    
-    public void setIsSearched(boolean isSearched) {
-        this.isSearched = isSearched;
-    }
-    
-    
-    public void setSentiment(String sentiment) {
-        this.sentiment = sentiment;
-    }
-
-    public void setLikes(Long likes) {
-        this.likes = likes;
-    }
-    
-    public void setShares(Long shares) {
-        this.shares = shares;
-    }
-    
-    public void setRef(String reference) {
-        this.reference = reference;
-    }
-
     public Long getLifeDuration() {
         Long now = new Date().getTime();
         Long difference = now - getPublicationTime();
 
         return difference / (60L * 1000L);
-
     }
 
     public String getLifeDurationText() {
