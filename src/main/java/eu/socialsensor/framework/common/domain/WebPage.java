@@ -13,45 +13,59 @@ import java.util.Date;
  */
 public class WebPage implements JSONable, Comparable<WebPage> {
 
-    @Expose
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -8783341713025378581L;
+	
+	// The URL of a WebPage. This is usuually a short URL
+	@Expose
     @SerializedName(value = "url")
     private String url;
+	
+	// The expanded version of URL
     @Expose
     @SerializedName(value = "expandedUrl")
     private String expandedUrl;
+    
+    // The title extracted from the WebPage
     @Expose
     @SerializedName(value = "title")
     private String title;
+    
+    // The textual content of the web page
     @Expose
     @SerializedName(value = "content")
     private String content;
+    
+    // The date that a web page shared for the first time
     @Expose
     @SerializedName(value = "date")
     private Date date;
+    
+    // The id of the Item that share a web page for the forst time
     @Expose
     @SerializedName(value = "reference")
     private String reference;
+    
+    // The stream of the Item that the web page comes from 
     @Expose
     @SerializedName(value = "streamId")
     private String streamId;
-    @Expose
-    @SerializedName(value = "status")
-    private String status = "new";
+    
+    // The number of times a web page has been shared
     @Expose
     @SerializedName(value = "shares")
     private int shares = 0;
 
+    // The crawling status of this web page
+    @Expose
+    @SerializedName(value = "status")
+    private String status = "new";
+    
     public WebPage(String url, String reference) {
         this.url = url;
         this.reference = reference;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
     }
 
     public String getUrl() {
@@ -70,20 +84,23 @@ public class WebPage implements JSONable, Comparable<WebPage> {
         this.expandedUrl = expandedUrl;
     }
 
+    public String getStreamId() {
+        return streamId;
+    }
+    
     public void setStreamId(String streamId) {
         this.streamId = streamId;
     }
 
-    public String getTitle() {
+    public Date getDate() {
+        return date;
+    }
 
-//        if (title != null) {
-//
-//            return title;
-//            
-//        } else {
-//            
-//            return url;
-//        }
+    public void setDate(Date date) {
+        this.date = date;
+    }
+    
+    public String getTitle() {
         return title;
     }
 

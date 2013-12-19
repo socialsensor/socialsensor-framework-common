@@ -18,49 +18,60 @@ import java.util.List;
  * stream media object.
  *
  * @author manosetro
+ * @mail manosetro@iti.gr
  *
  */
 public class MediaItem implements JSONable, Serializable {
 
-    @Expose
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 7811714823188242818L;
+
+	// Unique id of an MediaItem with the following structure: StreamName#internalId
+	@Expose
     @SerializedName(value = "id")
     private String id;
     
+	// The URL of a media item
     @Expose
     @SerializedName(value = "url")
     private String url;
     
+    // Thumbnail version of a media item
     @Expose
     @SerializedName(value = "thumbnail")
     private String thumbnail;
     
-    @Expose
-    @SerializedName(value = "localThumbnail")
-    private String localThumbnail;
-    
+    // The URL of the page that contains the media item
     @Expose
     @SerializedName(value = "pageUrl")
     private String pageUrl;
     
+    // The name of the stream that a Media Item comes from
     @Expose
     @SerializedName(value = "streamId")
     private String streamId;
     
+    // The id of the first Item that contains the MediaItem
     @Expose
     @SerializedName(value = "reference")
     private String reference;
     
-    @Expose
-    @SerializedName(value = "refUrl")
-    private String refUrl;
+//    @Expose
+//    @SerializedName(value = "refUrl")
+//    private String refUrl;
     
+    // The id of the user that posted the first Item that contains the MediaItem
     @Expose
     @SerializedName(value = "uid")
     private String uid;
 
+    // A detailed instance of the user of an Item
+    // This field is not exposed in mongodb
     private StreamUser streamUser;
     
-    // textual information
+    // Textual information
     @Expose
     @SerializedName(value = "title")
     private String title;
@@ -71,9 +82,9 @@ public class MediaItem implements JSONable, Serializable {
     @SerializedName(value = "tags")
     private String[] tags;
     
-    
+    // The type of a media item. Can only be image/video
     @Expose
-    @SerializedName(value = "type")  //Can only be image/video
+    @SerializedName(value = "type")  
     private String type;
 
     @Expose
@@ -84,15 +95,17 @@ public class MediaItem implements JSONable, Serializable {
     @SerializedName(value = "feedKeywordsString")
     private List<String> feedKeywordsString = new ArrayList<String>();
     
+    // The publication time of the first item that share the media item
     @Expose
     @SerializedName(value = "publicationTime")
     private long publicationTime;
+    
     
     @Expose
     @SerializedName(value = "mentions")
     private String[] mentions;
     
-    // Popularity
+    // Popularity values
     @Expose
     @SerializedName(value = "likes")
     protected Long likes = 0L;
@@ -113,20 +126,22 @@ public class MediaItem implements JSONable, Serializable {
     @SerializedName(value = "ratings")
     protected Float ratings = 0F;
     
+    // The sentiment value of a MediaItem
     @Expose
     @SerializedName(value = "sentiment")
     protected int sentiment;
     
+    // A list of concepts related to the MediaItem
     @Expose
     @SerializedName(value = "concepts")
     private List<Concept> concepts = null;
     
-    // Geo information
+    // Geo information 
     @Expose
     @SerializedName(value = "location")
     private Location location;
     
-    // Media item size
+    // Size of the Media item
     @Expose
     @SerializedName(value = "width")
     private Integer width;
@@ -135,10 +150,12 @@ public class MediaItem implements JSONable, Serializable {
     @SerializedName(value = "height")
     private Integer height;
     
+    // Indicated whether a MediaItem has been inserted into the visual index
     @Expose
     @SerializedName(value = "indexed")
     private Boolean indexed = Boolean.FALSE;
     
+    // The fetching status of a MediaItem
     @Expose
     @SerializedName(value = "status")
     private String status = "new";
@@ -224,10 +241,6 @@ public class MediaItem implements JSONable, Serializable {
         return thumbnail;
     }
 
-    public String getLocalThumbnail() {
-        return localThumbnail;
-    }
-
     public void setUrl(String url) {
         this.url = url;
     }
@@ -240,24 +253,12 @@ public class MediaItem implements JSONable, Serializable {
         this.thumbnail = thumbnail;
     }
 
-    public void setLocalThumbnail(String localThumbnail) {
-        this.localThumbnail = localThumbnail;
-    }
-
     public String getRef() {
         return reference;
     }
 
     public void setRef(String reference) {
         this.reference = reference;
-    }
-
-    public String getRefUrl() {
-        return refUrl;
-    }
-
-    public void setRefUrl(String refUrl) {
-        this.refUrl = refUrl;
     }
 
     public String getTitle() {
