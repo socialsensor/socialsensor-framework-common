@@ -95,6 +95,11 @@ public class StreamUser implements JSONable, Serializable {
     @SerializedName(value = "profileImage")
     protected String profileImage;
     
+    // The url of the image of a User. Usually this image is a bigger version of profileImage
+    @Expose
+    @SerializedName(value = "imageUrl")
+    protected String imageUrl;
+    
     // The URL of the user page in the specific social media
     @Expose
     @SerializedName(value = "pageUrl")
@@ -229,6 +234,14 @@ public class StreamUser implements JSONable, Serializable {
         this.profileImage = profileImage;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+    
     public String getPageUrl() {
         return pageUrl;
     }
