@@ -52,128 +52,160 @@ public class Item implements JSONable {
         this.operation = operation;
     }
     
+    // Unique id of an instance with the following structure: StreamName#internalId
     @Expose
     @SerializedName(value = "id")
     protected String id;
     
+    // The id of the original Item
     @Expose
     @SerializedName(value = "reference")
     protected String reference;
     
+    // The name of the stream that an Item comes from
     @Expose
     @SerializedName(value = "streamId")
     protected String streamId;
     
+    // The title of an Item
     @Expose
     @SerializedName(value = "title")
     protected String title;
     
+    // A short description of an Item
     @Expose
     @SerializedName(value = "description")
     protected String description;
     
+    // A set of tags associated with an Item
     @Expose
     @SerializedName(value = "tags")
     protected String[] tags;
 
+    // The SocialSensor internal id of the user 
+    // StreamName#userInternalId
     @Expose
     @SerializedName(value = "uid")
     protected String uid;
     
+    // A set of identifiers that indicate the news hounds list
     @Expose
     @SerializedName(value = "list")
     protected String[] lists;
     
+    // A detailed instance of the user of an Item
+    // This is not exposed in mongodb
     protected StreamUser streamUser;
     
+    // A set of user ids for the mentioned users
     @Expose
     @SerializedName(value = "mentions")
     protected String[] mentions;
     
+    // If an Item is a reply to another Item this field
+    // keeps the id of the user of the first Item
     @Expose
     @SerializedName(value = "inReply")
     protected String inReply;
     
-//    @Expose
-//    @SerializedName(value = "referencedUser")
-//    protected String referencedUser;
-    
+    // The user id of the original Item
     @Expose
     @SerializedName(value = "referencedUserId")
     protected String referencedUserId;
     
+    // A list of URLs contained in the Item
     @Expose
     @SerializedName(value = "links")
     protected URL[] links;
     
+    // A set of WebPages contained in the Item
+    // WebPage is a more detailed representation of URLs
     @SerializedName(value = "webPages")
     protected List<WebPage> webPages;
     
+    // The publication time of an Item
     @Expose
     @SerializedName(value = "publicationTime")
     protected long publicationTime;
     
+    // The last time this Item has been updated
     @Expose
     @SerializedName(value = "lastUpdated")
     protected Date lastUpdated;
     
+    // The operation associated with Item : NEW, UPDATE, DELETE
     @SerializedName(value = "operation")
     protected Operation operation;
     
+    // The location associated with an Item
+    // Usually this field indicated the origin of the Item
     @Expose
     @SerializedName(value = "location")
     protected Location location;
     
+    // The text associated with an Item
     @Expose
     @SerializedName(value = "text")
     protected String text;
     
+    // A list of media items contained in an Item
+    // This is not exposed in mongodb 
     @SerializedName(value = "mediaItems")
     protected List<MediaItem> mediaItems = new ArrayList<MediaItem>();
     
+    // A list of ids of the contained media items 
     @Expose
     @SerializedName(value = "mediaIds")
     protected List<String> mediaIds = new ArrayList<String>();
     
+    // The sentiment of an Item
     @Expose
     @SerializedName(value = "sentiment")
     protected String sentiment;
     
+    // A list of representative keywords extracted from an Item
     @Expose
     @SerializedName(value = "keywords")
     protected List<String> keywords = new ArrayList<String>();
     
+    // A list of named entities extracted from an Item
     @Expose
     @SerializedName(value = "entities")
     protected List<Entity> entities;
     
+    // The language of an Item
     @Expose
     @SerializedName(value = "lang")
     protected String lang;
     
+    // The category of the user that posted the Item
     @Expose
     @SerializedName(value = "category")
     protected Category category;
     
+    // An indicator whether an Item id original or a shared instance of a previous Item
     @Expose
     @SerializedName(value = "original")
     protected boolean original = true;
     
-    // Popularity
+    // Popularity values 
+    
+    // Number of likes
     @Expose
     @SerializedName(value = "likes")
     protected Long likes = 0L;
     
+    // NUmber of the times an Item has been shared
     @Expose
     @SerializedName(value = "shares")
     protected Long shares = 0L;
     
+    // The Comments associated with an Item
     @Expose
     @SerializedName(value = "comments")
     protected String[] comments;
     
     protected Feed feed;
-    
     protected String feedType;
     
     @Expose
@@ -244,7 +276,8 @@ public class Item implements JSONable {
     protected static final long MINUTE = 1000L * 60L;
     
    
-    // Getters / Setters
+    // Getters  & Setters for the fields of this class
+    
     public String getId() {
         return id;
     }
@@ -688,6 +721,7 @@ public class Item implements JSONable {
         this.webLink = webLink;
     }
     
+    // Creates the JSON representation of an Item
     @Override
     public String toJSONString() {
         Gson gson = new GsonBuilder()
