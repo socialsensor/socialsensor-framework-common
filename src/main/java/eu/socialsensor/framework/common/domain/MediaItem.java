@@ -161,7 +161,7 @@ public class MediaItem implements JSONable, Serializable {
     private String status = "new";
     
     private int source;
-
+    
 	private Feed feed;
 
     public MediaItem(URL url) {
