@@ -35,8 +35,13 @@ public class WebPage implements JSONable, Comparable<WebPage> {
     
     // The textual content of the web page
     @Expose
-    @SerializedName(value = "content")
-    private String content;
+    @SerializedName(value = "text")
+    private String text;
+    
+    // The title extracted from the WebPage
+    @Expose
+    @SerializedName(value = "keywords")
+    private String[] keywords;
     
     // The date that a web page shared for the first time
     @Expose
@@ -108,14 +113,22 @@ public class WebPage implements JSONable, Comparable<WebPage> {
         this.title = title;
     }
 
-    public String getContent() {
-        return content;
+    public String getText() {
+        return text;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setText(String text) {
+        this.text = text;
     }
 
+    public String[] getKeywords() {
+        return keywords;
+    }
+
+    public void setKeywords(String[] keywords) {
+        this.keywords = keywords;
+    }
+    
     public int getShares() {
         return shares;
     }
