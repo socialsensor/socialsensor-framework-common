@@ -2,13 +2,18 @@ package eu.socialsensor.framework.common.domain.dysco;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 import eu.socialsensor.framework.common.domain.JSONable;
 
 public class Message implements JSONable{
-	
+	@Expose
+	@SerializedName(value = "dyscoId")
 	String dyscoId;
 	
+	@Expose
+	@SerializedName(value = "action")
 	Action action;
 	
 	public Message(){
@@ -42,16 +47,5 @@ public class Message implements JSONable{
                 .create();
         return gson.toJson(this);
     }
-
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		Message message = new Message();
-		message.setDyscoId("94cf702e-1625-4869-bc43-20e193048eec");
-		message.setAction(Action.NEW);
-		
-		System.out.println("Message : "+message.toJSONString());
-	}
 
 }
