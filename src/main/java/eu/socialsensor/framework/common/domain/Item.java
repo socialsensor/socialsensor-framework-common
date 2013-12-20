@@ -212,6 +212,10 @@ public class Item implements JSONable {
     @SerializedName(value = "isSearched")
     protected boolean isSearched;
     
+    @Expose
+    @SerializedName(value = "indexed")
+    protected boolean indexed;
+    
     // the following fields are added for the UI purposes (after retrieval from Solr)
     // no need to be populated at crawling time
     protected int alethiometerScore;
@@ -543,6 +547,14 @@ public class Item implements JSONable {
         this.isSearched = isSearched;
     }
 
+    public boolean isIndexed() {
+        return indexed;
+    }
+    
+    public void setIndexed(boolean indexed) {
+        this.indexed = indexed;
+    }
+    
     public int getValidityScore() {
         return validityScore;
     }
