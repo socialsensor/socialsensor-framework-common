@@ -152,6 +152,11 @@ public class MediaItem implements JSONable, Serializable {
     
     // Indicated whether a MediaItem has been inserted into the visual index
     @Expose
+    @SerializedName(value = "vIndexed")
+    private Boolean vIndexed = Boolean.FALSE;
+    
+ // Indicated whether a MediaItem has been inserted into Solr
+    @Expose
     @SerializedName(value = "indexed")
     private Boolean indexed = Boolean.FALSE;
     
@@ -316,10 +321,22 @@ public class MediaItem implements JSONable, Serializable {
         this.feedKeywordsString = feedKeywordsString;
     }
 
+    public boolean isVisualIndexed() {
+        return vIndexed;
+    }
+
+    public void setVisualIndexed(boolean vIndexed) {
+    	this.vIndexed = vIndexed;
+    }
+    
     public boolean isIndexed() {
         return indexed;
     }
 
+    public void setIndexed(boolean indexed) {
+    	this.indexed = indexed;
+    }
+    
     public void setMentions(String[] mentions) {
         this.mentions = mentions;
     }
