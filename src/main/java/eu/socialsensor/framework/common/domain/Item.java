@@ -222,65 +222,6 @@ public class Item implements JSONable {
     @SerializedName(value = "indexed")
     protected boolean indexed;
     
-    // the following fields are added for the UI purposes (after retrieval from Solr)
-    // no need to be populated at crawling time
-    protected int alethiometerScore;
-    @Expose
-    @SerializedName(value = "alethiometerUserScore")
-    protected int alethiometerUserScore;
-    
-    @Expose
-    @SerializedName(value = "authorFullName")
-    protected String authorFullName;
-    
-    @Expose
-    @SerializedName(value = "authorScreenName")
-    protected String authorScreenName;
-    
-    @Expose
-    @SerializedName(value = "userRole")
-    protected String userRole;
-    
-    protected int followersCount;
-    protected int friendsCount;
-    
-    @Expose
-    @SerializedName(value = "avatarImage")
-    protected String avatarImage;
-    
-    @Expose
-    @SerializedName(value = "avatarImageSmall")
-    protected String avatarImageSmall;
-    
-    @Expose
-    @SerializedName(value = "alethiometerUserStatus")
-    protected String alethiometerUserStatus;
-    
-    @Expose
-    @SerializedName(value = "webLink")
-    protected String webLink;
-    
-    @Expose
-    @SerializedName(value = "content")
-    protected String content;
-    
-    @Expose
-    @SerializedName(value = "positiveVotes")
-    protected int positiveVotes = 0;
-    
-    @Expose
-    @SerializedName(value = "negativeVotes")
-    protected int negativeVotes = 0;
-   
-    @Expose
-    @SerializedName(value = "votes")
-    protected List<Vote> votes = new ArrayList<Vote>();
-    
-    protected int validityScore;
-    
-    protected String validityVotes;
-
-    
     protected static final long HOUR = 1000L * 60L * 60;
     protected static final long DAY = 1000L * 60L * 60L * 24L;
     protected static final long MINUTE = 1000L * 60L;
@@ -561,125 +502,13 @@ public class Item implements JSONable {
         this.indexed = indexed;
     }
     
-    public int getValidityScore() {
-        return validityScore;
-    }
+   
+    
+    
 
-    public void setValidityScore(int validityScore) {
-        this.validityScore = validityScore;
-    }
+    
 
-    public int getPositiveVotes() {
-        return positiveVotes;
-    }
-
-    public void setPositiveVotes(int positiveVotes) {
-        this.positiveVotes = positiveVotes;
-    }
-
-    public int getNegativeVotes() {
-        return negativeVotes;
-    }
-
-    public void setNegativeVotes(int negativeVotes) {
-        this.negativeVotes = negativeVotes;
-    }
-
-    public String getValidityVotes() {
-        return validityVotes;
-    }
-
-    public void setValidityVotes(String validityVotes) {
-        this.validityVotes = validityVotes;
-    }
-
-    public String getAlethiometerUserStatus() {
-        return alethiometerUserStatus;
-    }
-
-    public void setAlethiometerUserStatus(String alethiometerUserStatus) {
-        this.alethiometerUserStatus = alethiometerUserStatus;
-    }
-
-    public String getAuthorScreenName() {
-        return authorScreenName;
-    }
-
-    public void setAuthorScreenName(String authorScreenName) {
-        this.authorScreenName = authorScreenName;
-    }
-
-    public int getAlethiometerScore() {
-        return alethiometerScore;
-    }
-
-    public void setAlethiometerScore(int alethiometerScore) {
-        this.alethiometerScore = alethiometerScore;
-    }
-
-    public int getAlethiometerUserScore() {
-        return alethiometerUserScore;
-    }
-
-    public void setAlethiometerUserScore(int alethiometerUserScore) {
-        this.alethiometerUserScore = alethiometerUserScore;
-    }
-
-    public String getAuthorFullName() {
-        return authorFullName;
-    }
-
-    public void setAuthorFullName(String authorFullName) {
-        this.authorFullName = authorFullName;
-    }
-
-    public String getUserRole() {
-        return userRole;
-    }
-
-    public void setUserRole(String userRole) {
-        this.userRole = userRole;
-    }
-
-    public int getFollowersCount() {
-        return followersCount;
-    }
-
-    public void setFollowersCount(int followersCount) {
-        this.followersCount = followersCount;
-    }
-
-    public int getFriendsCount() {
-        return friendsCount;
-    }
-
-    public void setFriendsCount(int friendsCount) {
-        this.friendsCount = friendsCount;
-    }
-
-    public String getAvatarImage() {
-        return avatarImage;
-    }
-
-    public void setAvatarImage(String avatarImage) {
-        this.avatarImage = avatarImage;
-    }
-
-    public String getAvatarImageSmall() {
-        return avatarImageSmall;
-    }
-
-    public void setAvatarImageSmall(String avatarImageSmall) {
-        this.avatarImageSmall = avatarImageSmall;
-    }
-
-    public List<Vote> getVotes() {
-        return votes;
-    }
-
-    public void setVotes(List<Vote> votes) {
-        this.votes = votes;
-    }
+    
     
     public Double getLatitude() {
         if (location == null) {
@@ -700,43 +529,6 @@ public class Item implements JSONable {
             return null;
         }
         return location.getName();
-    }
-
-
-    /**
-     * @brief returns item's content
-     * @param void
-     * @return content
-     */
-    public String getContent() {
-        return content;
-    }
-
-    /**
-     * @brief sets item's content
-     * @param content
-     * @return void
-     */
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    /**
-     * @brief returns item's web link
-     * @param void
-     * @return webLink
-     */
-    public String getWebLink() {
-        return webLink;
-    }
-
-    /**
-     * @brief sets item's web link
-     * @param webLink
-     * @return void
-     */
-    public void setWebLink(String webLink) {
-        this.webLink = webLink;
     }
     
     // Creates the JSON representation of an Item

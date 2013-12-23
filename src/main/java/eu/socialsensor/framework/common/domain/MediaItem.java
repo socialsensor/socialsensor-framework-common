@@ -5,12 +5,8 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import eu.socialsensor.framework.common.domain.Feed.FeedType;
-import eu.socialsensor.framework.common.domain.feeds.KeywordsFeed;
-
 import java.io.Serializable;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -58,10 +54,6 @@ public class MediaItem implements JSONable, Serializable {
     @SerializedName(value = "reference")
     private String reference;
     
-//    @Expose
-//    @SerializedName(value = "refUrl")
-//    private String refUrl;
-    
     // The id of the user that posted the first Item that contains the MediaItem
     @Expose
     @SerializedName(value = "uid")
@@ -86,14 +78,6 @@ public class MediaItem implements JSONable, Serializable {
     @Expose
     @SerializedName(value = "type")  
     private String type;
-
-    @Expose
-    @SerializedName(value = "feedKeywords")
-    private List<String> feedKeywords = new ArrayList<String>();
-    
-    @Expose
-    @SerializedName(value = "feedKeywordsString")
-    private List<String> feedKeywordsString = new ArrayList<String>();
     
     // The publication time of the first item that share the media item
     @Expose
@@ -178,7 +162,7 @@ public class MediaItem implements JSONable, Serializable {
         this.url = url.toString();
 
         this.streamId = "Web";
-        this.id = "Web::" + url.hashCode();
+        this.id = "Web#" + url.hashCode();
 
         this.reference = page.getUrl();
         this.title = page.getTitle();
@@ -211,19 +195,6 @@ public class MediaItem implements JSONable, Serializable {
         mentions = tempMediaItem.getMentions();
 
         feed = tempMediaItem.getFeed();
-        
-        if (feed != null && feed.getFeedtype().equals(FeedType.KEYWORDS)) {
-        	if(((KeywordsFeed) feed).getKeywords() != null && !((KeywordsFeed) feed).getKeywords().isEmpty())
-	            for (Keyword feedKeyword : ((KeywordsFeed) feed).getKeywords()) {
-	                feedKeywords.add(feedKeyword.getName());
-	                feedKeywordsString.add(feedKeyword.getName());
-	            }
-        	else{
-        		feedKeywords.add(((KeywordsFeed) feed).getKeyword().getName());
-        		feedKeywordsString.add(((KeywordsFeed) feed).getKeyword().getName());
-        	}
-        }
-
     }
 
     public String getId() {
@@ -303,22 +274,6 @@ public class MediaItem implements JSONable, Serializable {
 
     public void setTags(String[] tags) {
         this.tags = tags;
-    }
-
-    public List<String> getFeedKeywords() {
-        return this.feedKeywords;
-    }
-
-    public void setFeedKeywords(List<String> feedKeywords) {
-        this.feedKeywords = feedKeywords;
-    }
-    
-    public List<String> getFeedKeywordsString() {
-        return this.feedKeywordsString;
-    }
-
-    public void setFeedKeywordsString(List<String> feedKeywordsString) {
-        this.feedKeywordsString = feedKeywordsString;
     }
 
     public boolean isVisualIndexed() {
