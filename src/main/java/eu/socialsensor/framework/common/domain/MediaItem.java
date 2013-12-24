@@ -170,32 +170,36 @@ public class MediaItem implements JSONable, Serializable {
         this.publicationTime = page.getDate().getTime();
     }
 
-    public MediaItem(URL url, MediaItem tempMediaItem) {
-
-        this.id = tempMediaItem.getId();
-        this.width = tempMediaItem.getWidth();
-        this.height = tempMediaItem.getHeight();
-        this.thumbnail = tempMediaItem.getThumbnail();
-        this.type = tempMediaItem.getType();
-        this.pageUrl = tempMediaItem.getPageUrl();
-
-        this.url = url.toString();
-
-        streamId = tempMediaItem.getStreamId();
-        reference = tempMediaItem.getRef();
-
-        description = tempMediaItem.getDescription();
-        tags = tempMediaItem.getTags();
-        title = tempMediaItem.getTitle();
-
-        publicationTime = tempMediaItem.getPublicationTime();
-
-        location = tempMediaItem.getLocation();
-
-        mentions = tempMediaItem.getMentions();
-
-        feed = tempMediaItem.getFeed();
-    }
+//    public MediaItem(URL url, MediaItem tempMediaItem) {
+//
+//        this.id = tempMediaItem.getId();
+//        this.width = tempMediaItem.getWidth();
+//        this.height = tempMediaItem.getHeight();
+//        this.thumbnail = tempMediaItem.getThumbnail();
+//        this.type = tempMediaItem.getType();
+//        this.pageUrl = tempMediaItem.getPageUrl();
+//
+//        this.url = url.toString();
+//
+//        this.streamId = tempMediaItem.getStreamId();
+//        this.reference = tempMediaItem.getRef();
+//
+//        StreamUser user = tempMediaItem.getUser();
+//        if(user != null)
+//        this.uid = user.getId();
+//        
+//        this.description = tempMediaItem.getDescription();
+//        this.tags = tempMediaItem.getTags();
+//        this.title = tempMediaItem.getTitle();
+//
+//        this.publicationTime = tempMediaItem.getPublicationTime();
+//
+//        this.location = tempMediaItem.getLocation();
+//
+//        this.mentions = tempMediaItem.getMentions();
+//
+//        this.feed = tempMediaItem.getFeed();
+//    }
 
     public String getId() {
         return id;
