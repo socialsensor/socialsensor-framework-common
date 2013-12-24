@@ -6,6 +6,7 @@ import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
 
 import eu.socialsensor.framework.common.domain.StreamUser.Category;
@@ -14,6 +15,7 @@ import eu.socialsensor.framework.common.domain.dysco.Entity;
 import java.io.IOException;
 import java.net.URL;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -640,7 +642,21 @@ public class Item implements JSONable {
 
 	    @Override
 	    public Date read(JsonReader in) throws IOException {
-	        return null;
+	    	return null;
+//	    	if (in.peek() == JsonToken.NULL) {
+//	    		in.nextNull();
+//	    		return null;
+//	    	}
+//	    	
+//	    	String dStr = in.nextString();
+//	    	Date date;
+//			try {
+//				date = df.parse(dStr);
+//			} catch (ParseException e) {	
+//				e.printStackTrace();
+//				return null;
+//			}
+//	    	return date;
 	    }
 	}
     
