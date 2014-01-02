@@ -13,10 +13,12 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
+import eu.socialsensor.framework.common.domain.Item.Operation;
+
 public class Document implements JSONable{
 	public enum Operation {
 
-        NEW_UPDATE("New"),
+        NEW("New"),
         DELETED("Deleted");
         private final String label;
 
@@ -32,6 +34,11 @@ public class Document implements JSONable{
 	 
 	 public Document(){
 		 
+	 }
+	 
+	 public Document(String sourceId,Operation operation){
+		 this.sourceId = sourceId;
+		 this.operation = operation;
 	 }
 	 
 	 // Unique id of an instance with the following structure: SourceName#internalId
@@ -68,6 +75,10 @@ public class Document implements JSONable{
      @Expose
      @SerializedName(value = "category")
      protected String category;
+     
+     // The operation associated with the DOCUMENT : NEW, UPDATE, DELETE
+     @SerializedName(value = "operation")
+     protected Operation operation;
      
      
      // Getters  & Setters for the fields of this class
