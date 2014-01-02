@@ -36,7 +36,7 @@ public class Document implements JSONable{
 		 
 	 }
 	 
-	 public Document(String sourceId,Operation operation){
+	 public Document(String newsFeedsource,Operation operation){
 		 this.sourceId = sourceId;
 		 this.operation = operation;
 	 }
@@ -79,7 +79,10 @@ public class Document implements JSONable{
      // The operation associated with the DOCUMENT : NEW, UPDATE, DELETE
      @SerializedName(value = "operation")
      protected Operation operation;
-     
+     //The type of newsFeedSource
+     @Expose
+     @SerializedName(value = "newsFeedSource")
+     protected String newsFeedSource;
      
      // Getters  & Setters for the fields of this class
 	 
@@ -137,6 +140,14 @@ public class Document implements JSONable{
 
      public void setCategory(String category) {
          this.category = category;
+     }
+     
+     public String getNewsFeedSource() {
+         return newsFeedSource;
+     }
+
+     public void setNewsFeedSource(String newsFeedSource) {
+         this.newsFeedSource = newsFeedSource;
      }
      
 	 // Creates the JSON representation of a Document
