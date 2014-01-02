@@ -48,4 +48,16 @@ public class Message implements JSONable{
         return gson.toJson(this);
     }
 
+
+	public static synchronized Message create(String json) {
+		Gson gson = new GsonBuilder()
+	    		.excludeFieldsWithoutExposeAnnotation()
+	    		.create();
+		
+		synchronized (gson) {
+		    Message message = gson.fromJson(json, Message.class);
+		    return message;
+		}
+	}
+
 }
