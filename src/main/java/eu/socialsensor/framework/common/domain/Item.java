@@ -211,8 +211,6 @@ public class Item implements JSONable {
     @SerializedName(value = "comments")
     protected String[] comments;
     
-    protected Feed feed;
-    protected String feedType;
     
     @Expose
     @SerializedName(value = "isSearched")
@@ -519,22 +517,6 @@ public class Item implements JSONable {
 
     public void setComments(String[] comments) {
         this.comments = comments;
-    }
-    
-    public Feed getFeed() {
-        return feed;
-    }
-
-    public void setFeed(Feed feed) {
-        this.feed = feed;
-    }
-
-    public String getFeedType() {
-        return feedType;
-    }
-
-    public void setFeed(String feedType) {
-        this.feedType = feedType;
     }
     
     public boolean getIsSearched() {
