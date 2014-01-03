@@ -17,7 +17,7 @@ public class URLFeed extends Feed{
 	
 	
 	public URLFeed(URL url, Date since, String id) {
-		super(since, Feed.FeedType.SOURCE);
+		super(since, Feed.FeedType.URL);
 		this.url = url;
 		this.id = id;
 	}
