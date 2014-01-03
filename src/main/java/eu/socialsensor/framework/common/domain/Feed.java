@@ -92,6 +92,6 @@ public class Feed implements JSONable {
 	}
 	
 	public enum FeedType {
-		LOCATION, KEYWORDS, SOURCE
+		LOCATION, KEYWORDS, SOURCE, URL
 	}
 }
