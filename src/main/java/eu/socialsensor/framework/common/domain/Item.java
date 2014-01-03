@@ -257,14 +257,6 @@ public class Item implements JSONable {
     protected String alethiometerUserStatus;
     
     @Expose
-    @SerializedName(value = "webLink")
-    protected String webLink;
-    
-    @Expose
-    @SerializedName(value = "content")
-    protected String content;
-    
-    @Expose
     @SerializedName(value = "positiveVotes")
     protected int positiveVotes = 0;
     
@@ -700,43 +692,6 @@ public class Item implements JSONable {
             return null;
         }
         return location.getName();
-    }
-
-
-    /**
-     * @brief returns item's content
-     * @param void
-     * @return content
-     */
-    public String getContent() {
-        return content;
-    }
-
-    /**
-     * @brief sets item's content
-     * @param content
-     * @return void
-     */
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    /**
-     * @brief returns item's web link
-     * @param void
-     * @return webLink
-     */
-    public String getWebLink() {
-        return webLink;
-    }
-
-    /**
-     * @brief sets item's web link
-     * @param webLink
-     * @return void
-     */
-    public void setWebLink(String webLink) {
-        this.webLink = webLink;
     }
     
     // Creates the JSON representation of an Item

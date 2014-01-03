@@ -38,22 +38,7 @@ public class KeywordsFeed extends Feed {
 		
 	
 	}
-	
-	public KeywordsFeed(Keyword keyword, Date since, String id,String dyscoId) {
-		super(since, Feed.FeedType.KEYWORDS);
-		this.keyword = keyword;
-		this.id = id;
-		this.dyscoId = dyscoId;
-	}
-	
-	public KeywordsFeed(List<String> keywords, Date since, String id,String dyscoId) {
-		super(since, Feed.FeedType.KEYWORDS);
-		this.id = id;
-		this.dyscoId = dyscoId;
-		for(String key : keywords)
-			this.keywords.add(new Keyword(key,0.0f));
-		
-	}
+
 	public Keyword getKeyword(){
 		return this.keyword;
 	}

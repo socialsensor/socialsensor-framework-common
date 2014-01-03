@@ -19,13 +19,6 @@ public class SourceFeed extends Feed {
 		this.source = source;
 		this.id = id;
 	}
-	
-	public SourceFeed(Source source, Date since, String id,String dyscoId) {
-		super(since, Feed.FeedType.SOURCE);
-		this.source = source;
-		this.id = id;
-		this.dyscoId = dyscoId;
-	}
 
 	public Source getSource() {
 		return this.source;

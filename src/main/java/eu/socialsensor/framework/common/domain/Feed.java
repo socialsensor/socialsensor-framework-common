@@ -29,12 +29,10 @@ public class Feed implements JSONable {
     @SerializedName(value = "id")
 	protected
 	String id = null;
-	@SerializedName(value = "dyscoId")
-	protected String dyscoId;
 	
 	@Expose
-    @SerializedName(value = "lastItemDate")
-	Date lastItemDate = null;
+    @SerializedName(value = "dateToRetrieve")
+	Date dateToRetrieve = null;
 	
 	@Expose
     @SerializedName(value = "totalNumberOfItems")
@@ -47,8 +45,8 @@ public class Feed implements JSONable {
 	// TODO
 	// Add Feed Profile Variables
 	
-	public Feed(Date lastItemDate, FeedType feedType) {
-		this.lastItemDate = lastItemDate;
+	public Feed(Date date, FeedType feedType) {
+		this.dateToRetrieve = date;
 		this.feedType = feedType;
 		
 	}
@@ -69,25 +67,14 @@ public class Feed implements JSONable {
 		this.id = id;
 	}
 	
-	public void setDyscoId(String dyscoId){
-		this.dyscoId = dyscoId;
-	}
-	public String getDyscoId(){
-		return dyscoId;
+	public Date getDateToRetrieve() {
+		return dateToRetrieve;
 	}
 	
-	public  Date getLastItemDate() {
-		return lastItemDate;
+	public void setDateToRetrieve(Date dateToRetrieve) {
+		this.dateToRetrieve = dateToRetrieve;
 	}
 	
-	public  void setLastItemDate(Date lastItemDate) {
-		this.lastItemDate = lastItemDate;
-	}
-	
-	public  void setLastItemDate(long lastItemDate) {
-		this.lastItemDate = new Date(lastItemDate);
-	}
-
 	public  Integer getTotalNumberOfItems() {
 		return this.totalNumberOfItems;
 	}
