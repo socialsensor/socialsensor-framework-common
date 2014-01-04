@@ -124,6 +124,11 @@ public class Item implements JSONable {
     @SerializedName(value = "links")
     protected URL[] links;
     
+    // The id of the original Item
+    @Expose
+    @SerializedName(value = "url")
+    protected String url;
+    
     // A set of WebPages contained in the Item
     // WebPage is a more detailed representation of URLs
     @SerializedName(value = "webPages")
@@ -613,6 +618,14 @@ public class Item implements JSONable {
 
     public void setUserRole(String userRole) {
         this.userRole = userRole;
+    }
+    
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public int getFollowersCount() {
