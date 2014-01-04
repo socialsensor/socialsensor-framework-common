@@ -1,6 +1,5 @@
 package eu.socialsensor.framework.common.domain.feeds;
 
-import java.net.URL;
 import java.util.Date;
 
 import com.google.gson.annotations.Expose;
@@ -13,20 +12,20 @@ public class URLFeed extends Feed{
 	
 	@Expose
     @SerializedName(value = "url")
-	private URL url = null;
+	private String url = null;
 	
 	
-	public URLFeed(URL url, Date since, String id) {
+	public URLFeed(String url, Date since, String id) {
 		super(since, Feed.FeedType.URL);
 		this.url = url;
 		this.id = id;
 	}
 
-	public URL getURL() {
+	public String getURL() {
 		return this.url;
 	}
 	
-	public void setURL(URL url) {
+	public void setURL(String url) {
 		this.url = url;
 	}
 }
