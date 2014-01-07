@@ -65,13 +65,18 @@
             <artifactId>mongo-java-driver</artifactId>
             <version>2.11.0</version>
         </dependency>
+      
         <dependency>
-        	<groupId>org.apache.lucene</groupId>
-        	<artifactId>lucene-core</artifactId>
-        	<version>4.0.0</version>
-        	<type>jar</type>
-        	<scope>compile</scope>
+            <groupId>org.apache.solr</groupId>
+            <artifactId>solr-core</artifactId>
+            <version>4.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.solr</groupId>
+            <artifactId>solr-solrj</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+       
     </dependencies>
     
     <repositories />
