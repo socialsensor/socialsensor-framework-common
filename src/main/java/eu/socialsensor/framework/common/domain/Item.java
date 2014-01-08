@@ -144,6 +144,11 @@ public class Item implements JSONable {
     @SerializedName(value = "lastUpdated")
     protected Date lastUpdated;
     
+    // The last time this Item has been updated
+    @Expose
+    @SerializedName(value = "insertionTime")
+    protected long insertionTime;
+    
     // The operation associated with Item : NEW, UPDATE, DELETE
     @SerializedName(value = "operation")
     protected Operation operation;
@@ -409,6 +414,14 @@ public class Item implements JSONable {
     
     public void setLastUpdated(Date lastUpdated) {
         this.lastUpdated = lastUpdated;
+    }
+    
+    public long getInsertionTime() {
+        return insertionTime;
+    }
+    
+    public void setInsertionTime(long insertionTime) {
+        this.insertionTime = insertionTime;
     }
     
     public Operation getOperation() {
