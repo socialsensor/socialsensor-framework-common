@@ -538,8 +538,8 @@ public class Item implements JSONable {
     public String toJSONString() {
         Gson gson = new GsonBuilder()
                 .excludeFieldsWithoutExposeAnnotation()
-                .registerTypeAdapter(Date.class, new DateSerializer())
-                //.setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+                //.registerTypeAdapter(Date.class, new DateSerializer())
+               //.setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
                 .create();
         return gson.toJson(this);
     }
