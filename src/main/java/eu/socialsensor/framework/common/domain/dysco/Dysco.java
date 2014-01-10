@@ -71,6 +71,10 @@ public class Dysco implements Serializable {
     @Expose
     @SerializedName(value = "solrQueryString")
     private String solrQueryString = null;
+   //The query that will be used for retrieving relevant author content to the Dysco from Solr
+    @Expose
+    @SerializedName(value = "solrQueryAuthorString")
+    private String solrQueryAuthorString = null;
     
     //The variable can get values 0,1,2 and shows dysco's trending evolution. 
     @Expose
@@ -244,6 +248,21 @@ public class Dysco implements Serializable {
      */
     public void setSolrQuery(String solrQueryString){
     	this.solrQueryString = solrQueryString;
+    	
+    }
+    /**
+     * Returns the query as a string for the retrieval of relevant author content to the dysco from solr
+     * @return String
+     */
+    public String getSolrQueryAuthorString(){
+    	return solrQueryAuthorString;
+    }
+    /**
+     * Sets the solr query as a string for the retrieval of relevant author content
+     * @param solrQuery
+     */
+    public void setSolrAuthorQuery(String solrQueryAuthorString){
+    	this.solrQueryAuthorString = solrQueryAuthorString;
     	
     }
     /**
