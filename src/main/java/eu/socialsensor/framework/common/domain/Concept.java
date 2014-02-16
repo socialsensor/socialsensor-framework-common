@@ -4,10 +4,14 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
 
 public class Concept implements JSONable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5465158762273290719L;
+	
 	@Expose
     @SerializedName(value = "concept")
 	ConceptType type;

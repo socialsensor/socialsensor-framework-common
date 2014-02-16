@@ -11,6 +11,11 @@ import com.mongodb.util.JSON;
 
 public class Location implements JSONable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5498463273172214031L;
+
 	@Expose
 	@SerializedName(value = "coordinates")
 	protected Coordinates coordinates = null;

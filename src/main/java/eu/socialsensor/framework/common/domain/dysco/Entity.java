@@ -15,7 +15,12 @@ import java.io.Serializable;
 */
 public class Entity implements Serializable, JSONable {
 
-    @Expose
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3592967668301392050L;
+	
+	@Expose
     @SerializedName(value = "name")
     private String name;
     @Expose

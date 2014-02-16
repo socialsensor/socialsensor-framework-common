@@ -10,6 +10,10 @@ import eu.socialsensor.framework.common.domain.Source;
 
 public class SourceFeed extends Feed {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4363371964818085331L;
 	@Expose
     @SerializedName(value = "source")
 	private Source source = null;

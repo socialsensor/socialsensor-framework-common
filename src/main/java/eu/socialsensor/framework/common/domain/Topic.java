@@ -12,18 +12,20 @@ import eu.socialsensor.framework.common.domain.JSONable;
 import eu.socialsensor.framework.common.domain.dysco.Entity;
 
 
-
 /**
  * \class Topic
  * Represents a topic that is extracted from clustering feeds
  * @author ailiakop
  * @email : ailiakop@iti.gr
  */
-
-
 public class Topic implements JSONable{
 	
-	 public enum Operation {
+	 /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3765334453642567755L;
+
+	public enum Operation {
 
 	        NEW_UPDATE("New"),
 	        DELETED("Deleted");

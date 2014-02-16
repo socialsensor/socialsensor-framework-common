@@ -8,7 +8,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import eu.socialsensor.framework.common.domain.dysco.Dysco;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +17,12 @@ import java.util.List;
  */
 public class PlatformUser implements JSONable {
 
-    @Expose
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 4242811597881167125L;
+	
+	@Expose
     @SerializedName(value = "name")
     String name;
     @Expose

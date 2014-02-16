@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
 
 import eu.socialsensor.framework.common.domain.JSONable;
 import java.util.ArrayList;
@@ -16,7 +15,13 @@ import java.util.List;
  */
 public class KeywordInfluencersPair implements JSONable {
 
-    @Expose
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -2843750626885344827L;
+	
+	
+	@Expose
     @SerializedName(value = "keyword")
     private String keyword;
     @Expose

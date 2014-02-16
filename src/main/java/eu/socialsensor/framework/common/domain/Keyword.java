@@ -5,7 +5,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
 
 /**
  * @author etzoannos - e.tzoannos@atc.gr
@@ -13,6 +12,11 @@ import com.google.gson.stream.JsonReader;
 
 public class Keyword implements JSONable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1625213135884629898L;
+
 	@Expose
 	@SerializedName(value = "keyword")
 	private String keyword;

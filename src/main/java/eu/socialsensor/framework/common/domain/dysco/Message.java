@@ -8,6 +8,12 @@ import com.google.gson.annotations.SerializedName;
 import eu.socialsensor.framework.common.domain.JSONable;
 
 public class Message implements JSONable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3327938995861757438L;
+	
+
 	@Expose
 	@SerializedName(value = "dyscoId")
 	String dyscoId;

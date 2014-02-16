@@ -7,6 +7,11 @@ import com.google.gson.annotations.SerializedName;
 
 public class Timeslot implements JSONable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1365145603400903535L;
+
 	@Expose
 	@SerializedName(value = "timeslotId")
 	protected String timeslotId;

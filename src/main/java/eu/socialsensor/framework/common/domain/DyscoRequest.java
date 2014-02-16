@@ -18,6 +18,12 @@ import eu.socialsensor.framework.common.domain.feeds.KeywordsFeed;
  */
 
 public class DyscoRequest implements JSONable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5167889038819588672L;
+
+
 	public enum Operation {
         NEW_UPDATE("New"),
         DELETED("Deleted");

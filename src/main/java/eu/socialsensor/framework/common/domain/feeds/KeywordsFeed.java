@@ -12,6 +12,11 @@ import eu.socialsensor.framework.common.domain.Keyword;
 
 public class KeywordsFeed extends Feed {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5059404751634794927L;
+
 	@Expose
     @SerializedName(value = "keywords")
 	private List<Keyword> keywords = new ArrayList<Keyword>();

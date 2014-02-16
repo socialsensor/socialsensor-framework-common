@@ -26,6 +26,11 @@ import eu.socialsensor.framework.common.domain.Item;
  */
 public class Dysco implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5651670120628672534L;
+	
 	//The id of the dysco
     @Expose
     @SerializedName(value = "id")

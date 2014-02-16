@@ -38,12 +38,9 @@ public class InfluentialContributorSet {
                     new InputStreamReader(new FileInputStream(filename), "UTF8"));
                 String next_line;
                 while((next_line=influencersReader.readLine())!=null){
-                    int n_words=0;
                     if((next_line.trim().length()>0)&&(next_line.startsWith("keywords:"))){
                         next_line=next_line.replaceFirst("keywords:", "");
                         next_line.trim();
-                        String[] parts=next_line.split(" ");
-                        n_words=parts.length;
                     }
                     next_line=influencersReader.readLine();
                     if((next_line!=null)&&(next_line.trim().length()>0)&&(next_line.startsWith("influencers:"))){

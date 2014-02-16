@@ -15,10 +15,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
 
 import eu.socialsensor.framework.common.domain.JSONable;
-import java.io.Serializable;
 import java.util.Comparator;
 
 /**
@@ -29,7 +27,12 @@ import java.util.Comparator;
  */
 public class Influencer implements JSONable {
 
-    public Influencer(String id, float score) {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -5159368664116513903L;
+
+	public Influencer(String id, float score) {
         super();
         this.id = id;
         this.score = score;

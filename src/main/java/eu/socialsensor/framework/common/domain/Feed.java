@@ -10,6 +10,11 @@ import com.google.gson.annotations.SerializedName;
 import eu.socialsensor.framework.common.domain.JSONable;
 
 public class Feed implements JSONable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3873933480345339247L;
+
 	public enum Operation {
         NEW_UPDATE("New"),
         DELETED("Deleted");
