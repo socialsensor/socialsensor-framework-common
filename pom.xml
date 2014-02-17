@@ -23,6 +23,11 @@
             <name>Manos Schinas</name>
             <email>manosetro</email>
         </developer>
+        <developer>
+            <id>ailiakop</id>
+            <name>Aikaterini Iliakopoulou</name>
+            <email>ailiakop@iti.gr</email>
+        </developer>
     </developers>
   
   <licenses>
