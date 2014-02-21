@@ -249,12 +249,6 @@ public class MediaItem implements JSONable, Serializable {
 
     public String getTitle() {
 
-        if (title != null) {
-            if (title.length() > 100) {
-                title = title.substring(0, 96) + "...";
-            }
-        }
-
         return title;
     }
 
