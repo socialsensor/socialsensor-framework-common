@@ -88,6 +88,10 @@ public class Dysco implements Serializable {
     //List of the items that compose the Dysco - serve for dysco's formulation, 
     //therefore they are stored temporarily in memory
     private List<Item> items = new ArrayList<Item>();
+    
+    
+    private String listId = "";
+    
 
     public enum DyscoType{
     	CUSTOM, TRENDING
@@ -334,7 +338,19 @@ public class Dysco implements Serializable {
     public void setDyscoType(DyscoType dyscoType){
     	this.dyscoType = dyscoType;
     }
+
+    public String getListId() {
+        return listId;
+    }
+
+    public void setListId(String listId) {
+        this.listId = listId;
+    }
+
    
+   
+    
+
     public String toString() {
     	String dyscoString = "Id: "+id+"\n";
     	dyscoString += "Creation date: "+creationDate+"\n";
