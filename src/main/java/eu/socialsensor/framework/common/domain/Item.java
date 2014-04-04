@@ -83,6 +83,11 @@ public class Item implements JSONable {
     @SerializedName(value = "description")
     protected String description;
     
+    // The url of the page of this Item
+    @Expose
+    @SerializedName(value = "pageUrl")
+    protected String pageUrl;
+    
     // A set of tags associated with an Item
     @Expose
     @SerializedName(value = "tags")
