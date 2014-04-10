@@ -17,6 +17,10 @@ public class MediaCluster implements JSONable, Serializable {
 	private static final long serialVersionUID = -7926531925761955502L;
 
 
+	public MediaCluster(String id) {
+		this.id = id;
+	}
+	
 	// Unique id of a Media cluster
 	@Expose
 	@SerializedName(value = "id")

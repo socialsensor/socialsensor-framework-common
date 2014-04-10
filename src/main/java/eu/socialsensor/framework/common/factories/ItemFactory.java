@@ -9,6 +9,7 @@ import eu.socialsensor.framework.common.domain.Expert;
 import eu.socialsensor.framework.common.domain.Feed;
 import eu.socialsensor.framework.common.domain.Item;
 import eu.socialsensor.framework.common.domain.Keyword;
+import eu.socialsensor.framework.common.domain.MediaCluster;
 import eu.socialsensor.framework.common.domain.MediaItem;
 import eu.socialsensor.framework.common.domain.PlatformUser;
 import eu.socialsensor.framework.common.domain.Source;
@@ -46,6 +47,13 @@ public class ItemFactory {
         }
     }
 
+    public static MediaCluster createMediaCluster(String json) {
+        synchronized (gson) {
+        	MediaCluster mediaCluster = gson.fromJson(json, MediaCluster.class);
+            return mediaCluster;
+        }
+    }
+    
     public static synchronized StreamUser createUser(String json) {
         synchronized (gson) {
             StreamUser item = gson.fromJson(json, StreamUser.class);
