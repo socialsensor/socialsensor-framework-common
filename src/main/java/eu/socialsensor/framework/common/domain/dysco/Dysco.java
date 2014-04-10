@@ -13,6 +13,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import eu.socialsensor.framework.common.domain.Item;
+import eu.socialsensor.framework.common.domain.Query;
 
 /**
  * This class specifies a representation of the DySCO model, as defined by
@@ -75,6 +76,10 @@ public class Dysco implements Serializable {
     @Expose
     @SerializedName(value = "solrQueryAuthorString")
     private String solrQueryAuthorString = null;
+    
+    @Expose
+    @SerializedName(value = "solrQueries")
+    private List<Query> solrQueries = null;
     
     //The variable can get values 0,1,2 and shows dysco's trending evolution. 
     @Expose
@@ -254,6 +259,23 @@ public class Dysco implements Serializable {
     	this.solrQueryString = solrQueryString;
     	
     }
+    
+    /**
+     * Returns the solr queries for the retrieval of relevant content to the dysco from solr
+     * @return String
+     */
+    public List<Query> getSolrQueries(){
+    	return solrQueries;
+    }
+    /**
+     * Sets the solr query for the retrieval of relevant content
+     * @param solrQuery
+     */
+    public void setSolrQueries(List<Query> solrQueries){
+    	this.solrQueries = solrQueries;
+    	
+    }
+    
     /**
      * Returns the query as a string for the retrieval of relevant author content to the dysco from solr
      * @return String
