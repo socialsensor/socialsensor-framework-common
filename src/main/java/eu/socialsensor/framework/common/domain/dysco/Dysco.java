@@ -80,6 +80,9 @@ public class Dysco implements Serializable {
     @Expose
     @SerializedName(value = "solrQueries")
     private List<Query> solrQueries = new ArrayList<Query>();
+    @Expose
+    @SerializedName(value = "primalSolrQueries")
+    private List<Query> primalSolrQueries = new ArrayList<Query>();
     
     //The variable can get values 0,1,2 and shows dysco's trending evolution. 
     @Expose
@@ -273,6 +276,22 @@ public class Dysco implements Serializable {
      */
     public void setSolrQueries(List<Query> solrQueries){
     	this.solrQueries = solrQueries;
+    	
+    }
+    
+    /**
+     * Returns the solr queries for the retrieval of relevant content to the dysco from solr
+     * @return String
+     */
+    public List<Query> getPrimalSolrQueries(){
+    	return primalSolrQueries;
+    }
+    /**
+     * Sets the solr query for the retrieval of relevant content
+     * @param solrQuery
+     */
+    public void setPrimalSolrQueries(List<Query> primalSolrQueries){
+    	this.primalSolrQueries = primalSolrQueries;
     	
     }
     

@@ -15,6 +15,11 @@ public class Query implements JSONable{
 		
 	}
 	
+	public Query(String name,Double score){
+		this.name = name;
+		this.score = score;
+	}
+	
 	@Expose
     @SerializedName(value = "name")
     protected String name;
