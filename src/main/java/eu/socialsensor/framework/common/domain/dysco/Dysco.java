@@ -79,7 +79,7 @@ public class Dysco implements Serializable {
     
     @Expose
     @SerializedName(value = "solrQueries")
-    private List<Query> solrQueries = null;
+    private List<Query> solrQueries = new ArrayList<Query>();
     
     //The variable can get values 0,1,2 and shows dysco's trending evolution. 
     @Expose
