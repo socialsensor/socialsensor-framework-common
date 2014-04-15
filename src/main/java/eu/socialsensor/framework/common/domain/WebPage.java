@@ -28,6 +28,11 @@ public class WebPage implements JSONable, Comparable<WebPage> {
     @SerializedName(value = "expandedUrl")
     private String expandedUrl;
     
+	// The expanded version of URL
+    @Expose
+    @SerializedName(value = "domain")
+    private String domain;
+    
     // The title extracted from the WebPage
     @Expose
     @SerializedName(value = "title")
@@ -37,6 +42,16 @@ public class WebPage implements JSONable, Comparable<WebPage> {
     @Expose
     @SerializedName(value = "text")
     private String text;
+    
+    // A flag that indicates whether this web page contains an article
+    @Expose
+    @SerializedName(value = "article")
+    private boolean article;
+    
+    // Number of media contained in this web page
+    @Expose
+    @SerializedName(value = "media")
+    private int media = 0;
     
     // The title extracted from the WebPage
     @Expose
@@ -89,6 +104,14 @@ public class WebPage implements JSONable, Comparable<WebPage> {
         this.expandedUrl = expandedUrl;
     }
 
+    public String getDomain() {
+        return this.domain;
+    }
+
+    public void setDomain(String domain) {
+        this.domain = domain;
+    }
+    
     public String getStreamId() {
         return streamId;
     }
@@ -121,6 +144,23 @@ public class WebPage implements JSONable, Comparable<WebPage> {
         this.text = text;
     }
 
+    public Boolean isArticle() {
+        return article;
+    }
+
+    public void setArticle(Boolean article) {
+        this.article = article;
+    }
+
+
+    public int getMedia() {
+        return media;
+    }
+
+    public void setMedia(int media) {
+        this.media = media;
+    }
+    
     public String[] getKeywords() {
         return keywords;
     }
@@ -145,6 +185,14 @@ public class WebPage implements JSONable, Comparable<WebPage> {
         this.reference = reference;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+    
     @Override
     public String toJSONString() {
         Gson gson = new GsonBuilder()
