@@ -111,7 +111,7 @@ public class Item implements JSONable {
     protected URL[] links;
     // The id of the original Item
     @Expose
-    @SerializedName(value = "url")
+    @SerializedName(value = "pageUrl")
     protected String url;
     // A set of WebPages contained in the Item
     // WebPage is a more detailed representation of URLs
