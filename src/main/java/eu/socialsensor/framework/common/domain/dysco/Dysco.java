@@ -251,14 +251,14 @@ public class Dysco implements Serializable {
      * Returns the query as a string for the retrieval of relevant content to the dysco from solr
      * @return String
      */
-    public String getSolrQuery(){
+    public String getSolrQueryString(){
     	return solrQueryString;
     }
     /**
      * Sets the solr query as a string for the retrieval of relevant content
      * @param solrQuery
      */
-    public void setSolrQuery(String solrQueryString){
+    public void setSolrQueryString(String solrQueryString){
     	this.solrQueryString = solrQueryString;
     	
     }
