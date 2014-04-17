@@ -32,6 +32,10 @@ public class Concept implements JSONable {
 		this.score = score;
 	}
 	
+	public String getConcept() {
+		return type.toString();
+	}
+	
 	@Override
 	public String toJSONString() {
 		Gson gson = new GsonBuilder()
