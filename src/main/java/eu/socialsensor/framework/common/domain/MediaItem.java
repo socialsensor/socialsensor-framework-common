@@ -5,9 +5,6 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import eu.socialsensor.framework.common.domain.Feed.FeedType;
-import eu.socialsensor.framework.common.domain.feeds.KeywordsFeed;
-
 import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
@@ -422,6 +419,12 @@ public class MediaItem implements JSONable, Serializable {
         this.concepts = concepts;
     }
 
+    public void addConcept(Concept concept) {
+    	if(concepts == null)
+    		concepts = new ArrayList<Concept>();
+    	concepts.add(concept);
+    }
+    
     public Feed getFeed() {
         return feed;
     }

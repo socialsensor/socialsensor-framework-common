@@ -16,8 +16,15 @@ public class Concept implements JSONable {
 	Double score;
 
 	public enum ConceptType {
-	    WAR, ELECTIONS, RIOTS, TSUNAMI,
-	    HURRICANE, VOLCANIC_ERUPTION 
+		Selfie, 
+		Porn, 
+		Messages, 
+		Memes,
+		Keepcalm, 
+		Graphics, 
+		Crowd, 
+		Logos, 
+		Nature
 	}
 	
 	public Concept(ConceptType type, Double score) {
@@ -33,15 +40,4 @@ public class Concept implements JSONable {
 		return gson.toJson(this);
 	}
 	
-	
-	public static void main(String[] args) {
-		
-		Concept concept1 = new Concept(ConceptType.WAR, 0.74209);
-		Concept concept2 = new Concept(ConceptType.VOLCANIC_ERUPTION, 0.5325);
-		Concept concept3 = new Concept(ConceptType.TSUNAMI, 0.6091);
-		
-		System.out.println(concept1.toJSONString());
-		System.out.println(concept2.toJSONString());
-		System.out.println(concept3.toJSONString());
-	}
 }

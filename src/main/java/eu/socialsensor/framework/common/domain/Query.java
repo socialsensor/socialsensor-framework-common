@@ -7,8 +7,6 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import eu.socialsensor.framework.common.domain.Item.DateSerializer;
-
 public class Query implements JSONable{
 
 	public Query(){
@@ -48,7 +46,7 @@ public class Query implements JSONable{
     public String toJSONString() {
         Gson gson = new GsonBuilder()
                 .excludeFieldsWithoutExposeAnnotation()
-                .registerTypeAdapter(Date.class, new DateSerializer())
+                //.registerTypeAdapter(Date.class, new DateSerializer())
                 //.setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
                 .create();
         return gson.toJson(this);
