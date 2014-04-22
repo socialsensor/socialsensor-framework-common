@@ -122,9 +122,9 @@ public class Item implements JSONable {
     @SerializedName(value = "publicationTime")
     protected long publicationTime;
     // The last time this Item has been updated
-    @Expose
-    @SerializedName(value = "lastUpdated")
-    protected Date lastUpdated;
+    //@Expose
+    //@SerializedName(value = "lastUpdated")
+    //protected Date lastUpdated;
     // The last time this Item has been updated
     @Expose
     @SerializedName(value = "insertionTime")
@@ -354,13 +354,13 @@ public class Item implements JSONable {
         this.publicationTime = publicationTime;
     }
 
-    public Date getLastUpdated() {
-        return lastUpdated;
-    }
+    //public Date getLastUpdated() {
+    //    return lastUpdated;
+    //}
 
-    public void setLastUpdated(Date lastUpdated) {
-        this.lastUpdated = lastUpdated;
-    }
+    //public void setLastUpdated(Date lastUpdated) {
+    //    this.lastUpdated = lastUpdated;
+    //}
 
     public long getInsertionTime() {
         return insertionTime;
@@ -652,7 +652,7 @@ public class Item implements JSONable {
     public String toJSONString() {
         Gson gson = new GsonBuilder()
                 .excludeFieldsWithoutExposeAnnotation()
-                .registerTypeAdapter(Date.class, new DateSerializer())
+                //.registerTypeAdapter(Date.class, new DateSerializer())
                 //.setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
                 .create();
         return gson.toJson(this);
@@ -736,6 +736,7 @@ public class Item implements JSONable {
 
     }
 
+    /*
     public static class DateSerializer extends TypeAdapter<Date> {
 
         private static DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
@@ -756,4 +757,5 @@ public class Item implements JSONable {
             return null;
         }
     }
+    */
 }

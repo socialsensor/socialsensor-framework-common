@@ -5,9 +5,6 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import eu.socialsensor.framework.common.domain.Feed.FeedType;
-import eu.socialsensor.framework.common.domain.feeds.KeywordsFeed;
-
 import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
@@ -24,53 +21,43 @@ import java.util.List;
 public class MediaItem implements JSONable, Serializable {
 
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 7811714823188242818L;
-
-	// Unique id of an MediaItem with the following structure: StreamName#internalId
-	@Expose
+     *
+     */
+    private static final long serialVersionUID = 7811714823188242818L;
+    // Unique id of an MediaItem with the following structure: StreamName#internalId
+    @Expose
     @SerializedName(value = "id")
     private String id;
-    
-	// The URL of a media item
+    // The URL of a media item
     @Expose
     @SerializedName(value = "url")
     private String url;
-    
     // Thumbnail version of a media item
     @Expose
     @SerializedName(value = "thumbnail")
     private String thumbnail;
-    
     // The URL of the page that contains the media item
     @Expose
     @SerializedName(value = "pageUrl")
     private String pageUrl;
-    
     // The name of the stream that a Media Item comes from
     @Expose
     @SerializedName(value = "streamId")
     private String streamId;
-    
     // The id of the first Item that contains the MediaItem
     @Expose
     @SerializedName(value = "reference")
     private String reference;
-    
 //    @Expose
 //    @SerializedName(value = "refUrl")
 //    private String refUrl;
-    
     // The id of the user that posted the first Item that contains the MediaItem
     @Expose
     @SerializedName(value = "uid")
     private String uid;
-
     // A detailed instance of the user of an Item
     // This field is not exposed in mongodb
     private StreamUser streamUser;
-    
     // Textual information
     @Expose
     @SerializedName(value = "title")
@@ -81,85 +68,66 @@ public class MediaItem implements JSONable, Serializable {
     @Expose
     @SerializedName(value = "tags")
     private String[] tags;
-    
     // The type of a media item. Can only be image/video
     @Expose
-    @SerializedName(value = "type")  
+    @SerializedName(value = "type")
     private String type;
-    
     // The publication time of the first item that share the media item
     @Expose
     @SerializedName(value = "publicationTime")
     private long publicationTime;
-    
-    
     @Expose
     @SerializedName(value = "mentions")
     private String[] mentions;
-    
     // Popularity values
     @Expose
     @SerializedName(value = "likes")
     protected Long likes = 0L;
-    
     @Expose
     @SerializedName(value = "shares")
     protected Long shares = 0L;
-    
     @Expose
     @SerializedName(value = "comments")
     protected Long comments = 0L;
-    
     @Expose
     @SerializedName(value = "views")
     protected Long views = 0L;
-    
     @Expose
     @SerializedName(value = "ratings")
     protected Float ratings = 0F;
-    
     // The sentiment value of a MediaItem
     @Expose
     @SerializedName(value = "sentiment")
     protected int sentiment;
-    
     // A list of concepts related to the MediaItem
     @Expose
     @SerializedName(value = "concepts")
     private List<Concept> concepts = null;
-    
     // Geo information 
     @Expose
     @SerializedName(value = "location")
     private Location location;
-    
     // Size of the Media item
     @Expose
     @SerializedName(value = "width")
     private Integer width;
-    
     @Expose
     @SerializedName(value = "height")
     private Integer height;
-    
     // Indicated whether a MediaItem has been inserted into the visual index
     @Expose
     @SerializedName(value = "vIndexed")
     private Boolean vIndexed = Boolean.FALSE;
-    
- // Indicated whether a MediaItem has been inserted into Solr
+    // Indicated whether a MediaItem has been inserted into Solr
     @Expose
     @SerializedName(value = "indexed")
     private Boolean indexed = Boolean.FALSE;
-    
     // The fetching status of a MediaItem
     @Expose
     @SerializedName(value = "status")
     private String status = "new";
-    
     private int source;
-    
-	private Feed feed;
+    private Feed feed;
 
     public MediaItem(URL url) {
         this.url = url.toString();
@@ -203,8 +171,8 @@ public class MediaItem implements JSONable, Serializable {
         mentions = tempMediaItem.getMentions();
 
         feed = tempMediaItem.getFeed();
-        
-      
+
+
     }
 
     public String getId() {
@@ -285,17 +253,17 @@ public class MediaItem implements JSONable, Serializable {
     }
 
     public void setVisualIndexed(boolean vIndexed) {
-    	this.vIndexed = vIndexed;
+        this.vIndexed = vIndexed;
     }
-    
+
     public boolean isIndexed() {
         return indexed;
     }
 
     public void setIndexed(boolean indexed) {
-    	this.indexed = indexed;
+        this.indexed = indexed;
     }
-    
+
     public void setMentions(String[] mentions) {
         this.mentions = mentions;
     }
@@ -315,6 +283,7 @@ public class MediaItem implements JSONable, Serializable {
     public Float getRatings() {
         return ratings;
     }
+
     public Long getViews() {
         return views;
     }
@@ -330,7 +299,7 @@ public class MediaItem implements JSONable, Serializable {
     public void setComments(Long comments) {
         this.comments = comments;
     }
-    
+
     public void setRatings(Float ratings) {
         this.ratings = ratings;
     }
@@ -412,7 +381,7 @@ public class MediaItem implements JSONable, Serializable {
     public String[] getMentions() {
         return this.mentions;
     }
-    
+
     public String getUserId() {
         return uid;
     }
@@ -420,7 +389,7 @@ public class MediaItem implements JSONable, Serializable {
     public void setUserId(String uid) {
         this.uid = uid;
     }
-    
+
     public StreamUser getUser() {
         return streamUser;
     }
@@ -428,7 +397,7 @@ public class MediaItem implements JSONable, Serializable {
     public void setUser(StreamUser streamUser) {
         this.streamUser = streamUser;
     }
-    
+
     public Integer getWidth() {
         return width;
     }
@@ -450,6 +419,12 @@ public class MediaItem implements JSONable, Serializable {
         this.concepts = concepts;
     }
 
+    public void addConcept(Concept concept) {
+    	if(concepts == null)
+    		concepts = new ArrayList<Concept>();
+    	concepts.add(concept);
+    }
+    
     public Feed getFeed() {
         return feed;
     }
@@ -457,7 +432,7 @@ public class MediaItem implements JSONable, Serializable {
     public void setFeed(Feed feed) {
         this.feed = feed;
     }
-    
+
     public int getSource() {
         return source;
     }

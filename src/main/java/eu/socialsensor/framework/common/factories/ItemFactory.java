@@ -16,8 +16,11 @@ import eu.socialsensor.framework.common.domain.PlatformUser;
 import eu.socialsensor.framework.common.domain.Source;
 import eu.socialsensor.framework.common.domain.StreamUser;
 import eu.socialsensor.framework.common.domain.Timeslot;
+import eu.socialsensor.framework.common.domain.Topic;
 import eu.socialsensor.framework.common.domain.Vote;
+import eu.socialsensor.framework.common.domain.WebPage;
 import eu.socialsensor.framework.common.influencers.Influencer;
+import eu.socialsensor.framework.common.influencers.KeywordInfluencersPair;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -62,6 +65,13 @@ public class ItemFactory {
         }
     }
     
+    public static synchronized WebPage createWebPage(String json) {
+    	synchronized (gson) {
+    		WebPage webPage = gson.fromJson(json, WebPage.class);
+    	    	return webPage;
+    	}
+    }
+    
     public static synchronized StreamUser createUser(String json) {
         synchronized (gson) {
             StreamUser item = gson.fromJson(json, StreamUser.class);
@@ -90,6 +100,13 @@ public class ItemFactory {
         }
     }
 
+    public static synchronized KeywordInfluencersPair createKeywordInfluencersPair(String json) {
+    	synchronized (gson) {
+    		KeywordInfluencersPair pair = gson.fromJson(json, KeywordInfluencersPair.class);
+    		return pair;
+    	}
+    }
+    
     public static synchronized Keyword createKeyword(String json) {
         synchronized (gson) {
             Keyword keyword = gson.fromJson(json, Keyword.class);
@@ -104,6 +121,13 @@ public class ItemFactory {
         }
     }
 
+    public static synchronized Topic createTopic(String json) {
+    	synchronized (gson) {
+    		Topic topic = gson.fromJson(json, Topic.class);
+    		return topic;
+    	}
+    }
+    
     public static synchronized Expert createExpert(String json) {
         synchronized (gson) {
         	Expert expert = gson.fromJson(json, Expert.class);
