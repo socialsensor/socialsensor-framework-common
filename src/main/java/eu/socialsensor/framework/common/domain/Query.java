@@ -26,6 +26,10 @@ public class Query implements JSONable{
     @SerializedName(value = "score")
     protected Double score;
 	
+	@Expose
+    @SerializedName(value = "type")
+    protected Type type;
+	
 	public String getName(){
 		return name;
 	}
@@ -42,6 +46,14 @@ public class Query implements JSONable{
 		this.score = score;
 	}
 	
+	public Type getType(){
+		return type;
+	}
+	
+	public void setType(Type type){
+		this.type = type;
+	}
+	
  	@Override
     public String toJSONString() {
         Gson gson = new GsonBuilder()
@@ -51,5 +63,9 @@ public class Query implements JSONable{
                 .create();
         return gson.toJson(this);
     }
+ 	
+ 	public enum Type{
+ 		Keywords, Contributors
+ 	}
 
 }
