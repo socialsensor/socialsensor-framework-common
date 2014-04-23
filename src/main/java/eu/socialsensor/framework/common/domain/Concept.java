@@ -27,6 +27,11 @@ public class Concept implements JSONable {
 		Nature
 	}
 	
+	public Concept(String type, Double score) {
+		this.type = ConceptType.valueOf(type);
+		this.score = score;
+	}
+	
 	public Concept(ConceptType type, Double score) {
 		this.type = type;
 		this.score = score;

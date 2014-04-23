@@ -28,6 +28,10 @@ public class Source implements JSONable {
 	@SerializedName(value = "score")
 	private float score;
 	 
+	@Expose
+	@SerializedName(value = "source")
+	private String streamId;
+	
 	public Source(String name, float score) {
 		this.name = name;
 		this.score = score;
@@ -63,6 +67,14 @@ public class Source implements JSONable {
 
 	public void setScore(float score) {
 		this.score = score;
+	}
+	
+	public String getStreamId() {
+		return streamId;
+	}
+
+	public void setStreamId(String streamId) {
+		this.streamId = streamId;
 	}
 	
 	@Override
