@@ -18,7 +18,7 @@ public class WebPage implements JSONable, Comparable<WebPage> {
 	 */
 	private static final long serialVersionUID = -8783341713025378581L;
 	
-	// The URL of a WebPage. This is usuually a short URL
+	// The URL of a WebPage. This is usually a short URL
 	@Expose
     @SerializedName(value = "url")
     private String url;
@@ -52,6 +52,11 @@ public class WebPage implements JSONable, Comparable<WebPage> {
     @Expose
     @SerializedName(value = "media")
     private int media = 0;
+
+    // Number of media contained in this web page
+    @Expose
+    @SerializedName(value = "mediaIds")
+    private String[] mediaIds;
     
     // The title extracted from the WebPage
     @Expose
@@ -159,6 +164,14 @@ public class WebPage implements JSONable, Comparable<WebPage> {
 
     public void setMedia(int media) {
         this.media = media;
+    }
+    
+    public String[] getMediaIds() {
+        return mediaIds;
+    }
+
+    public void setMediaIds(String[] mediaIds) {
+    	this.mediaIds = mediaIds;
     }
     
     public String[] getKeywords() {
