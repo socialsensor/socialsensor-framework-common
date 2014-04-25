@@ -103,6 +103,10 @@ public class MediaItem implements JSONable, Serializable {
     @Expose
     @SerializedName(value = "concepts")
     private List<Concept> concepts = null;
+    // Id of the Visual Cluster
+    @Expose
+    @SerializedName(value = "clusterId")
+    private String clusterId = null;
     // Geo information 
     @Expose
     @SerializedName(value = "location")
@@ -423,6 +427,14 @@ public class MediaItem implements JSONable, Serializable {
     	if(concepts == null)
     		concepts = new ArrayList<Concept>();
     	concepts.add(concept);
+    }
+    
+    public String getClusterId() {
+        return clusterId;
+    }
+
+    public void setClusterId(String clusterId) {
+        this.clusterId = clusterId;
     }
     
     public Feed getFeed() {
