@@ -88,7 +88,7 @@ public class StreamUser implements JSONable, Serializable {
     // The number of Items posted from the user
     @Expose
     @SerializedName(value = "items")
-    protected Integer items;
+    protected Integer items = 0;
     
     // The profile image of a user
     @Expose
