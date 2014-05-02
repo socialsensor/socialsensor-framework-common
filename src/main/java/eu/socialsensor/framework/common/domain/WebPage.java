@@ -58,6 +58,11 @@ public class WebPage implements JSONable, Comparable<WebPage> {
     @SerializedName(value = "mediaIds")
     private String[] mediaIds;
     
+    // A representative mediaThumbnail
+    @Expose
+    @SerializedName(value = "mediaThumbnail")
+    private String mediaThumbnail;
+    
     // The title extracted from the WebPage
     @Expose
     @SerializedName(value = "keywords")
@@ -172,6 +177,14 @@ public class WebPage implements JSONable, Comparable<WebPage> {
 
     public void setMediaIds(String[] mediaIds) {
     	this.mediaIds = mediaIds;
+    }
+    
+    public String getMediaThumbnail() {
+        return mediaThumbnail;
+    }
+
+    public void setMediaThumbnail(String mediaThumbnail) {
+    	this.mediaThumbnail = mediaThumbnail;
     }
     
     public String[] getKeywords() {
