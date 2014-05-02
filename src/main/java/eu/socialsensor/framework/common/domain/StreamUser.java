@@ -226,6 +226,10 @@ public class StreamUser implements JSONable, Serializable {
         this.items = items;
     }
     
+    public void incItems(Integer items) {
+        this.items += items;
+    }
+    
     public String getProfileImage() {
         return profileImage;
     }
@@ -313,6 +317,10 @@ public class StreamUser implements JSONable, Serializable {
         this.mentions = mentions;
     }
     
+    public void incMentions(Long mentions) {
+        this.mentions += mentions;
+    }
+    
     public Long getFriends() {
         return friends;
     }
@@ -343,6 +351,10 @@ public class StreamUser implements JSONable, Serializable {
 
     public void setShares(Long shares) {
         this.shares = shares;
+    }
+    
+    public void incShares(Long shares) {
+        this.shares += shares;
     }
     
     public void setVerified(Boolean verified) {
