@@ -1,5 +1,5 @@
 package eu.socialsensor.framework.common.domain;
 
 public enum RankingValue {
-	Default, Popularity, Concept, Recency, Relevance
+	Default, Popularity, Recency, Relevance
 }
