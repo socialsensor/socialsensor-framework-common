@@ -19,6 +19,10 @@ import java.util.List;
  *
  */
 public class MediaItem implements JSONable, Serializable {
+	
+	public MediaItem(){
+		
+	}
 
     /**
      *
