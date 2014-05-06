@@ -146,7 +146,7 @@ public class MediaItem implements JSONable, Serializable {
         this.url = url.toString();
 
         this.streamId = "Web";
-        this.id = "Web::" + url.hashCode();
+        this.id = "Web#" + url.hashCode();
 
         this.reference = page.getUrl();
         this.title = page.getTitle();
