@@ -19,10 +19,6 @@ import java.util.List;
  *
  */
 public class MediaItem implements JSONable, Serializable {
-	
-	public MediaItem(){
-		
-	}
 
     /**
      *
@@ -137,6 +133,10 @@ public class MediaItem implements JSONable, Serializable {
     private int source;
     private Feed feed;
 
+	public MediaItem() {
+		
+	}
+	
     public MediaItem(URL url) {
         this.url = url.toString();
     }
