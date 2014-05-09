@@ -4,7 +4,7 @@
 
     <groupId>eu.socialsensor</groupId>
     <artifactId>socialsensor-framework-common</artifactId>
-    <version>0.2-SNAPSHOT</version>
+    <version>0.2.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>socialsensor-framework-common</name>
