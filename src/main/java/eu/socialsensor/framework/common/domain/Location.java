@@ -1,15 +1,15 @@
 package eu.socialsensor.framework.common.domain;
 
-import java.util.Map;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.mongodb.DBObject;
 import com.mongodb.util.JSON;
+import java.io.Serializable;
+import java.util.Map;
 
-public class Location implements JSONable {
+public class Location implements JSONable, Serializable{
 
 	@Expose
 	@SerializedName(value = "coordinates")
@@ -112,7 +112,7 @@ public class Location implements JSONable {
 	}
 	
 	
-	private static class Coordinates {
+	private static class Coordinates implements Serializable{
 		
 		public Coordinates() {
 			

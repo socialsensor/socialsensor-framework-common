@@ -219,50 +219,53 @@ public class WebPage implements JSONable, Comparable<WebPage> {
     }
 
     public String getLifeDuration() {
-        Long now = new Date().getTime();
-        Long difference = now - date.getTime();
-
         String result = "";
-        if (difference > (30L * 24 * 60L * 60L * 1000L)) {
 
-            Long inMonths = difference / (30L * 24L * 60L * 60L * 1000L);
+        if (date != null) {
+            Long now = new Date().getTime();
+            Long difference = now - date.getTime();
 
-            if (inMonths > 1) {
-                result = inMonths + " months";
+            if (difference > (30L * 24 * 60L * 60L * 1000L)) {
+
+                Long inMonths = difference / (30L * 24L * 60L * 60L * 1000L);
+
+                if (inMonths > 1) {
+                    result = inMonths + " months";
+                } else {
+                    result = inMonths + " month";
+                }
+
+            } else if (difference > (24 * 60L * 60L * 1000L)) {
+
+                Long inDays = difference / (24L * 60L * 60L * 1000L);
+
+                if (inDays > 1) {
+                    result = inDays + " days";
+                } else {
+                    result = inDays + " day";
+                }
+
+            } else if (difference > (60L * 60L * 1000L)) {
+
+                Long inHours = difference / (60L * 60L * 1000L);
+
+                if (inHours > 1) {
+                    result = inHours + " hours";
+                } else {
+                    result = inHours + " hour";
+                }
+
             } else {
-                result = inMonths + " month";
+
+                Long inMinutes = difference / (60L * 1000L);
+
+                if (inMinutes > 1) {
+                    result = inMinutes + " mins";
+                } else {
+                    result = inMinutes + " min";
+                }
+
             }
-
-        } else if (difference > (24 * 60L * 60L * 1000L)) {
-
-            Long inDays = difference / (24L * 60L * 60L * 1000L);
-
-            if (inDays > 1) {
-                result = inDays + " days";
-            } else {
-                result = inDays + " day";
-            }
-
-        } else if (difference > (60L * 60L * 1000L)) {
-
-            Long inHours = difference / (60L * 60L * 1000L);
-
-            if (inHours > 1) {
-                result = inHours + " hours";
-            } else {
-                result = inHours + " hour";
-            }
-
-        } else {
-
-            Long inMinutes = difference / (60L * 1000L);
-            
-            if (inMinutes > 1) {
-                result = inMinutes + " mins";
-            } else {
-                result = inMinutes + " min";
-            }
-
         }
         return result;
     }
