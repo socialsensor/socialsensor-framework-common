@@ -30,6 +30,14 @@ public class Query implements JSONable{
     @SerializedName(value = "type")
     protected Type type;
 	
+	@Expose
+    @SerializedName(value = "coords")
+    protected Double[] coords;
+	
+	@Expose
+    @SerializedName(value = "bbox")
+    protected Double[][] bbox;
+	
 	public String getName(){
 		return name;
 	}
@@ -54,6 +62,23 @@ public class Query implements JSONable{
 		this.type = type;
 	}
 	
+	public void setLocationCoords(Double[] coords){
+		this.coords = coords;
+	}
+	
+	public Double[] getLocationCoords(){
+		return this.coords;
+	}
+	
+	public void setLocationBbox(Double[][] bbox){
+		this.bbox = bbox;
+	}
+	
+	public Double[][] getLocationBbox(){
+		return this.bbox;
+	}
+	
+	
  	@Override
     public String toJSONString() {
         Gson gson = new GsonBuilder()
@@ -65,7 +90,7 @@ public class Query implements JSONable{
     }
  	
  	public enum Type{
- 		Keywords, Contributors
+ 		Keywords, TwitterUsers, TwitterMentions, TwitterList, Location, URL
  	}
 
 }

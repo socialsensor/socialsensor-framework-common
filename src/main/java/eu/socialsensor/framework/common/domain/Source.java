@@ -29,6 +29,10 @@ public class Source implements JSONable {
 	private float score;
 	 
 	@Expose
+	@SerializedName(value = "isMentioned")
+	private boolean isMentioned = false;
+	
+	@Expose
 	@SerializedName(value = "source")
 	private String streamId;
 	
@@ -67,6 +71,14 @@ public class Source implements JSONable {
 
 	public void setScore(float score) {
 		this.score = score;
+	}
+	
+	public void setIsMentioned(boolean isMentioned){
+		this.isMentioned = isMentioned;
+	}
+	
+	public boolean getIsMentioned(){
+		return this.isMentioned;
 	}
 	
 	public String getStreamId() {
