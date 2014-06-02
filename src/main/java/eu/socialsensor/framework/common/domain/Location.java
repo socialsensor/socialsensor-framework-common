@@ -17,7 +17,7 @@ public class Location implements JSONable, Serializable{
 	
 	@Expose
 	@SerializedName(value = "radius")
-	protected Integer radius = null;
+	protected Double radius = null;
 	
 	@Expose
 	@SerializedName(value = "name")
@@ -49,7 +49,7 @@ public class Location implements JSONable, Serializable{
 		coordinates.longitude = longitude;
 	}
 	
-	public Location(Double latitude, Double longitude, Integer radius) {
+	public Location(Double latitude, Double longitude, Double radius) {
 		coordinates = new Coordinates();
 		coordinates.latitude = latitude;
 		coordinates.longitude = longitude;
@@ -82,7 +82,7 @@ public class Location implements JSONable, Serializable{
 		coordinates.longitude = longitude;
 	}
 	
-	public void setRadius(Integer radius) {
+	public void setRadius(Double radius) {
 		this.radius = radius;
 	}
 	
@@ -110,7 +110,7 @@ public class Location implements JSONable, Serializable{
 		return coordinates.longitude;
 	}
 	
-	public Integer getRadius() {
+	public Double getRadius() {
 		return radius;
 	}
 	
