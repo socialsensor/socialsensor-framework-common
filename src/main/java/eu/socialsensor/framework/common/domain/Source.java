@@ -33,8 +33,8 @@ public class Source implements JSONable {
 	private boolean isMentioned = false;
 	
 	@Expose
-	@SerializedName(value = "source")
-	private String streamId;
+	@SerializedName(value = "network")
+	private String network;
 	
 	public Source(String name, float score) {
 		this.name = name;
@@ -81,12 +81,12 @@ public class Source implements JSONable {
 		return this.isMentioned;
 	}
 	
-	public String getStreamId() {
-		return streamId;
+	public String getNetwork() {
+		return network;
 	}
 
-	public void setStreamId(String streamId) {
-		this.streamId = streamId;
+	public void setNetwork(String network) {
+		this.network = network;
 	}
 	
 	@Override

@@ -90,7 +90,7 @@ public class Query implements JSONable{
     }
  	
  	public enum Type{
- 		Keywords, TwitterUsers, TwitterMentions, TwitterList, Location, URL
+ 		Keywords, TwitterUsers, TwitterMentions, TwitterList, Location, URL, Contributors
  	}
 
 }
