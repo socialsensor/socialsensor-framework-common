@@ -41,6 +41,10 @@ public class CustomDysco extends Dysco {
     @SerializedName(value = "nearLocations")
 	private List<Location> nearLocations;
 	
+	@Expose
+    @SerializedName(value = "wordsToAvoid")
+	private List<String> wordsToAvoid;
+	
     public List<String> getTwitterUsers() {
         return twitterUsers;
     }
@@ -79,5 +83,13 @@ public class CustomDysco extends Dysco {
     
     public void setNearLocations(List<Location> nearLocations) {
         this.nearLocations = nearLocations;
+    }
+    
+    public void setWordsToAvoid(List<String> wordsToAvoid){
+    	this.wordsToAvoid = wordsToAvoid;
+    }
+    
+    public List<String> getWordsToAvoid(){
+    	return this.wordsToAvoid;
     }
 }
