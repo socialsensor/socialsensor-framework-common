@@ -6,8 +6,6 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import eu.socialsensor.framework.common.domain.Feed;
-import eu.socialsensor.framework.common.domain.SocialNetworkSource;
-import eu.socialsensor.framework.common.domain.URL;
 
 
 public class URLFeed extends Feed{
@@ -27,12 +25,6 @@ public class URLFeed extends Feed{
 		this.id = id;
 	}
 
-	public URLFeed(URL url, Date since, String id) {
-		super(since, Feed.FeedType.URL);
-		this.id = id;
-		this.network = url.getNetwork();
-	}
-	
 	public String getURL() {
 		return this.url;
 	}

@@ -27,10 +27,6 @@ public class Source implements JSONable {
 	@Expose
 	@SerializedName(value = "score")
 	private float score;
-	 
-	@Expose
-	@SerializedName(value = "isMentioned")
-	private boolean isMentioned = false;
 	
 	@Expose
 	@SerializedName(value = "network")
@@ -73,14 +69,6 @@ public class Source implements JSONable {
 		this.score = score;
 	}
 	
-	public void setIsMentioned(boolean isMentioned){
-		this.isMentioned = isMentioned;
-	}
-	
-	public boolean getIsMentioned(){
-		return this.isMentioned;
-	}
-	
 	public String getNetwork() {
 		return network;
 	}
@@ -95,9 +83,5 @@ public class Source implements JSONable {
 	    	.excludeFieldsWithoutExposeAnnotation()
 	    	.create();
 		return gson.toJson(this);
-	}
-
-	public static void main() {
-		
 	}
 }
