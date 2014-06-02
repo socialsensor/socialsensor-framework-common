@@ -647,6 +647,13 @@ public class Item implements JSONable {
         return location.getName();
     }
 
+    public String getCountryName() {
+        if (location == null) {
+            return null;
+        }
+        return location.getCountryName();
+    }
+    
     // Creates the JSON representation of an Item
     @Override
     public String toJSONString() {
