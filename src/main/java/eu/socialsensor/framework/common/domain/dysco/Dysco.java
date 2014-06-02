@@ -30,23 +30,23 @@ public class Dysco implements Serializable {
 	//The id of the dysco
     @Expose
     @SerializedName(value = "id")
-    private String id;
+    protected String id;
     //The creation date of the dysco
     @Expose
     @SerializedName(value = "creationDate")
-    private Date creationDate;
+    protected Date creationDate;
     //The title of the dysco
     @Expose
     @SerializedName(value = "title")
-    private String title;
+    protected String title;
     //The score that shows how trending the dysco is
     @Expose
     @SerializedName(value = "score")
-    private Double score;
+    protected Double score;
     //The type of the dysco (CUSTOM/TRENDING)
     @Expose
     @SerializedName(value = "dyscoType")
-    private DyscoType dyscoType;
+    protected DyscoType dyscoType;
     
     //Fields holding the information about the main context 
     //of the items that constitute the dysco
@@ -54,51 +54,51 @@ public class Dysco implements Serializable {
     //The extracted entities from items' content
     @Expose
     @SerializedName(value = "entities")
-    private List<Entity> entities = new ArrayList<Entity>();
+    protected List<Entity> entities = new ArrayList<Entity>();
     //The users that contribute in social networks to dysco's topic
     @Expose
     @SerializedName(value = "contributors")
-    private List<String> contributors = new ArrayList<String>();
+    protected List<String> contributors = new ArrayList<String>();
     //The extracted keywords from items' content with their assigned weights
     @Expose
     @SerializedName(value = "keywords")
-    private Map<String,Double> keywords = new HashMap<String,Double>();
+    protected Map<String,Double> keywords = new HashMap<String,Double>();
     //The extracted hashtags from items' content with their assigned weights
     @Expose
     @SerializedName(value = "hashtags")
-    private Map<String,Double> hashtags = new HashMap<String,Double>();
+    protected Map<String,Double> hashtags = new HashMap<String,Double>();
     
     //The query that will be used for retrieving relevant content to the Dysco from Solr
     @Expose
     @SerializedName(value = "solrQueryString")
-    private String solrQueryString = null;
+    protected String solrQueryString = null;
    //The query that will be used for retrieving relevant author content to the Dysco from Solr
     @Expose
     @SerializedName(value = "solrQueryAuthorString")
-    private String solrQueryAuthorString = null;
+    protected String solrQueryAuthorString = null;
     
     @Expose
     @SerializedName(value = "solrQueries")
-    private List<Query> solrQueries = new ArrayList<Query>();
+    protected List<Query> solrQueries = new ArrayList<Query>();
     @Expose
     @SerializedName(value = "primalSolrQueries")
-    private List<Query> primalSolrQueries = new ArrayList<Query>();
+    protected List<Query> primalSolrQueries = new ArrayList<Query>();
     
     //The variable can get values 0,1,2 and shows dysco's trending evolution. 
     @Expose
     @SerializedName(value = "trending")
-    private int trending = 0;
+    protected int trending = 0;
     //The date that the dysco was last created (updated because similar dyscos existed in the past)
     @Expose
     @SerializedName(value = "updateDate")
-    private Date updateDate;
+    protected Date updateDate;
     
     //List of the items that compose the Dysco - serve for dysco's formulation, 
     //therefore they are stored temporarily in memory
-    private List<Item> items = new ArrayList<Item>();
+    protected List<Item> items = new ArrayList<Item>();
     
     
-    private String listId = "";
+    protected String listId = "";
     
 
     public enum DyscoType{

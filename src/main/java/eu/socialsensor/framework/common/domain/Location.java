@@ -16,6 +16,10 @@ public class Location implements JSONable, Serializable{
 	protected Coordinates coordinates = null;
 	
 	@Expose
+	@SerializedName(value = "radius")
+	protected Integer radius = null;
+	
+	@Expose
 	@SerializedName(value = "name")
 	protected String name = null;
 	
@@ -45,6 +49,13 @@ public class Location implements JSONable, Serializable{
 		coordinates.longitude = longitude;
 	}
 	
+	public Location(Double latitude, Double longitude, Integer radius) {
+		coordinates = new Coordinates();
+		coordinates.latitude = latitude;
+		coordinates.longitude = longitude;
+		this.radius = radius;
+	}
+	
 	public Location(Double latitude, Double longitude, String name) {
 		coordinates = new Coordinates(latitude, longitude);
 		this.name = name;
@@ -71,6 +82,10 @@ public class Location implements JSONable, Serializable{
 		coordinates.longitude = longitude;
 	}
 	
+	public void setRadius(Integer radius) {
+		this.radius = radius;
+	}
+	
 	public  void setName(String name) {
 		this.name = name;
 	}
@@ -93,6 +108,10 @@ public class Location implements JSONable, Serializable{
 		if(coordinates==null)
 			return null;
 		return coordinates.longitude;
+	}
+	
+	public Integer getRadius() {
+		return radius;
 	}
 	
 	public Double[][] getbbox() {
