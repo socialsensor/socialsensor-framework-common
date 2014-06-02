@@ -171,6 +171,11 @@ public class StreamUser implements JSONable, Serializable {
     @SerializedName(value = "verified")
     protected Boolean verified = false;
     
+    // Timezone of the specific user
+    @Expose
+    @SerializedName(value = "timezone")
+    protected String timezone;
+    
     @Expose
     @SerializedName(value = "linkToProfile")
     protected String linkToProfile;
@@ -276,6 +281,14 @@ public class StreamUser implements JSONable, Serializable {
 
     public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
+    }
+    
+    public String getTimezone() {
+        return timezone;
+    }
+
+    public void setTimezone(String timezone) {
+        this.timezone = timezone;
     }
     
     public Long getLastUpdated() {
