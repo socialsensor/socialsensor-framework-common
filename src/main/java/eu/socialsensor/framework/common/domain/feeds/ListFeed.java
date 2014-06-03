@@ -12,10 +12,26 @@ public class ListFeed extends Feed {
 	private static final long serialVersionUID = -6876101187566475910L;
 	private String owner;
 	private String slug;
-
-	public ListFeed(String owner, String slug, Date since) {
+	
+	public ListFeed(String url,Date since,String id){
 		super(since, Feed.FeedType.LIST);
+		this.id = id;
 		
+		String twitterRegex = "https://twitter.com/";
+		String restString = url.replace(twitterRegex, "");
+		int index = restString.indexOf("/");
+	
+		this.owner = restString.substring(0, index);
+	
+		String ownerRegex = owner+"/lists/";
+	
+		this.slug = restString.replace(ownerRegex, "");
+		
+	}
+
+	public ListFeed(String owner, String slug, Date since,String id) {
+		super(since, Feed.FeedType.LIST);
+		this.id = id;
 		this.owner = owner;
 		this.slug = slug;
 	}
@@ -26,5 +42,10 @@ public class ListFeed extends Feed {
 	
 	public String getListSlug() {
 		return slug;
+	}
+	
+	public static void main(String[] args) {
+		ListFeed listFeed = new ListFeed("https://twitter.com/1basil1/lists/sundance2012filmmakers",null,null);
+		
 	}
 }
