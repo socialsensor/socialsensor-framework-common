@@ -1,7 +1,5 @@
 package eu.socialsensor.framework.common.domain;
 
-import java.util.Date;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
@@ -34,10 +32,6 @@ public class Query implements JSONable{
     @SerializedName(value = "coords")
     protected Double[] coords;
 	
-	@Expose
-    @SerializedName(value = "bbox")
-    protected Double[][] bbox;
-	
 	public String getName(){
 		return name;
 	}
@@ -69,15 +63,6 @@ public class Query implements JSONable{
 	public Double[] getLocationCoords(){
 		return this.coords;
 	}
-	
-	public void setLocationBbox(Double[][] bbox){
-		this.bbox = bbox;
-	}
-	
-	public Double[][] getLocationBbox(){
-		return this.bbox;
-	}
-	
 	
  	@Override
     public String toJSONString() {
