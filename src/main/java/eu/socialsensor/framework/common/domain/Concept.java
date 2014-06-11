@@ -4,10 +4,11 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
 
 public class Concept implements JSONable {
 
+	private static final long serialVersionUID = -7389160446822526436L;
+	
 	@Expose
     @SerializedName(value = "concept")
 	ConceptType type;
@@ -16,15 +17,14 @@ public class Concept implements JSONable {
 	Double score;
 
 	public enum ConceptType {
-		Selfie, 
-		Porn, 
-		Messages, 
-		Memes,
-		Keepcalm, 
-		Graphics, 
-		Crowd, 
-		Logos, 
-		Nature
+		graphics,
+		messages,
+		keepcalm,
+		memes,
+		porn,
+		disturbing,
+		images,
+		heavytext
 	}
 	
 	public Concept(String type, Double score) {
