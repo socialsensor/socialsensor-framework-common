@@ -68,7 +68,8 @@ public class Item implements JSONable {
     @Expose
     @SerializedName(value = "streamId")
     protected String streamId;
-    // The title of an Item
+    // The title of an Item (in the case of facebook post, this is a shortened title up to 140 characters). It will be used just for searching and sentiment analysis. 
+    // It shouldn't be used in the UI - use the originalTitle instead    
     @Expose
     @SerializedName(value = "title")
     protected String title;
@@ -182,6 +183,9 @@ public class Item implements JSONable {
     @Expose
     @SerializedName(value = "shares")
     protected Long shares = 0L;
+    @Expose
+    @SerializedName(value = "popularityComments")
+    protected Long popularityComments = 0L;
     // The Comments associated with an Item
     @Expose
     @SerializedName(value = "comments")
@@ -227,6 +231,11 @@ public class Item implements JSONable {
     @Expose
     @SerializedName(value = "votes")
     protected List<Vote> votes = new ArrayList<Vote>();
+    //this title is the original one in both tweets and facebook posts. It won't be used for searching, it will only be returned in the results.
+    @Expose
+    @SerializedName(value = "originalTitle")
+    protected String originalTitle;
+
     protected int validityScore;
     protected String validityVotes;
     protected static final long HOUR = 1000L * 60L * 60;
@@ -357,11 +366,9 @@ public class Item implements JSONable {
     //public Date getLastUpdated() {
     //    return lastUpdated;
     //}
-
     //public void setLastUpdated(Date lastUpdated) {
     //    this.lastUpdated = lastUpdated;
     //}
-
     public long getInsertionTime() {
         return insertionTime;
     }
@@ -653,7 +660,15 @@ public class Item implements JSONable {
         }
         return location.getCountryName();
     }
-    
+
+    public String getOriginalTitle() {
+        return originalTitle;
+    }
+
+    public void setOriginalTitle(String originalTitle) {
+        this.originalTitle = originalTitle;
+    }
+
     // Creates the JSON representation of an Item
     @Override
     public String toJSONString() {
@@ -744,25 +759,25 @@ public class Item implements JSONable {
     }
 
     /*
-    public static class DateSerializer extends TypeAdapter<Date> {
+     public static class DateSerializer extends TypeAdapter<Date> {
 
-        private static DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+     private static DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
 
-        @Override
-        public void write(JsonWriter out, Date date) throws IOException {
-            out.beginObject();
-            String d = df.format(date);
+     @Override
+     public void write(JsonWriter out, Date date) throws IOException {
+     out.beginObject();
+     String d = df.format(date);
 
-            out.name("$date");
-            out.value(d);
+     out.name("$date");
+     out.value(d);
 
-            out.endObject();
-        }
+     out.endObject();
+     }
 
-        @Override
-        public Date read(JsonReader in) throws IOException {
-            return null;
-        }
-    }
-    */
+     @Override
+     public Date read(JsonReader in) throws IOException {
+     return null;
+     }
+     }
+     */
 }
