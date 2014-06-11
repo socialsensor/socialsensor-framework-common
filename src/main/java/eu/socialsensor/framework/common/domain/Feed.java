@@ -94,4 +94,18 @@ public class Feed implements JSONable {
 	public enum FeedType {
 		LOCATION, KEYWORDS, SOURCE, URL, LIST
 	}
+	
+	@Override
+	public int hashCode() {
+		return id.hashCode();
+	}
+	
+	@Override
+	public boolean equals(Object obj){
+
+		if(this==obj)
+			return true;
+		
+        return ((Feed) obj).id.equals(id);
+    }
 }
