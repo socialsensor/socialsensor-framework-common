@@ -183,9 +183,6 @@ public class Item implements JSONable {
     @Expose
     @SerializedName(value = "shares")
     protected Long shares = 0L;
-    @Expose
-    @SerializedName(value = "popularityComments")
-    protected Long popularityComments = 0L;
     // The Comments associated with an Item
     @Expose
     @SerializedName(value = "comments")
@@ -488,12 +485,12 @@ public class Item implements JSONable {
         return comments;
     }
 
-    public void setComments(long numOfComments) {
-        this.numOfComments = numOfComments;
-    }
-
     public Long getNumOfComments() {
         return numOfComments;
+    }
+
+    public void setNumOfComments(Long numOfComments) {
+        this.numOfComments = numOfComments;
     }
 
     public void setComments(String[] comments) {
