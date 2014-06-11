@@ -187,6 +187,9 @@ public class Item implements JSONable {
     @SerializedName(value = "comments")
     protected String[] comments;
     @Expose
+    @SerializedName(value = "numOfComments")
+    protected Long numOfComments = 0L;
+    @Expose
     @SerializedName(value = "isSearched")
     protected boolean isSearched;
     @Expose
@@ -478,10 +481,18 @@ public class Item implements JSONable {
         return comments;
     }
 
+    public void setComments(long numOfComments) {
+        this.numOfComments = numOfComments;
+    }
+
+    public Long getNumOfComments() {
+        return numOfComments;
+    }
+
     public void setComments(String[] comments) {
         this.comments = comments;
     }
-
+    
     public boolean getIsSearched() {
         return isSearched;
     }
