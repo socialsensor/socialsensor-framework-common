@@ -133,7 +133,7 @@ public class MediaItem implements JSONable, Serializable {
     private String status = "new";
     private int source;
     private Feed feed;
-    
+    private Float solrScore = 0f;
     protected static final long HOUR = 1000L * 60L * 60;
     protected static final long DAY = 1000L * 60L * 60L * 24L;
     protected static final long MINUTE = 1000L * 60L;
