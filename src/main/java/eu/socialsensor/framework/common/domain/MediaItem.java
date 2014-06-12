@@ -497,6 +497,14 @@ public class MediaItem implements JSONable, Serializable {
     public void setSource(int source) {
         this.source = source;
     }
+    
+    public void setSolrScore(Float solrScore){
+    	this.solrScore = solrScore;
+    }
+    
+    public Float getSolrScore(){
+    	return this.solrScore;
+    }
 
     @Override
     public String toJSONString() {
