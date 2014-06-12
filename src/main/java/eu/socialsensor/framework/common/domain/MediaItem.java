@@ -132,7 +132,8 @@ public class MediaItem implements JSONable, Serializable {
     private String status = "new";
     private int source;
     private Feed feed;
-
+    private Float solrScore = 0f;
+    
 	public MediaItem() {
 		
 	}
@@ -455,6 +456,14 @@ public class MediaItem implements JSONable, Serializable {
 
     public void setSource(int source) {
         this.source = source;
+    }
+    
+    public void setSolrScore(Float solrScore){
+    	this.solrScore = solrScore;
+    }
+    
+    public Float getSolrScore(){
+    	return this.solrScore;
     }
 
     @Override
