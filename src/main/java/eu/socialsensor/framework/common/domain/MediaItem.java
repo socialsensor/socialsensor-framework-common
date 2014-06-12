@@ -8,6 +8,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -132,6 +133,10 @@ public class MediaItem implements JSONable, Serializable {
     private String status = "new";
     private int source;
     private Feed feed;
+    
+    protected static final long HOUR = 1000L * 60L * 60;
+    protected static final long DAY = 1000L * 60L * 60L * 24L;
+    protected static final long MINUTE = 1000L * 60L;
 
 	public MediaItem() {
 		
@@ -326,6 +331,42 @@ public class MediaItem implements JSONable, Serializable {
 
     public String getStreamId() {
         return streamId;
+    }
+    
+    public String getSimpleStreamId() {
+        
+        if(streamId.equals("Facebook"))
+        {
+            return "facebook";
+        }
+        else if(streamId.equals("GooglePlus"))
+        {
+            return "google-plus";
+        }
+        else if(streamId.equals("Flickr"))
+        {
+            return "flickr";
+        }
+         else if(streamId.equals("Twitter"))
+        {
+            return "twitter";
+        }
+         else if (streamId.equals("Web"))
+         {
+             return "globe";
+         }
+          else if (streamId.equals("Youtube"))
+         {
+             return "youtube";
+         }
+           else if (streamId.equals("Instagram"))
+         {
+             return "instagram";
+         }
+        else
+        {
+            return streamId;
+        }
     }
 
     public void setStreamId(String streamId) {
@@ -531,5 +572,37 @@ public class MediaItem implements JSONable, Serializable {
         }
 
         return sb.toString();
+    }
+    
+    
+    
+    public Long getLifeDuration() {
+        Long now = new Date().getTime();
+        Long difference = now - getPublicationTime();
+
+        return difference / (60L * 1000L);
+    }
+
+    public String getLifeDurationText() {
+
+        Long now = new Date().getTime();
+        Long difference = now - getPublicationTime();
+
+        if (difference > DAY) {
+
+            long difInDays = (difference / DAY);
+            if (difInDays == 1) {
+                return difInDays + " day";
+            } else {
+                return difInDays + " days";
+            }
+        } else if (difference > (2L * HOUR)) {
+            long difInHours = (difference / HOUR);
+            return difInHours + "h";
+        } else {
+            long difInMinutes = (difference / MINUTE);
+            return difInMinutes + "m";
+        }
+
     }
 }
