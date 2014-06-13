@@ -32,6 +32,10 @@ public class Query implements JSONable{
     @SerializedName(value = "coords")
     protected Double[] coords;
 	
+	@Expose
+    @SerializedName(value = "fromExpansion")
+    protected boolean fromExpansion = false;
+	
 	public String getName(){
 		return name;
 	}
@@ -62,6 +66,14 @@ public class Query implements JSONable{
 	
 	public Double[] getLocationCoords(){
 		return this.coords;
+	}
+	
+	public void setIsFromExpansion(boolean fromExpansion){
+		this.fromExpansion = fromExpansion;
+	}
+	
+	public boolean getIsFromExpansion(){
+		return this.fromExpansion;
 	}
 	
  	@Override
