@@ -765,6 +765,42 @@ public class Item implements JSONable {
         }
 
     }
+    
+    public String getSimpleStreamId() {
+        
+        if(streamId.equals("Facebook"))
+        {
+            return "facebook";
+        }
+        else if(streamId.equals("GooglePlus"))
+        {
+            return "google-plus";
+        }
+        else if(streamId.equals("Flickr"))
+        {
+            return "flickr";
+        }
+         else if(streamId.equals("Twitter"))
+        {
+            return "twitter";
+        }
+         else if (streamId.equals("Web"))
+         {
+             return "globe";
+         }
+          else if (streamId.equals("Youtube"))
+         {
+             return "youtube";
+         }
+           else if (streamId.equals("Instagram"))
+         {
+             return "instagram";
+         }
+        else
+        {
+            return streamId;
+        }
+    }
 
     /*
      public static class DateSerializer extends TypeAdapter<Date> {
