@@ -9,10 +9,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import eu.socialsensor.framework.common.domain.Item;
+import eu.socialsensor.framework.common.domain.JSONable;
 import eu.socialsensor.framework.common.domain.Query;
 
 /**
@@ -25,10 +28,18 @@ import eu.socialsensor.framework.common.domain.Query;
  * @author etzoannos - e.tzoannos@atc.gr
  *
  */
-public class Dysco implements Serializable {
+public class Dysco implements Serializable,JSONable {
 	
 	
-	public Dysco(){
+	public Dysco(String id, Date date, DyscoType type){
+    	this.id = id;
+    	this.creationDate = date;
+    	this.dyscoType = type;
+    }
+	
+	public Dysco(String id, Date date){
+    	this.id = id;
+    	this.creationDate = date;
     	
     }
 
@@ -492,7 +503,14 @@ public class Dysco implements Serializable {
     }
     
     
-    
+    @Override
+	public String toJSONString() {
+        Gson gson = new GsonBuilder()
+        	.excludeFieldsWithoutExposeAnnotation()
+        	.create();
+        return gson.toJson(this);
+	}
+	
 
     public String toString() {
         String dyscoString = "Id: " + id + "\n";

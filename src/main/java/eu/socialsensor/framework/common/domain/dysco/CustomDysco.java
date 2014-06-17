@@ -1,5 +1,6 @@
 package eu.socialsensor.framework.common.domain.dysco;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -12,14 +13,9 @@ import java.util.HashMap;
 
 public class CustomDysco extends Dysco {
 
-    /**
-     *
-     */
-    private static final long serialVersionUID = -1386334046873014627L;
-
-    public CustomDysco() {
-        super();
-        dyscoType = DyscoType.CUSTOM;
+    public CustomDysco(String id, Date creationDate, DyscoType dyscoType) {
+        super(id,creationDate,dyscoType);
+      
     }
     @Expose
     @SerializedName(value = "twitterUsers")
@@ -40,29 +36,6 @@ public class CustomDysco extends Dysco {
     @SerializedName(value = "wordsToAvoid")
     private List<String> wordsToAvoid = new ArrayList<String>();
 
-    public CustomDysco(Dysco dysco) {
-        super();
-        this.contributors = dysco.getContributors();
-        this.creationDate = dysco.getCreationDate();
-        this.dyscoType = dysco.getDyscoType();
-        this.entities = dysco.getEntities();
-        this.hashtags = dysco.getHashtags();
-        this.items = dysco.getItems();
-        this.itemsCount = dysco.getItemsCount();
-        this.keywords = dysco.getKeywords();
-        this.links = dysco.getLinks();
-        this.listId = dysco.getListId();
-        this.primalSolrQueries = dysco.getPrimalSolrQueries();
-        this.rankerScore = dysco.getRankerScore();
-        this.score = dysco.getScore();
-        this.solrQueries = dysco.getSolrQueries();
-        this.solrQueryAuthorString = dysco.getSolrQueryAuthorString();
-        this.solrQueryString = dysco.getSolrQueryString();
-        this.title = dysco.getTitle();
-        this.trending = dysco.getTrending();
-        this.updateDate = dysco.getUpdateDate();
-        dyscoType = DyscoType.CUSTOM;
-    }
 
     public List<String> getTwitterUsers() {
         return twitterUsers;
