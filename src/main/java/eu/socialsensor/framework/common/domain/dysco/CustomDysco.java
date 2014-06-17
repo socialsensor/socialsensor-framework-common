@@ -21,6 +21,16 @@ public class CustomDysco extends Dysco {
         super(id,creationDate,dyscoType);
       
     }
+    
+    public CustomDysco(Dysco dysco){
+    	super();
+		this.id = dysco.getId();
+		this.creationDate = dysco.getCreationDate();
+		this.dyscoType = dysco.getDyscoType();
+		this.solrQueries = dysco.getSolrQueries();
+		this.title = dysco.getTitle();
+	}
+
     @Expose
     @SerializedName(value = "twitterUsers")
     private List<String> twitterUsers = new ArrayList<String>();
