@@ -61,6 +61,7 @@ public class CustomDysco extends Dysco {
         this.title = dysco.getTitle();
         this.trending = dysco.getTrending();
         this.updateDate = dysco.getUpdateDate();
+        dyscoType = DyscoType.CUSTOM;
     }
 
     public List<String> getTwitterUsers() {

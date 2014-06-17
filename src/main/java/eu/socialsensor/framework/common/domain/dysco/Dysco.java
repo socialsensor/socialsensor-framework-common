@@ -26,6 +26,11 @@ import eu.socialsensor.framework.common.domain.Query;
  *
  */
 public class Dysco implements Serializable {
+	
+	
+	public Dysco(){
+    	
+    }
 
     //The id of the dysco
     @Expose
