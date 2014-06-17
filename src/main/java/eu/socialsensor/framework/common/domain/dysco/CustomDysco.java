@@ -13,6 +13,10 @@ import java.util.HashMap;
 
 public class CustomDysco extends Dysco {
 
+	public CustomDysco(){
+		
+	}
+	
     public CustomDysco(String id, Date creationDate, DyscoType dyscoType) {
         super(id,creationDate,dyscoType);
       

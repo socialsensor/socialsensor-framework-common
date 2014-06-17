@@ -31,6 +31,10 @@ import eu.socialsensor.framework.common.domain.Query;
 public class Dysco implements Serializable,JSONable {
 	
 	
+	public Dysco(){
+		
+	}
+	
 	public Dysco(String id, Date date, DyscoType type){
     	this.id = id;
     	this.creationDate = date;
