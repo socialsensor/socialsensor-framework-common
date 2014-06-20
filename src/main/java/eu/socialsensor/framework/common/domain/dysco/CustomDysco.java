@@ -29,6 +29,8 @@ public class CustomDysco extends Dysco {
 		this.dyscoType = dysco.getDyscoType();
 		this.solrQueries = dysco.getSolrQueries();
 		this.title = dysco.getTitle();
+		this.keywords = dysco.getKeywords();
+		this.hashtags = dysco.getHashtags();
 	}
 
     @Expose
