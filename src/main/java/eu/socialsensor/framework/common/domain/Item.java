@@ -307,6 +307,11 @@ public class Item implements JSONable {
         this.lists = lists;
     }
 
+    public void setList(String list) {
+    	lists = new String[1];
+        this.lists[0] = list;
+    }
+    
     public StreamUser getStreamUser() {
         return streamUser;
     }
