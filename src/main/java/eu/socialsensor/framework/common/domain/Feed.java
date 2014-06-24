@@ -10,6 +10,13 @@ import com.google.gson.annotations.SerializedName;
 import eu.socialsensor.framework.common.domain.JSONable;
 
 public class Feed implements JSONable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8972611573430977057L;
+
+	/*
 	public enum Operation {
         NEW_UPDATE("New"),
         DELETED("Deleted");
@@ -24,6 +31,7 @@ public class Feed implements JSONable {
             return label;
         }
     }
+	*/
 	
 	@Expose
     @SerializedName(value = "id")
@@ -41,6 +49,10 @@ public class Feed implements JSONable {
 	@Expose
     @SerializedName(value = "feedType")
 	FeedType feedType;
+	
+	@Expose
+    @SerializedName(value = "label")
+	String label;
 	
 	// TODO
 	// Add Feed Profile Variables
@@ -65,6 +77,14 @@ public class Feed implements JSONable {
 	
 	public  void setId(String id) {
 		this.id = id;
+	}
+	
+	public  String getLabel() {
+		return label;
+	}
+	
+	public  void setLabel(String label) {
+		this.label = label;
 	}
 	
 	public Date getDateToRetrieve() {

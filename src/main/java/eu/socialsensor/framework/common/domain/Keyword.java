@@ -12,6 +12,11 @@ import com.google.gson.annotations.SerializedName;
 
 public class Keyword implements JSONable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7993097182905827296L;
+
 	@Expose
 	@SerializedName(value = "keyword")
 	private String keyword;
@@ -20,6 +25,10 @@ public class Keyword implements JSONable {
 	@SerializedName(value = "score")
 	private double score;
 
+	@Expose
+	@SerializedName(value = "label")
+	private String label;
+	
 	public Keyword() {        
 	 
 	}
@@ -37,6 +46,14 @@ public class Keyword implements JSONable {
 		this.keyword = keyword;
 	}
 
+	public String getLabel() {
+		return label;
+	}
+
+	public void setLabel(String label) {
+		this.label = label;
+	}
+	
 	public double getScore() {
 		return score;
 	}

@@ -149,17 +149,17 @@ public class StreamUser implements JSONable, Serializable {
     // The number of friends of a User
     @Expose
     @SerializedName(value = "friends")
-    protected Long friends;
+    protected Long friends = 0l;
     
     // The number of followers of a User
     @Expose
     @SerializedName(value = "followers")
-    protected Long followers;
+    protected Long followers = 0l;
     
     // The number of the times a user is listed
     @Expose
     @SerializedName(value = "listedCount")
-    protected Long listedCount;
+    protected Long listedCount = 0l;
     
     // The number of times the Items of this user have been shared
     @Expose
