@@ -28,23 +28,22 @@ import eu.socialsensor.framework.common.domain.Query;
  * @author etzoannos - e.tzoannos@atc.gr
  *
  */
-public class Dysco implements Serializable,JSONable {
-	
-	
-	public Dysco(){
-		
-	}
-	
-	public Dysco(String id, Date date, DyscoType type){
-    	this.id = id;
-    	this.creationDate = date;
-    	this.dyscoType = type;
+public class Dysco implements Serializable, JSONable {
+
+    public Dysco() {
+
     }
-	
-	public Dysco(String id, Date date){
-    	this.id = id;
-    	this.creationDate = date;
-    	
+
+    public Dysco(String id, Date date, DyscoType type) {
+        this.id = id;
+        this.creationDate = date;
+        this.dyscoType = type;
+    }
+
+    public Dysco(String id, Date date) {
+        this.id = id;
+        this.creationDate = date;
+
     }
 
     //The id of the dysco
@@ -120,6 +119,9 @@ public class Dysco implements Serializable,JSONable {
     @Expose
     @SerializedName(value = "rankerScore")
     protected double rankerScore = 0.0d;
+
+    private String group = "";
+    private String status = "new";
 
     //List of the items that compose the Dysco - serve for dysco's formulation, 
     //therefore they are stored temporarily in memory
@@ -482,16 +484,32 @@ public class Dysco implements Serializable,JSONable {
     public void setRankerScore(double rankerScore) {
         this.rankerScore = rankerScore;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getGroup() {
+        return group;
+    }
+
+    public void setGroup(String group) {
+        this.group = group;
+    }
     
     
+
     @Override
-	public String toJSONString() {
+    public String toJSONString() {
         Gson gson = new GsonBuilder()
-        	.excludeFieldsWithoutExposeAnnotation()
-        	.create();
+                .excludeFieldsWithoutExposeAnnotation()
+                .create();
         return gson.toJson(this);
-	}
-	
+    }
 
     public String toString() {
         String dyscoString = "Id: " + id + "\n";
