@@ -18,7 +18,9 @@ package eu.socialsensor.framework.common.domain;
 
 import eu.socialsensor.framework.common.domain.dysco.Dysco;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -27,7 +29,7 @@ import java.util.List;
 public class TrendsMatcherResponse {
     
     List<Dysco> newDyscos = new ArrayList<Dysco>();
-    List<String> dyscoIdsToDelete = new ArrayList<String>();
+    Map<String,String> dyscoPairs = new HashMap<String,String>();
 
     public List<Dysco> getNewDyscos() {
         return newDyscos;
@@ -37,16 +39,17 @@ public class TrendsMatcherResponse {
         this.newDyscos = newDyscos;
     }
 
-    public List<String> getDyscoIdsToDelete() {
-        return dyscoIdsToDelete;
+    public Map<String, String> getDyscoPairs() {
+        return dyscoPairs;
     }
 
-    public void setDyscoIdsToDelete(List<String> dyscoIdsToDelete) {
-        this.dyscoIdsToDelete = dyscoIdsToDelete;
+    public void setDyscoPairs(Map<String, String> dyscoPairs) {
+        this.dyscoPairs = dyscoPairs;
     }
-    
-    
-    
-    
+
+    public void addDyscoPair(String newDyscoId, String oldDyscoId) {
+        
+        dyscoPairs.put(newDyscoId, oldDyscoId);
+    }
     
 }
