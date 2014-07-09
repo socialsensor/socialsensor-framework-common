@@ -28,8 +28,9 @@ import java.util.Map;
  */
 public class TrendsMatcherResponse {
     
+    
     List<Dysco> newDyscos = new ArrayList<Dysco>();
-    Map<String,String> dyscoPairs = new HashMap<String,String>();
+    Map<String,List<String>> dyscoPairs = new HashMap<String,List<String>>();
 
     public List<Dysco> getNewDyscos() {
         return newDyscos;
@@ -39,17 +40,18 @@ public class TrendsMatcherResponse {
         this.newDyscos = newDyscos;
     }
 
-    public Map<String, String> getDyscoPairs() {
+    public Map<String, List<String>> getDyscoPairs() {
         return dyscoPairs;
     }
 
-    public void setDyscoPairs(Map<String, String> dyscoPairs) {
+    public void setDyscoPairs(Map<String, List<String>> dyscoPairs) {
         this.dyscoPairs = dyscoPairs;
     }
 
-    public void addDyscoPair(String newDyscoId, String oldDyscoId) {
+   
+    public void addDyscoPair(String newDyscoId, List<String> oldDyscoIds) {
         
-        dyscoPairs.put(newDyscoId, oldDyscoId);
+        dyscoPairs.put(newDyscoId, oldDyscoIds);
     }
     
 }
