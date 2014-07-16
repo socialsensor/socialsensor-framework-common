@@ -17,6 +17,18 @@ public class TwitterContributor extends Contributor {
     @Expose
     @SerializedName(value = "retweets")
     private Retweets retweets = new Retweets();
+    
+    @Expose
+    @SerializedName(value = "verified")
+    private boolean verified;
+    
+    @Expose
+    @SerializedName(value = "listedCount")
+    private Long listedCount;
+    
+    @Expose
+    @SerializedName(value = "favouritesCount")
+    private Long favouritesCount;
 
     public TwitterContributor() {
 
@@ -36,6 +48,10 @@ public class TwitterContributor extends Contributor {
         retweets.setRetweetsCount(0);
 
         this.retweets = retweets;
+        
+        this.verified = false;
+        this.listedCount = 0L;
+        this.favouritesCount = 0L;
     }
 
     public Date getFirstPostDate() {
@@ -61,6 +77,28 @@ public class TwitterContributor extends Contributor {
     public void setRetweets(Retweets retweets) {
         this.retweets = retweets;
     }
-  
 
+    public boolean isVerified() {
+        return verified;
+    }
+
+    public void setVerified(boolean verified) {
+        this.verified = verified;
+    }
+
+    public Long getListedCount() {
+        return listedCount;
+    }
+
+    public void setListedCount(Long listedCount) {
+        this.listedCount = listedCount;
+    }
+
+    public Long getFavouritesCount() {
+        return favouritesCount;
+    }
+
+    public void setFavouritesCount(Long favouritesCount) {
+        this.favouritesCount = favouritesCount;
+    }
 }
