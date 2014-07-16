@@ -180,6 +180,9 @@ public class StreamUser implements JSONable, Serializable {
     @SerializedName(value = "linkToProfile")
     protected String linkToProfile;
     
+    @Expose
+    @SerializedName(value = "favoritiesCount")
+    protected long favoritiesCount = 0L;
     
     // Getters & Setters for the fields of this class
     
@@ -370,8 +373,16 @@ public class StreamUser implements JSONable, Serializable {
         this.shares += shares;
     }
     
-    public void setVerified(Boolean verified) {
-    	this.verified = verified;
+    public Long getFavoritiesCount() {
+        return favoritiesCount;
+    }
+
+    public void setFavoritiesCount(Long shares) {
+        this.shares = shares;
+    }
+    
+    public void setVerified(long favoritiesCount) {
+    	this.favoritiesCount = favoritiesCount;
     }
     
     public Boolean isVerified() {
