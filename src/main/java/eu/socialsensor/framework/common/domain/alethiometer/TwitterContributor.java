@@ -29,6 +29,10 @@ public class TwitterContributor extends Contributor {
     @Expose
     @SerializedName(value = "favouritesCount")
     private Long favouritesCount;
+    
+    @Expose
+    @SerializedName(value = "popularityIncrease")
+    private float popularityIncrease;
 
     public TwitterContributor() {
 
@@ -52,6 +56,8 @@ public class TwitterContributor extends Contributor {
         this.verified = false;
         this.listedCount = 0L;
         this.favouritesCount = 0L;
+        
+        this.popularityIncrease = 0F;
     }
 
     public Date getFirstPostDate() {
@@ -100,5 +106,13 @@ public class TwitterContributor extends Contributor {
 
     public void setFavouritesCount(Long favouritesCount) {
         this.favouritesCount = favouritesCount;
+    }
+
+    public float getPopularityIncrease() {
+        return popularityIncrease;
+    }
+
+    public void setPopularityIncrease(float popularityIncrease) {
+        this.popularityIncrease = popularityIncrease;
     }
 }
