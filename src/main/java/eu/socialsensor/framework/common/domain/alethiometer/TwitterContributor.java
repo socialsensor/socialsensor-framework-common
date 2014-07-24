@@ -17,23 +17,30 @@ public class TwitterContributor extends Contributor {
     @Expose
     @SerializedName(value = "retweets")
     private Retweets retweets = new Retweets();
-    
+
     @Expose
     @SerializedName(value = "verified")
     private boolean verified;
-    
+
     @Expose
     @SerializedName(value = "listedCount")
     private Long listedCount;
-    
+
     @Expose
     @SerializedName(value = "favouritesCount")
     private Long favouritesCount;
 
+    @Expose
+    @SerializedName(value = "popularityIncrease")
+    private float popularityIncrease;
+
+    @Expose
+    @SerializedName(value = "friends")
+    private Long friends;
+
     public TwitterContributor() {
 
         // just initialize referenced classes with zero values for avoiding reference to null objects
-
         Mentions mentions = new Mentions();
         mentions.setCredibleNegativeMentions(0);
         mentions.setCrediblePositiveMentions(0);
@@ -48,10 +55,13 @@ public class TwitterContributor extends Contributor {
         retweets.setRetweetsCount(0);
 
         this.retweets = retweets;
-        
+
         this.verified = false;
         this.listedCount = 0L;
         this.favouritesCount = 0L;
+
+        this.popularityIncrease = 0F;
+        this.friends = 0L;
     }
 
     public Date getFirstPostDate() {
@@ -100,5 +110,21 @@ public class TwitterContributor extends Contributor {
 
     public void setFavouritesCount(Long favouritesCount) {
         this.favouritesCount = favouritesCount;
+    }
+
+    public float getPopularityIncrease() {
+        return popularityIncrease;
+    }
+
+    public void setPopularityIncrease(float popularityIncrease) {
+        this.popularityIncrease = popularityIncrease;
+    }
+
+    public Long getFriends() {
+        return friends;
+    }
+
+    public void setFriends(Long friends) {
+        this.friends = friends;
     }
 }
