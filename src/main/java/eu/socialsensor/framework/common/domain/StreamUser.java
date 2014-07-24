@@ -405,6 +405,10 @@ public class StreamUser implements JSONable, Serializable {
     	return linkToProfile;
     }
     
+    public boolean isVerifiedOfficial() {
+    	return verified;
+    }
+    
     @Override
     public String toJSONString() {
         Gson gson = new GsonBuilder()
