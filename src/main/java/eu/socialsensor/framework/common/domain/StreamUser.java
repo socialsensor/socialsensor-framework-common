@@ -311,7 +311,7 @@ public class StreamUser implements JSONable, Serializable {
     }
     
     public String getLocation() {
-        if (location.equals("") || location==null) {
+        if ( location==null || location.equals("")) {
             return "Unknown";
         }
         return location;
