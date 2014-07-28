@@ -120,6 +120,19 @@ public class Dysco implements Serializable, JSONable {
     @SerializedName(value = "rankerScore")
     protected double rankerScore = 0.0d;
 
+    @Expose
+    @SerializedName(value = "storyType")
+    protected String storyType = null;
+
+    @Expose
+    @SerializedName(value = "mainMediaUrl")
+    protected String mainMediaUrl = null;
+    
+    @Expose
+    @SerializedName(value = "author")
+    protected String author = null;
+
+
     private String group = "";
     private String status = "new";
 
@@ -250,6 +263,33 @@ public class Dysco implements Serializable, JSONable {
     public void setContributors(List<String> contributors) {
         this.contributors = contributors;
     }
+
+    public String getStoryType() {
+        return storyType;
+    }
+
+    public void setStoryType(String storyType) {
+        this.storyType = storyType;
+    }
+
+    public String getMainMediaUrl() {
+        return mainMediaUrl;
+    }
+
+    public void setMainMediaUrl(String mainMediaUrl) {
+        this.mainMediaUrl = mainMediaUrl;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+    
+    
+    
 
     /**
      * Returns the dysco's keywords with their assigned weights
@@ -500,8 +540,6 @@ public class Dysco implements Serializable, JSONable {
     public void setGroup(String group) {
         this.group = group;
     }
-    
-    
 
     @Override
     public String toJSONString() {

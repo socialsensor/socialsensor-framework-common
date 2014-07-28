@@ -2,12 +2,13 @@ package eu.socialsensor.framework.common.domain.alethiometer;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import java.io.Serializable;
 
 /**
  *
  * @author etzoannos
  */
-public class Score {
+public class Score implements Serializable{
 
     @Expose
     @SerializedName(value = "contributor score")
