@@ -140,19 +140,6 @@ public class Dysco implements Serializable, JSONable {
     protected String author = null;
 
 
-    @Expose
-    @SerializedName(value = "storyType")
-    protected String storyType = null;
-
-    @Expose
-    @SerializedName(value = "mainMediaUrl")
-    protected String mainMediaUrl = null;
-    
-    @Expose
-    @SerializedName(value = "author")
-    protected String author = null;
-
-
     private String group = "";
     private String status = "new";
 
