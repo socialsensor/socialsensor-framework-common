@@ -117,8 +117,28 @@ public class Dysco implements Serializable, JSONable {
     protected int itemsCount = 0;
 
     @Expose
+    @SerializedName(value = "normalizedRankerScore")
+    protected double normalizedRankerScore = 0.0d;
+    @Expose
+    @SerializedName(value = "normalizedDyscoScore")
+    protected double normalizedDyscoScore = 0.0d;
+    
+    @Expose
     @SerializedName(value = "rankerScore")
     protected double rankerScore = 0.0d;
+
+    @Expose
+    @SerializedName(value = "storyType")
+    protected String storyType = null;
+
+    @Expose
+    @SerializedName(value = "mainMediaUrl")
+    protected String mainMediaUrl = null;
+    
+    @Expose
+    @SerializedName(value = "author")
+    protected String author = null;
+
 
     private String group = "";
     private String status = "new";
@@ -250,6 +270,33 @@ public class Dysco implements Serializable, JSONable {
     public void setContributors(List<String> contributors) {
         this.contributors = contributors;
     }
+
+    public String getStoryType() {
+        return storyType;
+    }
+
+    public void setStoryType(String storyType) {
+        this.storyType = storyType;
+    }
+
+    public String getMainMediaUrl() {
+        return mainMediaUrl;
+    }
+
+    public void setMainMediaUrl(String mainMediaUrl) {
+        this.mainMediaUrl = mainMediaUrl;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+    
+    
+    
 
     /**
      * Returns the dysco's keywords with their assigned weights
@@ -485,6 +532,22 @@ public class Dysco implements Serializable, JSONable {
         this.rankerScore = rankerScore;
     }
 
+    public double getNormalizedRankerScore() {
+        return normalizedRankerScore;
+    }
+
+    public void setNormalizedRankerScore(double normalizedRankerScore) {
+        this.normalizedRankerScore = normalizedRankerScore;
+    }
+    
+    public double getNormalizedDyscoScore() {
+        return normalizedDyscoScore;
+    }
+
+    public void setNormalizedDyscoScore(double normalizedDyscoScore) {
+        this.normalizedDyscoScore = normalizedDyscoScore;
+    }
+    
     public String getStatus() {
         return status;
     }
@@ -500,8 +563,6 @@ public class Dysco implements Serializable, JSONable {
     public void setGroup(String group) {
         this.group = group;
     }
-    
-    
 
     @Override
     public String toJSONString() {
