@@ -8,8 +8,13 @@ import com.google.gson.annotations.SerializedName;
 import eu.socialsensor.framework.common.domain.Feed;
 
 
-public class URLFeed extends Feed{
+public class URLFeed extends Feed {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6084756784860676248L;
+
 	@Expose
     @SerializedName(value = "url")
 	private String url = null;

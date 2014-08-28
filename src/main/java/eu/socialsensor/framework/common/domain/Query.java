@@ -7,11 +7,16 @@ import com.google.gson.annotations.SerializedName;
 
 public class Query implements JSONable{
 
-	public Query(){
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7635308767990413659L;
+
+	public Query() {
 		
 	}
 	
-	public Query(String name,Double score){
+	public Query(String name,Double score) {
 		this.name = name;
 		this.score = score;
 	}
@@ -36,27 +41,27 @@ public class Query implements JSONable{
     @SerializedName(value = "fromExpansion")
     protected boolean fromExpansion = false;
 	
-	public String getName(){
+	public String getName() {
 		return name;
 	}
 	
-	public void setName(String name){
+	public void setName(String name) {
 		this.name = name;
 	}
 	
-	public Double getScore(){
+	public Double getScore() {
 		return score;
 	}
 	
-	public void setScore(Double score){
+	public void setScore(Double score) {
 		this.score = score;
 	}
 	
-	public Type getType(){
+	public Type getType() {
 		return type;
 	}
 	
-	public void setType(Type type){
+	public void setType(Type type) {
 		this.type = type;
 	}
 	
@@ -64,15 +69,15 @@ public class Query implements JSONable{
 		this.coords = coords;
 	}
 	
-	public Double[] getLocationCoords(){
+	public Double[] getLocationCoords() {
 		return this.coords;
 	}
 	
-	public void setIsFromExpansion(boolean fromExpansion){
+	public void setIsFromExpansion(boolean fromExpansion) {
 		this.fromExpansion = fromExpansion;
 	}
 	
-	public boolean getIsFromExpansion(){
+	public boolean getIsFromExpansion() {
 		return this.fromExpansion;
 	}
 	
@@ -80,13 +85,11 @@ public class Query implements JSONable{
     public String toJSONString() {
         Gson gson = new GsonBuilder()
                 .excludeFieldsWithoutExposeAnnotation()
-                //.registerTypeAdapter(Date.class, new DateSerializer())
-                //.setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
                 .create();
         return gson.toJson(this);
     }
  	
- 	public enum Type{
+ 	public enum Type {
  		Keywords, TwitterUsers, TwitterMentions, TwitterList, Location, URL, Contributors
  	}
 

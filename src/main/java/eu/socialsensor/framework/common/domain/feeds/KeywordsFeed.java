@@ -12,6 +12,11 @@ import eu.socialsensor.framework.common.domain.Keyword;
 
 public class KeywordsFeed extends Feed {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4054548274586004413L;
+
 	@Expose
     @SerializedName(value = "keywords")
 	private List<Keyword> keywords = new ArrayList<Keyword>();
@@ -31,17 +36,17 @@ public class KeywordsFeed extends Feed {
 	
 	public KeywordsFeed(List<String> keywords, Date since, String id) {
 		super(since, Feed.FeedType.KEYWORDS);
-		for(String key : keywords)
-			this.keywords.add(new Keyword(key,0.0f));
+		for(String key : keywords) {
+			this.keywords.add(new Keyword(key, 0.0f));
+		}
 		
 		this.id = id;
-		
-	
 	}
 
-	public Keyword getKeyword(){
+	public Keyword getKeyword() {
 		return this.keyword;
 	}
+	
 	public List<Keyword> getKeywords() {
 		return keywords;
 	}
@@ -51,19 +56,19 @@ public class KeywordsFeed extends Feed {
 		this.keywords.addAll(keywords);
 	}
 
-	public void setQueryKeywords(List<String> queryKeywords){
+	public void setQueryKeywords(List<String> queryKeywords) {
 		this.queryKeywords = queryKeywords;
 	}
 	
-	public void addQueryKeywords(List<String> queryKeywords){
+	public void addQueryKeywords(List<String> queryKeywords) {
 		this.queryKeywords.addAll(queryKeywords);
 	}
 	
-	public void addQueryKeyword(String queryKeyword){
+	public void addQueryKeyword(String queryKeyword) {
 		this.queryKeywords.add(queryKeyword);
 	}
 	
-	public List<String> getQueryKeywords(){
+	public List<String> getQueryKeywords() {
 		return queryKeywords;
 	}
 	

@@ -10,6 +10,11 @@ import eu.socialsensor.framework.common.domain.Location;
 
 public class LocationFeed extends Feed {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6371051856398652350L;
+	
 	@Expose
     @SerializedName(value = "location")
 	private Location location;
