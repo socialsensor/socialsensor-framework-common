@@ -21,21 +21,21 @@ public class Util {
 
         if (url.startsWith("https://www.youtube.com/user")) {
 
-            source = "youtube";
+            source = "Youtube";
 
             username = builder.append(url).replace(0, 29, "").toString();
 
         } else if (url.startsWith("https://www.youtube.com/channel")) {
 
-            source = "youtube";
+            source = "Youtube";
 
             username = builder.append(url).replace(0, 32, "").toString();
 
         } else if (url.startsWith("https://www.facebook.com/")) {
 
-            source = "facebook";
+            source = "Facebook";
 
-            username = builder.append(url).replace(0, 27, "").toString();
+            username = builder.append(url).replace(0, 25, "").toString();
 
         } else if (url.startsWith("https://plus.google.com/u/0/+")) {
 
@@ -50,13 +50,13 @@ public class Util {
 
         } else if (url.startsWith("http://instagram.com")) {
 
-            source = "instagram";
+            source = "Instagram";
 
             username = builder.append(url).replace(0, 21, "").toString();
 
         } else if (url.startsWith("https://www.flickr.com/photos")) {
 
-            source = "flickr";
+            source = "Flickr";
 
             username = builder.append(url).replace(0, 30, "").toString();
 
@@ -66,7 +66,7 @@ public class Util {
         
         }
 
-        result.put(source, username);
+        result.put(username, source);
 
         return result;
 

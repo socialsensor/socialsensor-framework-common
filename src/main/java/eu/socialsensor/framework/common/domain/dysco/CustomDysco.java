@@ -13,7 +13,13 @@ import java.util.HashMap;
 
 public class CustomDysco extends Dysco {
 
-	public CustomDysco(){
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6783551698748514873L;
+
+
+	public CustomDysco() {
 		
 	}
 	
@@ -22,7 +28,7 @@ public class CustomDysco extends Dysco {
       
     }
     
-    public CustomDysco(Dysco dysco){
+    public CustomDysco(Dysco dysco) {
     	super();
 		this.id = dysco.getId();
 		this.creationDate = dysco.getCreationDate();
