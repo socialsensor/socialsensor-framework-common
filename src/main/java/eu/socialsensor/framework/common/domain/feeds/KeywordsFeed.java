@@ -31,7 +31,6 @@ public class KeywordsFeed extends Feed {
 		super(since, Feed.FeedType.KEYWORDS);
 		this.keyword = keyword;
 		this.id = id;
-		
 	}
 	
 	public KeywordsFeed(List<String> keywords, Date since, String id) {
@@ -42,7 +41,7 @@ public class KeywordsFeed extends Feed {
 		
 		this.id = id;
 	}
-
+	
 	public Keyword getKeyword() {
 		return this.keyword;
 	}
