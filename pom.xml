@@ -4,7 +4,7 @@
 
     <groupId>eu.socialsensor</groupId>
     <artifactId>socialsensor-framework-common</artifactId>
-    <version>0.2.3-SNAPSHOT</version>
+    <version>0.2.3</version>
     <packaging>jar</packaging>
 
     <name>socialsensor-framework-common</name>
@@ -42,7 +42,8 @@
         <connection>scm:git:git@github.com:socialsensor/socialsensor-framework-common.git</connection>
         <developerConnection>scm:git:git@github.com:socialsensor/socialsensor-framework-common.git</developerConnection>
         <url>git@github.com:socialsensor/socialsensor-framework-common.git</url>
-    </scm>
+      <tag>socialsensor-framework-common-0.2.3</tag>
+  </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
